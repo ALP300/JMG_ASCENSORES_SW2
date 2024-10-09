@@ -12,6 +12,17 @@
     <!-- Logo (can be replaced with a TextView if not using an image) -->
 
     <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="284dp"
+        android:layout_height="169dp"
+        android:layout_marginTop="768dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
         android:id="@+id/logo"
         android:layout_width="250dp"
         android:layout_height="107dp"
@@ -23,43 +34,46 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-android:id="@+id/code_input_text"
-android:layout_width="355dp"
-android:layout_height="wrap_content"
-android:layout_marginTop="28dp"
-android:hint="CÓDIGO"
-android:textColor="#8DA8D1"
-android:textSize="18sp"
-android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@id/logo" />
-<EditText
-android:id="@+id/password_input_text"
-android:layout_width="355dp"
-android:layout_height="wrap_content"
-android:layout_marginTop="16dp"
-android:hint="CONTRASEÑA"
-android:textColor="#8DA8D1"
-android:textSize="18sp"
-android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@id/code_input_text" />
+        android:id="@+id/code_input_text"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:hint="CÓDIGO"
+        android:minHeight="48dp"
+        android:textColor="#8DA8D1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
-<Button
-android:id="@+id/login_button"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginTop="20dp"
-android:background="#00BFFF"
-    android:text="INICIAR SESIÓN"
-    android:textColor="#FFFFFF"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/password_input_text" /> <!-- Update constraint -->
+    <EditText
+        android:id="@+id/password_input_text"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="CONTRASEÑA"
+        android:minHeight="48dp"
+        android:textColor="#8DA8D1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/code_input_text" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#00BFFF"
+        android:text="INICIAR SESIÓN"
+        android:textColor="#795548"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_input_text" /> <!-- Update constraint -->
 
 
 
