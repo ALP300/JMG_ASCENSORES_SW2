@@ -61,32 +61,6 @@ android:background="#00BFFF"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/password_input_text" /> <!-- Update constraint -->
 
-<TextView
-android:id="@+id/register_link"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginTop="20dp"
-android:text="Regístrate"
-android:textColor="#8DA8D1"
-android:textSize="16sp"
-android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.498"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@id/login_button" /> <!-- Update constraint -->
 
-<TextView
-android:id="@+id/no_account_text"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginTop="16dp"
-android:text="No tienes una cuenta?"
-android:textColor="#8DA8D1"
-android:textSize="16sp"
-android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.498"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@id/register_link" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

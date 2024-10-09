@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.jmg_ascensores"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-
+    implementation("org.postgresql:postgresql:42.2.9")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
