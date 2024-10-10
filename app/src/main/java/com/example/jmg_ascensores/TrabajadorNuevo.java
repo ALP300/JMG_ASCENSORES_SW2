@@ -1,29 +1,30 @@
 package com.example.jmg_ascensores;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+
 public class TrabajadorNuevo extends AppCompatActivity {
     private Button myButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trabajador_nuevo); // Asegúrate de que esto coincida con tu archivo de diseño
+        setContentView(R.layout.trabajador_nuevo); // Asegúrate de que coincida con el nombre del layout
 
-        myButton = findViewById(R.id.prueba2); // Reemplaza con la ID real de tu botón
+        myButton = findViewById(R.id.prueba2); // ID del botón
 
-        if (myButton != null) { // Opcional: Verifica si el botón no es null
+        if (myButton != null) {
             myButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Manejar clic en el botón
+                    // Redirige a la actividad de registro de trabajador
+                    Intent intent = new Intent(TrabajadorNuevo.this, RegistroTrabajadorActivity.class);
+                    startActivity(intent);
                 }
             });
-        } else {
-            Log.e("RegistroCliente", "¡El botón es null! Verifica el archivo de diseño.");
         }
     }
 }
