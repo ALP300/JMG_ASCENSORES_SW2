@@ -1,61 +1,50 @@
 package com.example.jmg_ascensores;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.util.Log;
-
+import android.widget.Toast;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class VerifyTrabajadorTask extends AsyncTask<String, Void, Boolean> {
     private Connection connection;
-    private Context context;
+    private AppCompatActivity activity; // Cambiado a AppCompatActivity
 
-    public VerifyTrabajadorTask(Connection connection, Context context) {
+    public VerifyTrabajadorTask(Connection connection, AppCompatActivity activity) { // Cambiado a AppCompatActivity
         this.connection = connection;
-        this.context = context;
+        this.activity = activity;
     }
 
     @Override
     protected Boolean doInBackground(String... params) {
         String code = params[0];
         String password = params[1];
-        boolean isValid = false;
 
-        if (connection != null) {
-            try {
-                Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM trabajadores WHERE codigo = '" + code + "' AND contrasena = '" + password + "'");
+        String query = "SELECT * FROM registro_trabajadores WHERE codigo = ? AND contrasena = ?";
 
-                if (resultSet.next()) {
-                    isValid = true;
-                }
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, code);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
 
-                // Cerrar recursos
-                resultSet.close();
-                statement.close();
-
-            } catch (SQLException e) {
-                Log.e("Database", "Error en la consulta: " + e.getMessage());
-            }
-        } else {
-            Log.e("Database", "Conexión es null");
+            return resultSet.next(); // Devuelve true si hay resultados
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-
-        return isValid;
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
-        if (result) {
-            Log.i("Database", "Inicio de sesión exitoso");
-            Intent intent = new Intent(context, TrabajadorActivity.class);
-            context.startActivity(intent);
+    protected void onPostExecute(Boolean success) {
+        if (success) {
+            // Redirigir al layout vista_trabajador
+            Intent intent = new Intent(activity, TrabajadorActivity.class); // Asegúrate de que este nombre de actividad sea correcto
+            activity.startActivity(intent);
+            activity.finish(); // Opcional: cerrar la actividad actual
         } else {
-            Log.e("Database", "Código o contraseña incorrectos");
+            Toast.makeText(activity, "Código o contraseña incorrectos.", Toast.LENGTH_SHORT).show();
         }
     }
 }

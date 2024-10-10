@@ -1,7 +1,7 @@
 package com.example.jmg_ascensores;
 
-import android.os.AsyncTask;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +28,6 @@ public class MainActivityTrabajador extends AppCompatActivity {
         loginButton = findViewById(R.id.login_button);
         loginButton2 = findViewById(R.id.login_button2);
 
-
         // Conectar a la base de datos y obtener la conexión
         new ConnectToDatabaseTask() {
             @Override
@@ -43,7 +42,6 @@ public class MainActivityTrabajador extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String code = codeInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
 
@@ -60,6 +58,7 @@ public class MainActivityTrabajador extends AppCompatActivity {
                 }
             }
         });
+
         loginButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +66,5 @@ public class MainActivityTrabajador extends AppCompatActivity {
                 startActivity(intent);  // Redirige al nuevo layout
             }
         });
-
     }
 }
