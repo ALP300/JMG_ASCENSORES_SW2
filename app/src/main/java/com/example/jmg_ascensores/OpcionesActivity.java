@@ -32,6 +32,15 @@ public class OpcionesActivity extends AppCompatActivity {
                 finish(); // Cerrar OpcionesActivity
             }
         });
+        trabajadorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Al hacer clic en el botón TRABAJADOR, iniciar MainActivity
+                Intent intent = new Intent(OpcionesActivity.this, MainActivityTrabajador.class);
+                startActivity(intent);
+                finish(); // Cerrar OpcionesActivity
+            }
+        });
 
         // Agregar onClickListener para CLIENTE y TRABAJADOR si es necesario
     }

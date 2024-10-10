@@ -24,6 +24,7 @@
         <activity android:name=".OpcionesActivity" android:exported="true" />
         <activity android:name=".MainActivity" android:exported="true" />
         <activity android:name=".AdminActivity" android:exported="true" />
+<<<<<<< HEAD
         <activity android:name=".VistaAdmin" android:exported="true"/>
         <activity android:name=".RegistroClienteTrabajador" android:exported="true"/>
         <activity android:name=".Trabajadorcliente" android:exported="true"/>
@@ -32,5 +33,11 @@
         <activity android:name=".TrabajadorNuevo" android:exported="true"/>
         <activity android:name=".Ascensor" android:exported="true"/>
         <activity android:name=".Mantenimiento" android:exported="true"/>
+=======
+        <activity android:name=".MainActivityTrabajador" android:exported="true" />
+        <activity android:name=".TrabajadorActivity" android:exported="true" />
+        <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
+        <activity android:name=".TrabajadorActivity" android:exported="true" />
+>>>>>>> 74225fe9d3b96db4badc9e5d1dfcb22df3a2f892
     </application>
 </manifest>
