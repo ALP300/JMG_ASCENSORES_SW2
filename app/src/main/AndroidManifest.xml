@@ -29,6 +29,6 @@
         <activity android:name=".MainActivityTrabajador" android:exported="true" />
         <activity android:name=".TrabajadorActivity" android:exported="true" />
         <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
-
+        <activity android:name=".TrabajadorActivity" android:exported="true" />
     </application>
 </manifest>

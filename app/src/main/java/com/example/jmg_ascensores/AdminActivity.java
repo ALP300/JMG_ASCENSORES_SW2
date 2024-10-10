@@ -7,7 +7,7 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vista_administrador); // Cargar la vista del administrador
+        setContentView(R.layout.vista); // Cargar la vista del administrador
     }
 
 }

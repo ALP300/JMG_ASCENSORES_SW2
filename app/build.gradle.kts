@@ -32,6 +32,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
     implementation("org.postgresql:postgresql:42.2.9")
     implementation(libs.appcompat)
     implementation(libs.material)
