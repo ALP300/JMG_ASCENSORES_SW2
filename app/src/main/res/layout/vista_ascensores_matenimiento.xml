@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0E2842"
+    android:padding="20dp">
+
+    <!-- Header Section with Text -->
+
+    <!-- Image Background Area -->
+
+    <!-- Button to Add Ascensores -->
+
+    <!-- Button to Register Maintenance -->
+
+    <ImageView
+        android:id="@+id/image_background"
+        android:layout_width="336dp"
+        android:layout_height="274dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/ascensor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="180dp"
-        android:text="REGISTRAR ASCENSORES"
+        android:layout_marginTop="304dp"
+        android:backgroundTint="#EEEEEE"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Añadir Ascensores"
+        android:textColor="#8DA8D1"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/mantenimiento"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:text="REGISTRAR MANTENIMIENTO"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        android:layout_height="80dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="420dp"
+        android:backgroundTint="#EEEEEE"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Agregar Mantenimiento"
+        android:textColor="#8DA8D1"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ClienteNuevo">
+    tools:context=".ClienteNuevo"
+    android:background="#0e2842"> <!-- Match your background color -->
+
+    <!-- Logo or Image Placeholder -->
+
+    <!-- Empresa Input -->
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="84dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/nombre_empresa_input"
@@ -12,49 +30,75 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Nombre de la Empresa"
+        android:backgroundTint="#fff"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:padding="12dp"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
+    <!-- Código Input -->
     <EditText
         android:id="@+id/codigo_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Código"
+        android:backgroundTint="#fff"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:padding="12dp"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nombre_empresa_input" />
 
+    <!-- Password Input -->
     <EditText
         android:id="@+id/password_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Contraseña"
+        android:backgroundTint="#fff"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:padding="12dp"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/codigo_input" />
 
+    <!-- Ubicación Input -->
     <EditText
         android:id="@+id/ubicacion_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Ubicación"
+        android:backgroundTint="#fff"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
+        android:padding="12dp"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_input" />
 
+    <!-- Registrar Button -->
     <Button
         android:id="@+id/registrar_cliente_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:text="Registrar Cliente"
+        android:textColor="#fff"
+        android:backgroundTint="#353f53"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ubicacion_input" />
 
