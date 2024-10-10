@@ -12,7 +12,7 @@ public class TrabajadorNuevo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trabajador_nuevo); // Asegúrate de que coincida con el nombre del layout
+        setContentView(R.layout.registro_trabajador); // Asegúrate de que coincida con el nombre del layout
 
         myButton = findViewById(R.id.prueba2); // ID del botón
 
