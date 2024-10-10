@@ -4,104 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ClienteNuevo">
 
-    <!-- Campo para Nombre de Empresa -->
     <EditText
-        android:id="@+id/nombreEmpresa"
+        android:id="@+id/nombre_empresa_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:hint="Nombre Empresa"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/codigo"
+        android:layout_margin="16dp"
+        android:hint="Nombre de la Empresa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Campo para Código -->
     <EditText
-        android:id="@+id/codigo"
+        android:id="@+id/codigo_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         android:hint="Código"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/contrasena"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombreEmpresa" />
+        app:layout_constraintTop_toBottomOf="@id/nombre_empresa_input" />
 
-    <!-- Campo para Contraseña -->
     <EditText
-        android:id="@+id/contrasena"
+        android:id="@+id/password_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_margin="16dp"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/ubicacion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/codigo" />
+        app:layout_constraintTop_toBottomOf="@id/codigo_input" />
 
-    <!-- Campo para Ubicación -->
     <EditText
-        android:id="@+id/ubicacion"
+        android:id="@+id/ubicacion_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="57dp"
+        android:layout_margin="16dp"
         android:hint="Ubicación"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/mantenimiento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contrasena" />
-
-    <!-- Botón para Confirmar Registro -->
+        app:layout_constraintTop_toBottomOf="@id/password_input" />
 
     <Button
-        android:id="@+id/RegistrarCliente"
+        android:id="@+id/registrar_cliente_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="135dp"
+        android:layout_marginTop="80dp"
         android:text="Registrar Cliente"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ascensor" />
-
-    <Button
-        android:id="@+id/ascensor"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="51dp"
-        android:text="AÑADIR ASCENSOR"
-        app:layout_constraintBottom_toTopOf="@+id/RegistrarCliente"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mantenimiento" />
-
-    <Button
-        android:id="@+id/mantenimiento"
-        android:layout_width="252dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="51dp"
-        android:text="AÑADIR MANTENIMIENTO"
-        app:layout_constraintBottom_toTopOf="@+id/ascensor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ubicacion" />
+        app:layout_constraintTop_toBottomOf="@id/ubicacion_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
