@@ -1,18 +1,17 @@
 package com.example.jmg_ascensores;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
 
-public class MainActivity extends AppCompatActivity {
+public class IniciarSesionCliente extends AppCompatActivity {
 
     private EditText codeInput;
     private EditText passwordInput;
@@ -34,13 +33,12 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(Connection conn) {
                 connection = conn; // Guardar la conexión para su uso posterior
                 if (connection == null) {
-                    Toast.makeText(MainActivity.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(IniciarSesionCliente.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
                 }
             }
         }.execute();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("StaticFieldLeak")
             @Override
             public void onClick(View v) {
                 String code = codeInput.getText().toString().trim();
@@ -48,29 +46,28 @@ public class MainActivity extends AppCompatActivity {
 
                 // Validar campos
                 if (code.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(MainActivity.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IniciarSesionCliente.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (connection != null) {
-                    new VerifyAdminTask(connection, MainActivity.this) {
+                    new VerifyClienteTask(connection, IniciarSesionCliente.this) {
                         @Override
                         protected void onPostExecute(Boolean isAdmin) {
                             if (isAdmin) {
                                 // Si es un admin, llevar a VistaAdministradorActivity
-                                Intent intent = new Intent(MainActivity.this, VistaAdmin.class);
+                                Intent intent = new Intent(IniciarSesionCliente.this, VistaCliente.class);
                                 startActivity(intent);
                                 finish(); // Opcional: cierra MainActivity si no quieres volver a ella
                             } else {
-                                Toast.makeText(MainActivity.this, "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(IniciarSesionCliente.this, "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }.execute(code, password);
                 } else {
-                    Toast.makeText(MainActivity.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IniciarSesionCliente.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 }
-
