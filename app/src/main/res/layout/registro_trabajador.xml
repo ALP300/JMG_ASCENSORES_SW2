@@ -8,70 +8,95 @@
     android:background="#0E2842"
     tools:context=".RegistroTrabajadorActivity">
 
+    <TextView
+        android:id="@+id/titulo_registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Registro Trabajador"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/nombre_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/nombre_input"
         android:layout_width="274dp"
         android:layout_height="48dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="20dp"
         android:hint="NOMBRE"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/apellido_input"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/apellido_input"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo_registro" />
+
+    <EditText
+        android:id="@+id/apellido_input"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="APELLIDO"
+        android:textColor="#8DA8D1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_input" />
 
     <EditText
         android:id="@+id/edad_input"
-        android:layout_width="288dp"
-        android:layout_height="57dp"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:hint="EDAD"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/contacto_input"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/contacto_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apellido_input" />
 
     <EditText
         android:id="@+id/contacto_input"
-        android:layout_width="276dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:hint="FECHA DE CONTACTO"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/code_input"
-        app:layout_constraintStart_toStartOf="@+id/code_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edad_input" />
 
     <EditText
         android:id="@+id/code_input"
-        android:layout_width="272dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="32dp"
-        android:hint=" CÓDIGO(DNI)"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:hint="CÓDIGO (DNI)"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/password_input"
-        app:layout_constraintStart_toStartOf="@+id/password_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contacto_input" />
 
     <EditText
         android:id="@+id/password_input"
-        android:layout_width="276dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="274dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
         android:hint="CONTRASEÑA"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/code_input" />
 
@@ -79,42 +104,13 @@
         android:id="@+id/registrar_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="163dp"
-        android:layout_marginBottom="160dp"
-        android:background="#00BFFF"
+        android:layout_marginTop="452dp"
+        android:layout_marginEnd="72dp"
         android:text="REGISTRAR"
-        android:textColor="#795548"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/code_input" />
-
-    <EditText
-        android:id="@+id/apellido_input"
-        android:layout_width="276dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="12dp"
-        android:hint="APELLIDO"
-        android:textColor="#8DA8D1"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/edad_input"
-        app:layout_constraintStart_toStartOf="@+id/edad_input"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_input" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="TextView"
-        android:textColor="#E7FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="REGISTRO DE TRABAJADORES" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 

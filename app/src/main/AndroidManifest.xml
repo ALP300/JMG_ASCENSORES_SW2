@@ -38,7 +38,6 @@
         <activity android:name=".MainActivityTrabajador" android:exported="true" />
         <activity android:name=".TrabajadorActivity" android:exported="true" />
         <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
-        <activity android:name=".registrar_mantenimientos" android:exported="true" />
         <activity android:name=".AscensoresMantenimiento" android:exported="true" />
         <activity android:name=".IniciarSesionCliente" android:exported="true" />
     </application>
