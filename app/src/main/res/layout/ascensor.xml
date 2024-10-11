@@ -1,53 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0E2842"> <!-- Fondo del layout -->
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:text="Registro de Ascensores"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/marca_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="302dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
         android:hint="Marca"
-        app:layout_constraintTop_toBottomOf="@+id/titulo"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="12dp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
-        android:padding="12dp"/>
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titulo" />
 
     <EditText
         android:id="@+id/modelo_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="302dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
         android:hint="Modelo"
-        app:layout_constraintTop_toBottomOf="@+id/marca_input"
-        app:layout_constraintStart_toStartOf="parent"
+        android:padding="12dp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:padding="12dp"/>
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marca_input" />
 
     <Button
         android:id="@+id/guardar_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="298dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#213744"
+        android:padding="12dp"
         android:text="Guardar Ascensor"
-        app:layout_constraintTop_toBottomOf="@+id/modelo_input"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp"
-        android:padding="12dp"/>
+        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/modelo_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
