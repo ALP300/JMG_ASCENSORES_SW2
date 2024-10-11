@@ -26,7 +26,6 @@ public class MainActivityTrabajadorRegistro extends AppCompatActivity {
         codeInput = findViewById(R.id.code_input_text);
         passwordInput = findViewById(R.id.password_input_text);
         loginButton = findViewById(R.id.login_button);
-        loginButton2 = findViewById(R.id.login_button2);
 
 
         // Conectar a la base de datos y obtener la conexión
@@ -60,13 +59,7 @@ public class MainActivityTrabajadorRegistro extends AppCompatActivity {
                 }
             }
         });
-        loginButton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivityTrabajadorRegistro.this, RegistroTrabajadorActivity.class);
-                startActivity(intent);  // Redirige al nuevo layout
-            }
-        });
+
 
     }
 }

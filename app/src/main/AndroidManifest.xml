@@ -40,5 +40,6 @@
         <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
         <activity android:name=".AscensoresMantenimiento" android:exported="true" />
         <activity android:name=".IniciarSesionCliente" android:exported="true" />
+        <activity android:name=".Tareas_empresa" android:exported="true" />
     </application>
 </manifest>
