@@ -32,6 +32,17 @@ public class OpcionesActivity extends AppCompatActivity {
                 finish(); // Cerrar OpcionesActivity
             }
         });
+
+        clienteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Al hacer clic en el botón ADMINISTRADOR, iniciar MainActivity
+                Intent intent = new Intent(OpcionesActivity.this, IniciarSesionCliente.class);
+                startActivity(intent);
+                finish(); // Cerrar OpcionesActivity
+            }
+        });
+
         trabajadorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
