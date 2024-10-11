@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -22,17 +21,19 @@ public class RegistrarAscensorTask extends AsyncTask<String, Void, Boolean> {
     protected Boolean doInBackground(String... params) {
         String marca = params[0];
         String modelo = params[1];
+        String codigoCliente = params[2]; // Captura el código del cliente
         boolean isInserted = false;
 
         if (connection != null) {
             try {
                 // Preparamos la sentencia SQL para insertar los datos en la tabla 'ascensores'
-                String query = "INSERT INTO ascensores (marca, modelo) VALUES (?, ?)";
+                String query = "INSERT INTO ascensores (codigo_cliente,marca, modelo) VALUES (?, ?, ?)"; // Incluye el código del cliente
                 PreparedStatement stmt = connection.prepareStatement(query);
 
                 // Asignamos los valores a los parámetros
                 stmt.setString(1, marca);  // Marca del ascensor
                 stmt.setString(2, modelo);  // Modelo del ascensor
+                stmt.setString(3, codigoCliente);  // Código del cliente
 
                 // Ejecutamos la sentencia
                 int rowsInserted = stmt.executeUpdate();

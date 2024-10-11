@@ -50,8 +50,9 @@ public class ClienteNuevo extends AppCompatActivity {
                         protected void onPostExecute(Boolean result) {
                             super.onPostExecute(result);
                             if (result) {
-                                // Si el registro fue exitoso, navegar a la actividad AscensoresMantenimiento
+                                // Si el registro fue exitoso, navegar a la actividad Ascensor y pasar el código del cliente
                                 Intent intent = new Intent(ClienteNuevo.this, AscensoresMantenimiento.class);
+                                intent.putExtra("codigo_cliente", codigo); // Enviamos el código del cliente
                                 startActivity(intent);
                                 finish(); // Opcional: Cierra esta actividad si ya no la necesitas
                             } else {
@@ -77,3 +78,4 @@ public class ClienteNuevo extends AppCompatActivity {
         }.execute();
     }
 }
+
