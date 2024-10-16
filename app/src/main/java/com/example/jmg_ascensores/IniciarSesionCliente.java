@@ -57,6 +57,7 @@ public class IniciarSesionCliente extends AppCompatActivity {
                             if (isAdmin) {
                                 // Si es un admin, llevar a VistaAdministradorActivity
                                 Intent intent = new Intent(IniciarSesionCliente.this, VistaCliente.class);
+                                intent.putExtra("codCli", code); // Enviamos el código del cliente
                                 startActivity(intent);
                                 finish(); // Opcional: cierra MainActivity si no quieres volver a ella
                             } else {

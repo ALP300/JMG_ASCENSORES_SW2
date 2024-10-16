@@ -41,5 +41,7 @@
         <activity android:name=".AscensoresMantenimiento" android:exported="true" />
         <activity android:name=".IniciarSesionCliente" android:exported="true" />
         <activity android:name=".Tareas_empresa" android:exported="true" />
+        <activity android:name=".VistaProxMan" android:exported="true" />
+        <activity android:name=".Ascensor_Cliente" android:exported="true" />
     </application>
 </manifest>
