@@ -7,6 +7,7 @@ import android.widget.Toast;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,9 +24,9 @@ public class RegistrarMantenimientoTask extends AsyncTask<String, Void, Boolean>
     @Override
     protected Boolean doInBackground(String... params) {
         String codigoCliente = params[0];
-        String fechaInicioStr = params[1]; // Fecha de inicio en formato String
-        String fechaFinStr = params[2];    // Fecha de fin en formato String
-        String descripcion = params[3];
+        String fechaInicioStr = params[1];
+        String fechaFinStr = params[2];
+        int idTareaSeleccionada = Integer.parseInt(params[3]);  // Recibir el ID de la tarea seleccionada
 
         // Convertir las fechas de String a java.sql.Date
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -35,28 +36,45 @@ public class RegistrarMantenimientoTask extends AsyncTask<String, Void, Boolean>
             Date fechaInicio = new Date(fechaInicioUtil.getTime());
             Date fechaFin = new Date(fechaFinUtil.getTime());
 
-            // Consulta SQL para insertar los datos en la tabla Mantenimientos
-            String query = "INSERT INTO mantenimiento (codigo_cliente, fecha_inicio, fecha_fin, descripcion) VALUES (?, ?, ?, ?)";
+            connection.setAutoCommit(false);  // Iniciar una transacción
 
-            try (PreparedStatement stmt = connection.prepareStatement(query)) {
-                // Establecer los parámetros de la consulta
-                stmt.setString(1, codigoCliente);  // Código del cliente
-                stmt.setDate(2, fechaInicio);       // Fecha de inicio como java.sql.Date
-                stmt.setDate(3, fechaFin);          // Fecha de fin como java.sql.Date
-                stmt.setString(4, descripcion);     // Descripción
+            // Consulta SQL para insertar en la tabla Mantenimiento
+            String queryMantenimiento = "INSERT INTO mantenimiento (codigo_cliente, fecha_inicio, fecha_fin) VALUES (?, ?, ?) RETURNING id";
+            try (PreparedStatement stmtMantenimiento = connection.prepareStatement(queryMantenimiento)) {
+                stmtMantenimiento.setString(1, codigoCliente);
+                stmtMantenimiento.setDate(2, fechaInicio);
+                stmtMantenimiento.setDate(3, fechaFin);
 
-                // Ejecutar la consulta
-                stmt.executeUpdate();
-                return true; // Si el registro fue exitoso
+                ResultSet rs = stmtMantenimiento.executeQuery();
+                int idMantenimiento = -1;
+                if (rs.next()) {
+                    idMantenimiento = rs.getInt(1);  // Obtener el ID generado
+                }
+                rs.close();
+
+                // Insertar en la tabla intermedia mantenimiento_tareas
+                if (idMantenimiento != -1) {
+                    String queryMantenimientoTareas = "INSERT INTO mantenimiento_tareas (id_mantenimiento, id_tarea) VALUES (?, ?)";
+                    try (PreparedStatement stmtMantenimientoTareas = connection.prepareStatement(queryMantenimientoTareas)) {
+                        stmtMantenimientoTareas.setInt(1, idMantenimiento);
+                        stmtMantenimientoTareas.setInt(2, idTareaSeleccionada);  // Aquí insertar la tarea seleccionada
+                        stmtMantenimientoTareas.executeUpdate();
+                    }
+                }
+
+                connection.commit();  // Confirmar la transacción
+                return true;
+            } catch (SQLException e) {
+                connection.rollback();  // Revertir si ocurre un error
+                e.printStackTrace();
+                return false;
             }
-        } catch (ParseException e) {
+        } catch (ParseException | SQLException e) {
             e.printStackTrace();
-            return false; // Si ocurrió un error en la conversión de fecha
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false; // Si ocurrió un error al ejecutar la consulta
+            return false;
         }
     }
+
 
     @Override
     protected void onPostExecute(Boolean success) {

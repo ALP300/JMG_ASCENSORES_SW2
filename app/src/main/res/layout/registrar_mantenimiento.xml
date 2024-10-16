@@ -21,11 +21,12 @@
         android:focusable="false"
         android:background="@drawable/edittext_background"/>
 
-    <EditText
-        android:id="@+id/editTextDescripcion"
+    <Spinner
+        android:id="@+id/spinnerTareas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción" />
+        android:hint="Selecciona Tareas" />
+
 
     <Button
         android:id="@+id/buttonRegistrar"
