@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AscensoresMantenimiento extends AppCompatActivity {
     private Button registrarAscensores;
-    private Button registrarMantenimiento;
     private String clienteCodigo; // Almacena el código del cliente
 
     @Override
@@ -21,7 +20,8 @@ public class AscensoresMantenimiento extends AppCompatActivity {
         clienteCodigo = getIntent().getStringExtra("codigo_cliente");
 
         registrarAscensores = findViewById(R.id.ascensor);
-        registrarMantenimiento = findViewById(R.id.mantenimiento);
+        // Aquí ya no declaramos el botón para mantenimiento, ya que no lo necesitamos
+        // registrarMantenimiento = findViewById(R.id.mantenimiento);
 
         registrarAscensores.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,15 +34,12 @@ public class AscensoresMantenimiento extends AppCompatActivity {
             }
         });
 
-        registrarMantenimiento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Al hacer clic en el botón de registrar mantenimiento
-                Intent intent = new Intent(AscensoresMantenimiento.this, Mantenimiento.class);
-                intent.putExtra("codigo_cliente", clienteCodigo); // Pasar el código del cliente
-                startActivity(intent);
-                finish(); // Cerrar AscensoresMantenimiento
-            }
-        });
+        // Si ya no necesitas el botón de mantenimiento, elimina el código correspondiente
+        // registrarMantenimiento.setOnClickListener(new View.OnClickListener() {
+        //     @Override
+        //     public void onClick(View v) {
+        //         // Código relacionado con el registro de mantenimiento
+        //     }
+        // });
     }
 }
