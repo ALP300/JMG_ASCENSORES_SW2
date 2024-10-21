@@ -5,15 +5,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.sql.Connection;
 
 public class ClienteNuevo extends AppCompatActivity {
 
-    private EditText nombreEmpresaInput, codigoInput, passwordInput, ubicacionInput;
-    private Button registrarClienteButton;
-    private Connection connection; // La conexión a la base de datos
+    private static final int MAP_REQUEST_CODE = 1;
+    private EditText nombreEmpresaInput, codigoInput, passwordInput;
+    private Button elegirUbicacionButton, registrarClienteButton;
+    private TextView ubicacionTextView;
+    private Connection connection;
+    private String ubicacionSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +30,21 @@ public class ClienteNuevo extends AppCompatActivity {
         nombreEmpresaInput = findViewById(R.id.nombre_empresa_input);
         codigoInput = findViewById(R.id.codigo_input);
         passwordInput = findViewById(R.id.password_input);
-        ubicacionInput = findViewById(R.id.ubicacion_input);
+        elegirUbicacionButton = findViewById(R.id.elegir_ubicacion_button);
         registrarClienteButton = findViewById(R.id.registrar_cliente_button);
+        ubicacionTextView = findViewById(R.id.ubicacion_textview);
 
-        // Asignamos el listener al botón de registrar
+        // Listener para el botón de elegir ubicación
+        elegirUbicacionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Abrimos una nueva actividad para seleccionar la ubicación en Google Maps
+                Intent intent = new Intent(ClienteNuevo.this, MapsActivity.class);
+                startActivityForResult(intent, MAP_REQUEST_CODE);
+            }
+        });
+
+        // Listener para el botón de registrar cliente
         registrarClienteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -35,10 +52,9 @@ public class ClienteNuevo extends AppCompatActivity {
                 String nombreEmpresa = nombreEmpresaInput.getText().toString().trim();
                 String codigo = codigoInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
-                String ubicacion = ubicacionInput.getText().toString().trim();
 
                 // Validamos que todos los campos estén completos
-                if (nombreEmpresa.isEmpty() || codigo.isEmpty() || password.isEmpty() || ubicacion.isEmpty()) {
+                if (nombreEmpresa.isEmpty() || codigo.isEmpty() || password.isEmpty() || ubicacionSeleccionada == null) {
                     Toast.makeText(ClienteNuevo.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -50,16 +66,16 @@ public class ClienteNuevo extends AppCompatActivity {
                         protected void onPostExecute(Boolean result) {
                             super.onPostExecute(result);
                             if (result) {
-                                // Si el registro fue exitoso, navegar a la actividad Ascensor y pasar el código del cliente
+                                // Si el registro fue exitoso, navegar a la actividad Ascensor
                                 Intent intent = new Intent(ClienteNuevo.this, AscensoresMantenimiento.class);
-                                intent.putExtra("codigo_cliente", codigo); // Enviamos el código del cliente
+                                intent.putExtra("codigo_cliente", codigo);
                                 startActivity(intent);
-                                finish(); // Opcional: Cierra esta actividad si ya no la necesitas
+                                finish();
                             } else {
                                 Toast.makeText(ClienteNuevo.this, "Error al registrar cliente.", Toast.LENGTH_SHORT).show();
                             }
                         }
-                    }.execute(codigo, nombreEmpresa, password, ubicacion);
+                    }.execute(codigo, nombreEmpresa, password, ubicacionSeleccionada);
                 } else {
                     Toast.makeText(ClienteNuevo.this, "Error: No se puede conectar a la base de datos.", Toast.LENGTH_SHORT).show();
                 }
@@ -77,5 +93,16 @@ public class ClienteNuevo extends AppCompatActivity {
             }
         }.execute();
     }
-}
 
+    // Este método recibe la ubicación seleccionada en la actividad de Google Maps
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MAP_REQUEST_CODE && resultCode == RESULT_OK) {
+            // Obtenemos la ubicación desde la actividad de Maps
+            ubicacionSeleccionada = data.getStringExtra("ubicacion");
+            ubicacionTextView.setText("Ubicación: " + ubicacionSeleccionada);
+        }
+    }
+
+}

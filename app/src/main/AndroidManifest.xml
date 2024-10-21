@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Permisos necesarios -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
 
     <application
         android:allowBackup="true"
@@ -14,6 +18,12 @@
         android:theme="@style/Theme.JMG_ASCENSORES"
         tools:targetApi="31">
 
+        <!-- Aquí va la clave de la API de Google Maps -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAzvjPshVi9uQUokL7uZ_ZJovSircoZMF4" />
+
+        <!-- Actividades de la aplicación -->
         <activity android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -22,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Esta actividad se mostrará después de SplashActivity -->
+        <!-- Otras actividades de la aplicación -->
         <activity android:name=".OpcionesActivity" android:exported="true" />
         <activity android:name=".MainActivity" android:exported="true" />
         <activity android:name=".AdminActivity" android:exported="true" />
@@ -43,5 +53,6 @@
         <activity android:name=".Tareas_empresa" android:exported="true" />
         <activity android:name=".VistaProxMan" android:exported="true" />
         <activity android:name=".Ascensor_Cliente" android:exported="true" />
+        <activity android:name=".MapsActivity" android:exported="true" />
     </application>
 </manifest>
