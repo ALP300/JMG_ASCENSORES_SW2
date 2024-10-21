@@ -48,11 +48,11 @@
         <activity android:name=".MainActivityTrabajador" android:exported="true" />
         <activity android:name=".TrabajadorActivity" android:exported="true" />
         <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
-        <activity android:name=".AscensoresMantenimiento" android:exported="true" />
         <activity android:name=".IniciarSesionCliente" android:exported="true" />
         <activity android:name=".Tareas_empresa" android:exported="true" />
         <activity android:name=".VistaProxMan" android:exported="true" />
         <activity android:name=".Ascensor_Cliente" android:exported="true" />
         <activity android:name=".MapsActivity" android:exported="true" />
+        <activity android:name=".Tarea" android:exported="true" />
     </application>
 </manifest>
