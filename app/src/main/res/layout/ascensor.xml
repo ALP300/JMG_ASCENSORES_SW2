@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0E2842"> <!-- Fondo del layout -->
+    android:background="#0E2842">
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="40dp"
         android:text="Registro de Ascensores"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -24,15 +23,17 @@
         android:id="@+id/marca_input"
         android:layout_width="302dp"
         android:layout_height="50dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="214dp"
         android:background="@android:color/white"
         android:hint="Marca"
         android:padding="12dp"
         android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/button4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/modelo_input"
@@ -48,19 +49,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/marca_input" />
 
+    <!-- RecyclerView para mostrar la lista de ascensores -->
     <Button
         android:id="@+id/guardar_button"
         android:layout_width="298dp"
         android:layout_height="61dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="12dp"
         android:backgroundTint="#213744"
         android:padding="12dp"
         android:text="Guardar Ascensor"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/modelo_input" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ascensores_list"
+        android:layout_width="376dp"
+        android:layout_height="259dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardar_button"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="17dp" />
 
+    <Button
+        android:id="@+id/registrar_ascensores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="77dp"
+        android:text="Registrar Ascensores"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ascensores_list"
+        tools:layout_editor_absoluteX="113dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

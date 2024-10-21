@@ -67,7 +67,7 @@ public class ClienteNuevo extends AppCompatActivity {
                             super.onPostExecute(result);
                             if (result) {
                                 // Si el registro fue exitoso, navegar a la actividad Ascensor
-                                Intent intent = new Intent(ClienteNuevo.this, AscensoresMantenimiento.class);
+                                Intent intent = new Intent(ClienteNuevo.this, Ascensor.class);
                                 intent.putExtra("codigo_cliente", codigo);
                                 startActivity(intent);
                                 finish();
