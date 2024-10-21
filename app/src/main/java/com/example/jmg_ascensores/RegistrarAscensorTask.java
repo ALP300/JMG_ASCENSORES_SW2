@@ -25,27 +25,38 @@ public class RegistrarAscensorTask extends AsyncTask<String, Void, Boolean> {
         boolean isInserted = false;
 
         if (connection != null) {
+            Log.d("Database", "Connection established. Attempting to insert...");
+            PreparedStatement stmt = null;
             try {
                 // Preparamos la sentencia SQL para insertar los datos en la tabla 'ascensores'
-                String query = "INSERT INTO ascensores (codigo_cliente,marca, modelo) VALUES (?, ?, ?)"; // Incluye el código del cliente
-                PreparedStatement stmt = connection.prepareStatement(query);
+                String query = "INSERT INTO ascensores (codigo_cliente, marca, modelo) VALUES (?, ?, ?)";
+                stmt = connection.prepareStatement(query);
 
                 // Asignamos los valores a los parámetros
-                stmt.setString(1, marca);  // Marca del ascensor
-                stmt.setString(2, modelo);  // Modelo del ascensor
-                stmt.setString(3, codigoCliente);  // Código del cliente
+                stmt.setString(1, codigoCliente);  // Código del cliente
+                stmt.setString(2, marca);           // Marca del ascensor
+                stmt.setString(3, modelo);          // Modelo del ascensor
 
                 // Ejecutamos la sentencia
                 int rowsInserted = stmt.executeUpdate();
                 if (rowsInserted > 0) {
-                    isInserted = true;  // Si se insertaron filas, significa que el registro fue exitoso
+                    isInserted = true;  // Registro exitoso
+                    Log.d("Database", "Insert successful, rows inserted: " + rowsInserted);
+                } else {
+                    Log.e("Database", "Insert failed, no rows inserted.");
                 }
-
-                // Cerrar recursos
-                stmt.close();
 
             } catch (SQLException e) {
                 Log.e("Database", "Error al insertar: " + e.getMessage());
+            } finally {
+                // Cerrar el PreparedStatement de manera segura
+                try {
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                } catch (SQLException e) {
+                    Log.e("Database", "Error al cerrar el PreparedStatement: " + e.getMessage());
+                }
             }
         } else {
             Log.e("Database", "Conexión es null");
@@ -62,4 +73,6 @@ public class RegistrarAscensorTask extends AsyncTask<String, Void, Boolean> {
             Toast.makeText(context, "Error al registrar ascensor", Toast.LENGTH_LONG).show();
         }
     }
+
 }
+
