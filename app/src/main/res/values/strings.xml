@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">JMG_ASCENSORES</string>
+    <string name="confirmacion_de_mantenimiento">CONFIRMACION DE MANTENIMIENTO</string>
+    <string name="tareas">TAREAS</string>
+    <string name="ubicaci_n_av_santa_rosa_ver_en_mapa_nombre_hiraoka_lista_de_tareas_ver_lista_de_tareas">UBICACIÓN: AV SANTA ROSA (VER EN MAPA) NOMBRE: HIRAOKA LISTA DE TAREAS: (VER LISTA DE TAREAS)</string>
 </resources>
