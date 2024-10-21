@@ -1,5 +1,6 @@
 package com.example.jmg_ascensores;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
@@ -7,7 +8,6 @@ import android.widget.Toast;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,61 +21,51 @@ public class RegistrarMantenimientoTask extends AsyncTask<String, Void, Boolean>
         this.context = context;
     }
 
+     // Si hubo un error, retornar false
+
+
     @Override
     protected Boolean doInBackground(String... params) {
+        if (params.length < 3) return false; // Validar que hay suficientes parámetros
+
         String codigoCliente = params[0];
         String fechaInicioStr = params[1];
         String fechaFinStr = params[2];
-        int idTareaSeleccionada = Integer.parseInt(params[3]);  // Recibir el ID de la tarea seleccionada
 
-        // Convertir las fechas de String a java.sql.Date
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
+            // Convertir cadenas de fecha a Date
             java.util.Date fechaInicioUtil = sdf.parse(fechaInicioStr);
             java.util.Date fechaFinUtil = sdf.parse(fechaFinStr);
-            Date fechaInicio = new Date(fechaInicioUtil.getTime());
-            Date fechaFin = new Date(fechaFinUtil.getTime());
 
-            connection.setAutoCommit(false);  // Iniciar una transacción
+            // Convertir a java.sql.Date
+            java.sql.Date fechaInicio = new java.sql.Date(fechaInicioUtil.getTime());
+            java.sql.Date fechaFin = new java.sql.Date(fechaFinUtil.getTime());
 
-            // Consulta SQL para insertar en la tabla Mantenimiento
-            String queryMantenimiento = "INSERT INTO mantenimiento (codigo_cliente, fecha_inicio, fecha_fin) VALUES (?, ?, ?) RETURNING id";
+            // Imprimir para depuración
+            System.out.println("Código Cliente: " + codigoCliente);
+            System.out.println("Fecha Inicio String: " + fechaInicioStr);
+            System.out.println("Fecha Fin String: " + fechaFinStr);
+            System.out.println("fechaInicio (java.sql.Date): " + fechaInicio);
+            System.out.println("fechaFin (java.sql.Date): " + fechaFin);
+
+            String queryMantenimiento = "INSERT INTO mantenimiento (codigo_cliente, fecha_inicio, fecha_fin) VALUES (?, ?, ?)";
             try (PreparedStatement stmtMantenimiento = connection.prepareStatement(queryMantenimiento)) {
                 stmtMantenimiento.setString(1, codigoCliente);
-                stmtMantenimiento.setDate(2, fechaInicio);
-                stmtMantenimiento.setDate(3, fechaFin);
+                stmtMantenimiento.setDate(2, fechaInicio); // Debe ser java.sql.Date
+                stmtMantenimiento.setDate(3, fechaFin);    // Debe ser java.sql.Date
 
-                ResultSet rs = stmtMantenimiento.executeQuery();
-                int idMantenimiento = -1;
-                if (rs.next()) {
-                    idMantenimiento = rs.getInt(1);  // Obtener el ID generado
-                }
-                rs.close();
-
-                // Insertar en la tabla intermedia mantenimiento_tareas
-                if (idMantenimiento != -1) {
-                    String queryMantenimientoTareas = "INSERT INTO mantenimiento_tareas (id_mantenimiento, id_tarea) VALUES (?, ?)";
-                    try (PreparedStatement stmtMantenimientoTareas = connection.prepareStatement(queryMantenimientoTareas)) {
-                        stmtMantenimientoTareas.setInt(1, idMantenimiento);
-                        stmtMantenimientoTareas.setInt(2, idTareaSeleccionada);  // Aquí insertar la tarea seleccionada
-                        stmtMantenimientoTareas.executeUpdate();
-                    }
-                }
-
-                connection.commit();  // Confirmar la transacción
-                return true;
-            } catch (SQLException e) {
-                connection.rollback();  // Revertir si ocurre un error
-                e.printStackTrace();
-                return false;
+                stmtMantenimiento.executeUpdate();
+                return true; // Inserción exitosa
             }
-        } catch (ParseException | SQLException e) {
-            e.printStackTrace();
-            return false;
+        } catch (ParseException e) {
+            e.printStackTrace(); // Manejo de error en formato de fecha
+        } catch (SQLException e) {
+            e.printStackTrace(); // Manejo de error en SQL
         }
+
+        return false; // Si hubo un error, retornar false
     }
-
-
 
 
     @Override
@@ -85,5 +75,10 @@ public class RegistrarMantenimientoTask extends AsyncTask<String, Void, Boolean>
         } else {
             Toast.makeText(context, "Error al registrar el mantenimiento", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    // Método opcional para mostrar un Toast en caso de errores
+    private void showToast(String message) {
+        ((Activity) context).runOnUiThread(() -> Toast.makeText(context, message, Toast.LENGTH_SHORT).show());
     }
 }

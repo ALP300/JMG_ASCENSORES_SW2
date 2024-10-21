@@ -1,5 +1,6 @@
 package com.example.jmg_ascensores;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -82,12 +83,16 @@ public class Ascensor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (connection != null && !ascensoresList.isEmpty()) {
-                    new RegisterAscensoresTask().execute();  // Ejecuta el AsyncTask para la inserción
+                    // Start the Tarea activity
+                    Intent intent = new Intent(Ascensor.this, Mantenimiento.class);
+                    startActivity(intent);
+                    new RegisterAscensoresTask().execute();  // Executes the AsyncTask for insertion
                 } else {
                     Toast.makeText(Ascensor.this, "No hay ascensores para registrar o no hay conexión a la base de datos.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
         // Conexión a la base de datos
         new ConnectToDatabaseTask() {

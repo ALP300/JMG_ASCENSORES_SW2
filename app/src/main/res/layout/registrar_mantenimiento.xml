@@ -13,20 +13,14 @@
         android:focusable="false"
         android:background="@drawable/edittext_background"/>
 
+
     <EditText
         android:id="@+id/editTextFechaFin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha de fin"
+        android:background="@drawable/edittext_background"
         android:focusable="false"
-        android:background="@drawable/edittext_background"/>
-
-    <Spinner
-        android:id="@+id/spinnerTareas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Selecciona Tareas" />
-
+        android:hint="Fecha de fin" />
 
     <Button
         android:id="@+id/buttonRegistrar"
