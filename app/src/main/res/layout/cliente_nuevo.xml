@@ -6,12 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ClienteNuevo"
-    android:background="#0e2842"> <!-- Match your background color -->
+    android:background="#0e2842">
 
-    <!-- Logo or Image Placeholder -->
-
-    <!-- Empresa Input -->
-
+    <!-- Logo o Imagen -->
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
@@ -20,10 +17,10 @@
         android:scaleType="centerInside"
         android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Campo para Nombre de la Empresa -->
     <EditText
         android:id="@+id/nombre_empresa_input"
         android:layout_width="0dp"
@@ -39,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
-    <!-- Código Input -->
+    <!-- Campo para Código de Cliente -->
     <EditText
         android:id="@+id/codigo_input"
         android:layout_width="0dp"
@@ -55,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nombre_empresa_input" />
 
-    <!-- Password Input -->
+    <!-- Campo para Contraseña -->
     <EditText
         android:id="@+id/password_input"
         android:layout_width="0dp"
@@ -71,23 +68,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/codigo_input" />
 
-    <!-- Ubicación Input -->
-    <EditText
-        android:id="@+id/ubicacion_input"
+    <!-- Botón para abrir Google Maps y seleccionar ubicación -->
+    <Button
+        android:id="@+id/elegir_ubicacion_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:hint="Ubicación"
-        android:backgroundTint="#fff"
+        android:text="Elegir Ubicación en Google Maps"
         android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:padding="12dp"
-        android:inputType="text"
+        android:backgroundTint="#353f53"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_input" />
 
-    <!-- Registrar Button -->
+    <!-- TextView para mostrar la ubicación seleccionada -->
+    <TextView
+        android:id="@+id/ubicacion_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Ubicación seleccionada"
+        android:textColor="#fff"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/elegir_ubicacion_button" />
+
+    <!-- Botón para registrar al cliente -->
     <Button
         android:id="@+id/registrar_cliente_button"
         android:layout_width="wrap_content"
@@ -100,6 +107,6 @@
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ubicacion_input" />
+        app:layout_constraintTop_toBottomOf="@id/ubicacion_textview" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
