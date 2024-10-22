@@ -66,9 +66,9 @@ public class ClienteNuevo extends AppCompatActivity {
                         protected void onPostExecute(Boolean result) {
                             super.onPostExecute(result);
                             if (result) {
-                                // Si el registro fue exitoso, navegar a la actividad Ascensor
+                                // Si el registro fue exitoso, navegar a la actividad Mantenimiento y pasar el código del cliente
                                 Intent intent = new Intent(ClienteNuevo.this, Ascensor.class);
-                                intent.putExtra("codigo_cliente", codigo);
+                                intent.putExtra("codigo_cliente", codigo); // Pasar el código del cliente a la actividad de mantenimiento
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -80,6 +80,7 @@ public class ClienteNuevo extends AppCompatActivity {
                     Toast.makeText(ClienteNuevo.this, "Error: No se puede conectar a la base de datos.", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
         // Conexión a la base de datos
