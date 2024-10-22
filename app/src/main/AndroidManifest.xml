@@ -53,5 +53,7 @@
         <activity android:name=".VistaProxMan" android:exported="true" />
         <activity android:name=".Ascensor_Cliente" android:exported="true" />
         <activity android:name=".MapsActivity" android:exported="true" />
+        <activity android:name=".TrabajadorTareaActivity" android:exported="true" />
+        <activity android:name=".Confirmacion_trabajador" android:exported="true" />
     </application>
 </manifest>

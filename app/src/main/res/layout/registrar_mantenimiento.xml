@@ -17,9 +17,9 @@
         android:id="@+id/editTextFechaFin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Fecha de fin"
+        android:background="@drawable/edittext_background"
         android:focusable="false"
-        android:background="@drawable/edittext_background"/>
+        android:hint="Fecha de fin" />
 
     <Spinner
         android:id="@+id/spinnerTareas"
@@ -33,5 +33,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Registrar Mantenimiento" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date" />
 </LinearLayout>
 
