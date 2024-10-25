@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0E2842">
 
     <EditText
         android:id="@+id/nombre_tarea_input"
@@ -29,6 +30,7 @@
         android:id="@+id/guardar_tarea_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#213744"
         android:text="Guardar Tarea"
         app:layout_constraintTop_toBottomOf="@+id/descripcion_tarea_input"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +40,7 @@
         android:id="@+id/registrar_tareas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="#213744"
         android:text="Registrar Tareas"
         app:layout_constraintTop_toBottomOf="@+id/guardar_tarea_button"
         app:layout_constraintStart_toStartOf="parent"

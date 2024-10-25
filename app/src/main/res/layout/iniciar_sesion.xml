@@ -122,7 +122,7 @@
 
         android:layout_marginStart="16dp"
         android:layout_marginBottom="12dp"
-        android:backgroundTint="#3A51D5"
+        android:backgroundTint="#213744"
         android:text="INICIAR SESIÓN"
         android:textColor="#EBEBEB"
         android:textColorLink="#2A47E7"

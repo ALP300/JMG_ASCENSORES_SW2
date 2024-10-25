@@ -107,6 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="464dp"
         android:layout_marginEnd="144dp"
+        android:backgroundTint="#213744"
         android:text="REGISTRAR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -115,8 +116,9 @@
         android:id="@+id/logout_button"
         android:layout_width="72dp"
         android:layout_height="54dp"
-        android:background="@android:color/holo_red_dark"
+
         android:padding="8dp"
+        android:backgroundTint="#213744"
         android:text="Cerrar Sesión"
         android:textColor="#FFFFFF"
         tools:ignore="MissingConstraints"
