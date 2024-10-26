@@ -83,15 +83,19 @@ public class Ascensor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (connection != null && !ascensoresList.isEmpty()) {
-                    // Start the Tarea activity
+                    // Pasa el código del cliente a la actividad Mantenimiento
                     Intent intent = new Intent(Ascensor.this, Mantenimiento.class);
+                    intent.putExtra("codigo_cliente", clienteCodigo);
                     startActivity(intent);
-                    new RegisterAscensoresTask().execute();  // Executes the AsyncTask for insertion
+
+                    // Ejecuta la tarea para registrar los ascensores en la base de datos
+                    new RegisterAscensoresTask().execute();
                 } else {
                     Toast.makeText(Ascensor.this, "No hay ascensores para registrar o no hay conexión a la base de datos.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
 
         // Conexión a la base de datos

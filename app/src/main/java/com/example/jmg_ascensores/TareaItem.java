@@ -8,6 +8,7 @@ public class TareaItem {
     public TareaItem(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+
     }
 
     public String getNombre() {
@@ -17,4 +18,6 @@ public class TareaItem {
     public String getDescripcion() {
         return descripcion;
     }
+
+
 }
