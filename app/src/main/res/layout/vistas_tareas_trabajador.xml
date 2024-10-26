@@ -3,42 +3,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#0E2842"> <!-- Aquí puedes definir el fondo como color o imagen -->
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="229dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="76dp"
-        android:text="TAREAS"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@id/button7"
+    <!-- Imagen del logo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="273dp"
+        android:layout_height="144dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="Logo de la empresa"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Título principal -->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="TAREAS"
+        android:textColor="@android:color/white"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImageView" />
+
+    <!-- Texto de ubicación y tareas -->
+
+    <!-- Botón de confirmación de mantenimiento -->
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="UBICACIÓN: AV SANTA ROSA  (VER EN MAPA)\nNOMBRE: HIRAOKA\nLISTA DE TAREAS: (VER LISTA DE TAREAS)"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2" />
 
     <Button
         android:id="@+id/button7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="248dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
         android:text="CONFIRMACION DE MANTENIMIENTO"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView6" />
+
+    <!-- Mapa de Google Maps -->
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2" />
+        app:layout_constraintTop_toBottomOf="@id/button7" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="310dp"
-        android:layout_height="153dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="65dp"
-        android:text="UBICACIÓN: AV SANTA ROSA  (VER EN MAPA)  NOMBRE: HIRAOKA  LISTA DE TAREAS:  (VER LISTA DE TAREAS"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

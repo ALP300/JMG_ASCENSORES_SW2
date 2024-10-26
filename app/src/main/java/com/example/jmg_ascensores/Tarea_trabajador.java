@@ -1,6 +1,5 @@
 package com.example.jmg_ascensores;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -8,27 +7,25 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TrabajadorTareaActivity extends AppCompatActivity {
-    private Button empresa1;
+public class Tarea_trabajador extends AppCompatActivity {
 
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vistas_tareas_trabajador);
 
-        empresa1 = findViewById(R.id.button7);
+        // Obtener referencia al botón
+        Button empresaButton = findViewById(R.id.button7);
 
-        empresa1.setOnClickListener(new View.OnClickListener() {
+        // Establecer el OnClickListener
+        empresaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Redirigir a la actividad que contiene el layout vistas_tareas_trabajador
-                Intent intent = new Intent(TrabajadorTareaActivity.this, Confirmacion_trabajador.class);
+                Intent intent = new Intent(Tarea_trabajador.this, TrabajadorTareaActivity.class);
                 startActivity(intent);
             }
         });
+    }
+}
 
-
-
-}}

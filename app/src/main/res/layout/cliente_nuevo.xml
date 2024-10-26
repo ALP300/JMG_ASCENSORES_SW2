@@ -76,7 +76,7 @@
         android:layout_margin="16dp"
         android:text="Elegir Ubicación en Google Maps"
         android:textColor="#fff"
-        android:backgroundTint="#353f53"
+        android:backgroundTint="#213744"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_input" />
@@ -103,7 +103,7 @@
         android:layout_marginBottom="20dp"
         android:text="Registrar Cliente"
         android:textColor="#fff"
-        android:backgroundTint="#353f53"
+        android:backgroundTint="#213744"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
