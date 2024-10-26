@@ -1,7 +1,6 @@
 package com.example.jmg_ascensores;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +34,11 @@ public class Mantenimiento extends AppCompatActivity {
         editTextFechaInicio = findViewById(R.id.editTextFechaInicio);
         editTextFechaFin = findViewById(R.id.editTextFechaFin);
         buttonRegistrar = findViewById(R.id.buttonRegistrar);
+
+        // Recibir el código del cliente desde el Intent
         codigoCliente = getIntent().getStringExtra("codigo_cliente");
+
+        // Desactiva el botón mientras no haya conexión
         buttonRegistrar.setEnabled(false);
 
         // Ejecutar tarea para obtener la conexión
@@ -58,9 +61,8 @@ public class Mantenimiento extends AppCompatActivity {
         // Configurar el botón para registrar
         buttonRegistrar.setOnClickListener(v -> {
             if (conexion == null) {
+
                 Toast.makeText(Mantenimiento.this, "Conexión no disponible", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Mantenimiento.this, Tarea.class);
-                startActivity(intent);
                 return;
             }
             registrarMantenimiento(); // Llamar a registrar si hay conexión
@@ -85,8 +87,6 @@ public class Mantenimiento extends AppCompatActivity {
     private void registrarMantenimiento() {
         String fechaInicio = editTextFechaInicio.getText().toString().trim();
         String fechaFin = editTextFechaFin.getText().toString().trim();
-        Intent intent = new Intent(Mantenimiento.this, Tarea.class);
-        startActivity(intent);
 
         if (codigoCliente == null || fechaInicio.isEmpty() || fechaFin.isEmpty()) {
             Toast.makeText(this, "Por favor completa todos los campos", Toast.LENGTH_SHORT).show();
@@ -96,7 +96,6 @@ public class Mantenimiento extends AppCompatActivity {
         // Llamar a la tarea de registrar mantenimiento
         new RegistrarMantenimientoTask(conexion, this).execute(codigoCliente, fechaInicio, fechaFin);
     }
-
 
     // Método para convertir una fecha de String a java.sql.Date
     private static Date convertirFecha(String fecha) {
