@@ -36,7 +36,7 @@
         <activity android:name=".OpcionesActivity" android:exported="true" />
         <activity android:name=".MainActivity" android:exported="true" />
         <activity android:name=".AdminActivity" android:exported="true" />
-        <activity android:name=".VistaAdmin" android:exported="true"/>
+        <activity android:name=".VistaAdmin"></activity>
         <activity android:name=".VistaCliente" android:exported="true"/>
         <activity android:name=".RegistroClienteTrabajador" android:exported="true"/>
         <activity android:name=".Trabajadorcliente" android:exported="true"/>
@@ -55,5 +55,6 @@
         <activity android:name=".MapsActivity" android:exported="true" />
         <activity android:name=".TrabajadorTareaActivity" android:exported="true" />
         <activity android:name=".Confirmacion_trabajador" android:exported="true" />
+        <activity android:name=".Tarea" android:exported="true" />
     </application>
 </manifest>

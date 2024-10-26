@@ -1,6 +1,7 @@
 package com.example.jmg_ascensores;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,26 +32,26 @@ public class Mantenimiento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registrar_mantenimiento);
 
-        // Inicializar componentes de UI
+        // Inicializar componentes de la UI
         editTextFechaInicio = findViewById(R.id.editTextFechaInicio);
         editTextFechaFin = findViewById(R.id.editTextFechaFin);
         buttonRegistrar = findViewById(R.id.buttonRegistrar);
 
-        // Recibir el código del cliente desde el Intent
+        // Recuperar el código del cliente desde el Intent
         codigoCliente = getIntent().getStringExtra("codigo_cliente");
 
-        // Desactiva el botón mientras no haya conexión
+        // Desactivar el botón inicialmente hasta que se establezca la conexión
         buttonRegistrar.setEnabled(false);
 
-        // Ejecutar tarea para obtener la conexión
+        // Ejecutar tarea para establecer la conexión con la base de datos
         new ConnectToDatabaseTask() {
             @Override
             protected void onPostExecute(Connection connection) {
-                conexion = connection; // Guardar la conexión en la variable
+                conexion = connection;
                 if (conexion == null) {
                     Toast.makeText(Mantenimiento.this, "Error al conectar a la base de datos", Toast.LENGTH_SHORT).show();
                 } else {
-                    buttonRegistrar.setEnabled(true); // Activamos el botón de registrar
+                    buttonRegistrar.setEnabled(true);
                 }
             }
         }.execute();
@@ -58,14 +60,13 @@ public class Mantenimiento extends AppCompatActivity {
         editTextFechaInicio.setOnClickListener(v -> mostrarDatePicker(editTextFechaInicio));
         editTextFechaFin.setOnClickListener(v -> mostrarDatePicker(editTextFechaFin));
 
-        // Configurar el botón para registrar
+        // Configurar el botón de registrar
         buttonRegistrar.setOnClickListener(v -> {
             if (conexion == null) {
-
                 Toast.makeText(Mantenimiento.this, "Conexión no disponible", Toast.LENGTH_SHORT).show();
                 return;
             }
-            registrarMantenimiento(); // Llamar a registrar si hay conexión
+            registrarMantenimiento();
         });
     }
 
@@ -78,7 +79,7 @@ public class Mantenimiento extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, selectedYear, selectedMonth, selectedDay) -> {
-                    String fecha = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear; // Formato DD/MM/YYYY
+                    String fecha = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
                     editText.setText(fecha);
                 }, year, month, day);
         datePickerDialog.show();
@@ -97,22 +98,23 @@ public class Mantenimiento extends AppCompatActivity {
         new RegistrarMantenimientoTask(conexion, this).execute(codigoCliente, fechaInicio, fechaFin);
     }
 
-    // Método para convertir una fecha de String a java.sql.Date
-    private static Date convertirFecha(String fecha) {
+    // Método para convertir fecha de String a java.sql.Date
+    public static Date convertirFecha(String fecha) {
         try {
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             java.util.Date fechaUtil = formato.parse(fecha);
             return new Date(fechaUtil.getTime());
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e("DateConversionError", "Error al convertir fecha", e);
             return null;
         }
     }
 
-    // Clase AsyncTask para registrar mantenimiento
+    // AsyncTask para registrar mantenimiento
     private static class RegistrarMantenimientoTask extends AsyncTask<String, Void, Boolean> {
-        private Connection conexion;
-        private Mantenimiento actividad;
+        private final Connection conexion;
+        private final Mantenimiento actividad;
+        private int codigoMantenimiento; // Variable para almacenar el código generado
 
         public RegistrarMantenimientoTask(Connection conexion, Mantenimiento actividad) {
             this.conexion = conexion;
@@ -124,7 +126,6 @@ public class Mantenimiento extends AppCompatActivity {
             String codigoCliente = params[0];
             String fechaInicio = params[1];
             String fechaFin = params[2];
-
             try {
                 // Convertir fechas de String a java.sql.Date
                 Date fechaInicioDate = Mantenimiento.convertirFecha(fechaInicio);
@@ -135,15 +136,23 @@ public class Mantenimiento extends AppCompatActivity {
                 }
 
                 String query = "INSERT INTO mantenimiento (codigo_cliente, fecha_inicio, fecha_fin) VALUES (?, ?, ?)";
-                PreparedStatement stmt = conexion.prepareStatement(query);
+                PreparedStatement stmt = conexion.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
                 stmt.setString(1, codigoCliente);
                 stmt.setDate(2, fechaInicioDate);
                 stmt.setDate(3, fechaFinDate);
                 stmt.executeUpdate();
-                return true; // Indica que el registro fue exitoso
+
+                // Obtener el código de mantenimiento generado
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    codigoMantenimiento = generatedKeys.getInt(1); // Asigna el código generado
+                    return true;
+                } else {
+                    return false;
+                }
             } catch (SQLException e) {
                 Log.e("DatabaseError", "Error al registrar mantenimiento", e);
-                return false; // Indica que hubo un error
+                return false;
             }
         }
 
@@ -151,7 +160,12 @@ public class Mantenimiento extends AppCompatActivity {
         protected void onPostExecute(Boolean success) {
             if (success) {
                 Toast.makeText(actividad, "Mantenimiento registrado exitosamente", Toast.LENGTH_SHORT).show();
-                actividad.finish(); // Cerrar actividad si el registro es exitoso
+
+                // Intent para iniciar la actividad Tarea y pasar el código de mantenimiento
+                Intent intent = new Intent(actividad, Tarea.class);
+                intent.putExtra("codigo_mantenimiento", codigoMantenimiento); // Pasar el código de mantenimiento
+                actividad.startActivity(intent);
+                actividad.finish(); // Opcionalmente, finalizar la actividad actual
             } else {
                 Toast.makeText(actividad, "Error al registrar mantenimiento", Toast.LENGTH_SHORT).show();
             }
