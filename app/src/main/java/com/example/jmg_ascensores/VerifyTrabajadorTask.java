@@ -40,7 +40,7 @@ public class VerifyTrabajadorTask extends AsyncTask<String, Void, Boolean> {
     protected void onPostExecute(Boolean success) {
         if (success) {
             // Redirigir al layout vista_trabajador
-            Intent intent = new Intent(activity, TrabajadorActivity.class); // Asegúrate de que este nombre de actividad sea correcto
+            Intent intent = new Intent(activity, VistaTrab.class); // Asegúrate de que este nombre de actividad sea correcto
             activity.startActivity(intent);
             activity.finish(); // Opcional: cerrar la actividad actual
         } else {

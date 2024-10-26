@@ -11,22 +11,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
 
-public class MainActivityTrabajadorRegistro extends AppCompatActivity {
+public class LoginCliente extends AppCompatActivity {
+
     private EditText codeInput;
     private EditText passwordInput;
     private Button loginButton;
-    private Button loginButton2;
     private Connection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.iniciar_sesion_trabajador); // Cargar el layout correspondiente
+        setContentView(R.layout.iniciar_sesion);
 
         codeInput = findViewById(R.id.code_input_text);
         passwordInput = findViewById(R.id.password_input_text);
         loginButton = findViewById(R.id.login_button);
-
 
         // Conectar a la base de datos y obtener la conexión
         new ConnectToDatabaseTask() {
@@ -34,7 +33,7 @@ public class MainActivityTrabajadorRegistro extends AppCompatActivity {
             protected void onPostExecute(Connection conn) {
                 connection = conn; // Guardar la conexión para su uso posterior
                 if (connection == null) {
-                    Toast.makeText(MainActivityTrabajadorRegistro.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginCliente.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
                 }
             }
         }.execute();
@@ -42,24 +41,34 @@ public class MainActivityTrabajadorRegistro extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String code = codeInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
 
                 // Validar campos
                 if (code.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(MainActivityTrabajadorRegistro.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginCliente.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (connection != null) {
-                    new VerifyTrabajadorTask(connection, MainActivityTrabajadorRegistro.this).execute(code, password);
+                    new VerifyClienteTask(connection, LoginCliente.this) {
+                        @Override
+                        protected void onPostExecute(Boolean isAdmin) {
+                            if (isAdmin) {
+                                // Si es un admin, llevar a VistaAdministradorActivity
+                                Intent intent = new Intent(LoginCliente.this, VistaCliente.class);
+                                intent.putExtra("codCli", code); // Enviamos el código del cliente
+                                startActivity(intent);
+                                finish(); // Opcional: cierra MainActivity si no quieres volver a ella
+                            } else {
+                                Toast.makeText(LoginCliente.this, "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }.execute(code, password);
                 } else {
-                    Toast.makeText(MainActivityTrabajadorRegistro.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginCliente.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
     }
 }

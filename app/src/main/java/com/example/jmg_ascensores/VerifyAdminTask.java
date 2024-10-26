@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class VerifyAdminTask extends AsyncTask<String, Void, Boolean> {
+public class VerifyAdminTask extends AsyncTask<String, Void, String> {
     private Connection connection;
     private Context context; // Agregar contexto
 
@@ -21,18 +21,30 @@ public class VerifyAdminTask extends AsyncTask<String, Void, Boolean> {
     }
 
     @Override
-    protected Boolean doInBackground(String... params) {
+    protected String doInBackground(String... params) {
         String code = params[0];
-        String password = params[1];
-        boolean isValid = false;
+        String contrasena = params[1];
+        String userType = null;
 
         if (connection != null) {
             try {
                 Statement statement = connection.createStatement();
-                ResultSet resultSet = statement.executeQuery("SELECT * FROM administrador WHERE codigo = '" + code + "' AND contrasena = '" + password + "'");
-
+                // Verificar en la tabla de clientes
+                ResultSet resultSet = statement.executeQuery("SELECT *  FROM clientes WHERE codigo = '" + code + "' AND password = '" + contrasena + "'");
                 if (resultSet.next()) {
-                    isValid = true;
+                    userType = "cliente";
+                } else {
+                    // Verificar en la tabla de trabajadores
+                    resultSet = statement.executeQuery("SELECT *  FROM registro_trabajadores WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
+                    if (resultSet.next()) {
+                        userType = "trabajador";
+                    } else {
+                        // Verificar en la tabla de administradores
+                        resultSet = statement.executeQuery("SELECT * FROM administrador WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
+                        if (resultSet.next()) {
+                            userType = "admin";
+                        }
+                    }
                 }
 
                 // Cerrar recursos
@@ -45,16 +57,30 @@ public class VerifyAdminTask extends AsyncTask<String, Void, Boolean> {
         } else {
             Log.e("Database", "Conexión es null");
         }
-
-        return isValid;
+    return userType;
     }
 
     @Override
-    protected void onPostExecute(Boolean result) {
-        if (result) {
-            Log.i("Database", "Inicio de sesión exitoso");
-            // Redirigir a la vista de administrador si el inicio es exitoso
-            Intent intent = new Intent(context, AdminActivity.class); // Cambiar a la nueva actividad
+    protected void onPostExecute(String userType) {
+        if (userType != null) {
+            Log.i("Database", "Inicio de sesión exitoso como: " + userType);
+
+            Intent intent;
+            switch (userType) {
+                case "cliente":
+                    intent = new Intent(context, VistaCliente.class);
+                    break;
+                case "trabajador":
+                    intent = new Intent(context, VistaTrab.class);
+                    break;
+                case "admin":
+                    intent = new Intent(context, VistaAdmin.class);
+                    break;
+                default:
+                    Log.e("Database", "Tipo de usuario desconocido");
+                    return;
+            }
+
             context.startActivity(intent);
         } else {
             Log.e("Database", "Código o contraseña incorrectos");

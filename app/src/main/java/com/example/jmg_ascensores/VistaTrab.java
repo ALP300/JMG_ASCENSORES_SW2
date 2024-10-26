@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class TrabajadorActivity extends AppCompatActivity {
+public class VistaTrab extends AppCompatActivity {
     private Button empresa1;
 
 
@@ -25,7 +25,7 @@ public class TrabajadorActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Al hacer clic en el botón ADMINISTRADOR, iniciar MainActivity
-                Intent intent = new Intent(TrabajadorActivity.this, Tareas_empresa.class);
+                Intent intent = new Intent(VistaTrab.this, Tareas_empresa.class);
                 startActivity(intent);
                 finish(); // Cerrar OpcionesActivity
             }
