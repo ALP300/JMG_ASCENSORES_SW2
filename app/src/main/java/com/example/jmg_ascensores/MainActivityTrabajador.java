@@ -57,7 +57,19 @@ public class MainActivityTrabajador extends AppCompatActivity {
                 }
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        // Aquí puedes realizar alguna lógica adicional si es necesario
 
+        // Llamar a la actividad OpcionesActivity
+        Intent intent = new Intent(MainActivityTrabajador.this, OpcionesActivity.class);
+        startActivity(intent);
 
+        // Cerrar la actividad actual si no quieres volver a ella
+        finish();
+
+        // Llamar al método de superclase si no quieres evitar el comportamiento estándar
+        super.onBackPressed(); // Opcional, dependiendo de tu lógica
     }
 }

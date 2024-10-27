@@ -21,7 +21,7 @@ public class IniciarSesionCliente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.iniciar_sesion);
+        setContentView(R.layout.iniciar_sesion_cliente);
 
         codeInput = findViewById(R.id.code_input_text);
         passwordInput = findViewById(R.id.password_input_text);
@@ -71,4 +71,19 @@ public class IniciarSesionCliente extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public void onBackPressed() {
+        // Aquí puedes realizar alguna lógica adicional si es necesario
+
+        // Llamar a la actividad OpcionesActivity
+        Intent intent = new Intent(IniciarSesionCliente.this, OpcionesActivity.class);
+        startActivity(intent);
+
+        // Cerrar la actividad actual si no quieres volver a ella
+        finish();
+
+        // Llamar al método de superclase si no quieres evitar el comportamiento estándar
+        super.onBackPressed(); // Opcional, dependiendo de tu lógica
+    }
+
 }
