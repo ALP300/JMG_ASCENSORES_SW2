@@ -48,6 +48,7 @@ public class Adapter_trab extends BaseAdapter {
         txtMar.setText(trab.get(position).getNombre());
         txtMod.setText(trab.get(position).getApellido());
 
+
         return convertView;
     }
 }

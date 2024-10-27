@@ -23,7 +23,7 @@ public class DB_RegAscensor extends AppCompatActivity {
     private Button guardarButton;
     private Button registrarAscensores;
     private RecyclerView recyclerView;
-    private Adapter_Ascensor2 adapter;
+    private Adapter_Ascensor adapter;
     private ArrayList<Ent_AscensorItem> ascensoresList;
     private Connection connection; // La conexión a la base de datos
     private String clienteCodigo; // Almacenará el código del cliente
@@ -45,7 +45,7 @@ public class DB_RegAscensor extends AppCompatActivity {
 
         // Inicializamos la lista de ascensores
         ascensoresList = new ArrayList<>();
-        adapter = new Adapter_Ascensor2(ascensoresList);
+        adapter = new Adapter_Ascensor(ascensoresList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 

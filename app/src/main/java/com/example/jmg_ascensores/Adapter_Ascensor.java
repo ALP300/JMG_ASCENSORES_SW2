@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Adapter_Ascensor2 extends RecyclerView.Adapter<Adapter_Ascensor2.ViewHolder> {
+public class Adapter_Ascensor extends RecyclerView.Adapter<Adapter_Ascensor.ViewHolder> {
 
     private ArrayList<Ent_AscensorItem> ascensoresList;
 
-    public Adapter_Ascensor2(ArrayList<Ent_AscensorItem> ascensoresList) {
+    public Adapter_Ascensor(ArrayList<Ent_AscensorItem> ascensoresList) {
         this.ascensoresList = ascensoresList;
     }
 
