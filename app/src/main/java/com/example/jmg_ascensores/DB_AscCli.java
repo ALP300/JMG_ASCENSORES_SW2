@@ -2,7 +2,7 @@ package com.example.jmg_ascensores;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.TextView;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -12,27 +12,25 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DB_AscCli extends AsyncTask<String, Void, List<EntAsc>> {
+    private static final String TAG = "DB_AscCli"; // Para los logs
     private Connection connection;
     private Context context;
 
-
     public DB_AscCli(Connection connection, Context context) {
-        this.context = context;
         this.connection = connection;
+        this.context = context;
     }
 
     @Override
     protected List<EntAsc> doInBackground(String... params) {
-        String idCliente = params[0]; // El ID del clientex que deseas obtener
+        String idCliente = params[0]; // El ID del cliente que deseas obtener
         List<EntAsc> ascensores = new ArrayList<>();
+        Log.i(TAG, "Iniciando la consulta para el cliente: " + idCliente);
 
         try {
-            // Establece la conexión a la base de datos
-
             // Realiza la consulta
-            String query = "SELECT marca,modelo,codigo_ascensor FROM ascensores WHERE codigo_cliente = ?";
+            String query = "SELECT marca, modelo, codigo_ascensor FROM ascensores WHERE codigo_cliente = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, idCliente);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -41,29 +39,32 @@ public class DB_AscCli extends AsyncTask<String, Void, List<EntAsc>> {
             while (resultSet.next()) {
                 EntAsc ascensor = new EntAsc();
                 ascensor.setMarca(resultSet.getString("marca"));
-                ascensor.setModel(resultSet.getString("modelo"));
+                ascensor.setModelo(resultSet.getString("modelo"));
                 ascensor.setCodAsc(resultSet.getInt("codigo_ascensor"));
                 ascensores.add(ascensor);
+                Log.i(TAG, "Ascensor encontrado: " + ascensor.getMarca() + ", " + ascensor.getModel());
             }
 
             // Cierra recursos
             resultSet.close();
             preparedStatement.close();
-            connection.close();
+            Log.i(TAG, "Consulta finalizada, total de ascensores encontrados: " + ascensores.size());
+
         } catch (SQLException e) {
+            Log.e(TAG, "Error en la consulta: " + e.getMessage());
             e.printStackTrace();
         }
-        return ascensores;
+        return ascensores; // Retornar la lista de ascensores
     }
 
     @Override
     protected void onPostExecute(List<EntAsc> resultado) {
         super.onPostExecute(resultado);
-            if (resultado != null) {
-                // Maneja el resultado (actualiza UI, etc.)
-            } else {
-                Toast.makeText(context, "ASc_Cli no encontrados", Toast.LENGTH_SHORT).show();
-            }
+        if (resultado != null && !resultado.isEmpty()) {
+            Log.i(TAG, "Ascensores recibidos en onPostExecute: " + resultado.size());
+        } else {
+            Toast.makeText(context, "Ascensores no encontrados", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "No se encontraron ascensores.");
         }
-
     }
+}

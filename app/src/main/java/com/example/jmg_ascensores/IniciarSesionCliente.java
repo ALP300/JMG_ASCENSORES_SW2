@@ -1,5 +1,6 @@
 package com.example.jmg_ascensores;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ public class IniciarSesionCliente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.iniciar_sesion);
+        setContentView(R.layout.iniciar_sesion_cliente);
 
         codeInput = findViewById(R.id.code_input_text);
         passwordInput = findViewById(R.id.password_input_text);
@@ -39,6 +40,7 @@ public class IniciarSesionCliente extends AppCompatActivity {
         }.execute();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
             @Override
             public void onClick(View v) {
                 String code = codeInput.getText().toString().trim();
@@ -52,7 +54,7 @@ public class IniciarSesionCliente extends AppCompatActivity {
 
                 if (connection != null) {
                     new VerifyClienteTask(connection, IniciarSesionCliente.this) {
-                        @Override
+
                         protected void onPostExecute(Boolean isAdmin) {
                             if (isAdmin) {
                                 // Si es un admin, llevar a VistaAdministradorActivity
