@@ -37,7 +37,7 @@ public class VistaTrab extends AppCompatActivity {
             public void onClick(View view) {
 
                 // Redirigir a la actividad de inicio de sesión
-                Intent intent = new Intent(TrabajadorActivity.this,MainActivityTrabajador.class);
+                Intent intent = new Intent(VistaTrab.this,MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpiar pila de actividades
                 startActivity(intent);
                 finish();  // Cerrar la actividad actual
