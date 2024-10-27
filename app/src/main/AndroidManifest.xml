@@ -24,7 +24,7 @@
             android:value="AIzaSyAzvjPshVi9uQUokL7uZ_ZJovSircoZMF4" />
 
         <!-- Actividades de la aplicación -->
-        <activity android:name=".SplashActivity"
+        <activity android:name=".Splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,25 +33,25 @@
         </activity>
 
         <!-- Otras actividades de la aplicación -->
-        <activity android:name=".MainActivity" android:exported="true" />
-        <activity android:name=".AdminActivity" android:exported="true" />
-        <activity android:name=".VistaAdmin"></activity>
-        <activity android:name=".VistaCliente" android:exported="true"/>
-        <activity android:name=".RegistroClienteTrabajador" android:exported="true"/>
-        <activity android:name=".Trabajadorcliente" android:exported="true"/>
-        <activity android:name=".HistorialMantenimiento" android:exported="true"/>
-        <activity android:name=".ClienteNuevo" android:exported="true"/>
-        <activity android:name=".TrabajadorNuevo" android:exported="true"/>
-        <activity android:name=".Ascensor" android:exported="true"/>
-        <activity android:name=".Mantenimiento" android:exported="true"/>
-        <activity android:name=".VistaTrab" android:exported="true" />
-        <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
-        <activity android:name=".Tareas_empresa" android:exported="true" />
-        <activity android:name=".VistaProxMan" android:exported="true" />
-        <activity android:name=".Ascensor_Cliente" android:exported="true" />
-        <activity android:name=".MapsActivity" android:exported="true" />
-        <activity android:name=".TrabajadorTareaActivity" android:exported="true" />
-        <activity android:name=".Confirmacion_trabajador" android:exported="true" />
-        <activity android:name=".Tarea" android:exported="true" />
+        <activity android:name=".Home_Main" android:exported="true" />
+        <activity android:name=".Home_Admin2" android:exported="true" />
+        <activity android:name=".Home_Admin"></activity>
+        <activity android:name=".Home_Cliente" android:exported="true"/>
+        <activity android:name=".View_Registrar" android:exported="true"/>
+        <activity android:name=".View_TrabCliente" android:exported="true"/>
+        <activity android:name=".View_HistorialMantenimiento" android:exported="true"/>
+        <activity android:name=".View_ClienteNuevo" android:exported="true"/>
+        <activity android:name=".View_RegTrab" android:exported="true"/>
+        <activity android:name=".DB_RegAscensor" android:exported="true"/>
+        <activity android:name=".DB_Mantenimiento" android:exported="true"/>
+        <activity android:name=".Home_Trab" android:exported="true" />
+        <activity android:name=".View_RegTrab2" android:exported="true" />
+        <activity android:name=".View_TareasEmpresa" android:exported="true" />
+        <activity android:name=".View_ProxManten" android:exported="true" />
+        <activity android:name=".View_InfoAscensor" android:exported="true" />
+        <activity android:name=".View_Maps" android:exported="true" />
+        <activity android:name=".View_TrabajadorTarea" android:exported="true" />
+        <activity android:name=".View_ConfirmacionTrab" android:exported="true" />
+        <activity android:name=".DB_Tarea" android:exported="true" />
     </application>
 </manifest>

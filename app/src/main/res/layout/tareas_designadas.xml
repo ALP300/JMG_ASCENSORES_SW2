@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E2842"
-    tools:context=".Tarea_trabajador">
+    tools:context=".View_TrabajadorTarea2">
 
     <!-- Logo de la empresa -->
     <ImageView

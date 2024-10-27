@@ -5,7 +5,7 @@
     android:id="@+id/vista"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VistaAdmin"
+    tools:context=".Home_Admin"
     android:background="#0E2842"
     tools:ignore="ExtraText">
     <TextView

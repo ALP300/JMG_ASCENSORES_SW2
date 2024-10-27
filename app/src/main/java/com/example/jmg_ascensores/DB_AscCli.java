@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DB_AscCli extends AsyncTask<String, Void, List<EntAsc>> {
+public class DB_AscCli extends AsyncTask<String, Void, List<Ent_Ascensor>> {
     private static final String TAG = "DB_AscCli"; // Para los logs
     private Connection connection;
     private Context context;
@@ -23,9 +23,9 @@ public class DB_AscCli extends AsyncTask<String, Void, List<EntAsc>> {
     }
 
     @Override
-    protected List<EntAsc> doInBackground(String... params) {
+    protected List<Ent_Ascensor> doInBackground(String... params) {
         String idCliente = params[0]; // El ID del cliente que deseas obtener
-        List<EntAsc> ascensores = new ArrayList<>();
+        List<Ent_Ascensor> ascensores = new ArrayList<>();
         Log.i(TAG, "Iniciando la consulta para el cliente: " + idCliente);
 
         try {
@@ -37,7 +37,7 @@ public class DB_AscCli extends AsyncTask<String, Void, List<EntAsc>> {
 
             // Procesa el resultado
             while (resultSet.next()) {
-                EntAsc ascensor = new EntAsc();
+                Ent_Ascensor ascensor = new Ent_Ascensor();
                 ascensor.setMarca(resultSet.getString("marca"));
                 ascensor.setModelo(resultSet.getString("modelo"));
                 ascensor.setCodAsc(resultSet.getInt("codigo_ascensor"));
@@ -58,7 +58,7 @@ public class DB_AscCli extends AsyncTask<String, Void, List<EntAsc>> {
     }
 
     @Override
-    protected void onPostExecute(List<EntAsc> resultado) {
+    protected void onPostExecute(List<Ent_Ascensor> resultado) {
         super.onPostExecute(resultado);
         if (resultado != null && !resultado.isEmpty()) {
             Log.i(TAG, "Ascensores recibidos en onPostExecute: " + resultado.size());

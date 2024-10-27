@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E2842"
-    tools:context=".MainActivity">
+    tools:context=".Home_Main">
 
     <!-- Logo (can be replaced with a TextView if not using an image) -->
 

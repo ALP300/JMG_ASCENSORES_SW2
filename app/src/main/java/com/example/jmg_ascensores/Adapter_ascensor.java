@@ -9,14 +9,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class Adapter_ascensor extends BaseAdapter {
 
     private Context context;
-    private List<EntAsc> items;
+    private List<Ent_Ascensor> items;
 
-    public Adapter_ascensor(Context context, List<EntAsc> items) {
+    public Adapter_ascensor(Context context, List<Ent_Ascensor> items) {
         this.context = context;
         this.items = items;
     }
