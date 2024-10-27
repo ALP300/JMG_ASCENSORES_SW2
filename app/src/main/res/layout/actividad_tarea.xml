@@ -10,21 +10,25 @@
         android:id="@+id/nombre_tarea_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:hint="Nombre de la tarea"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/descripcion_tarea_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:hint="Descripción de la tarea"
-        app:layout_constraintStart_toStartOf="parent"
+        android:minHeight="48dp"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_tarea_input"
-        android:layout_margin="16dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nombre_tarea_input" />
 
     <Button
         android:id="@+id/guardar_tarea_button"

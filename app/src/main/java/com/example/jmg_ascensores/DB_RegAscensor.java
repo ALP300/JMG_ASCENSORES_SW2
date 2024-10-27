@@ -168,9 +168,9 @@ public class DB_RegAscensor extends AppCompatActivity {
             Connection conn = null;
             try {
                 // URL de conexión a PostgreSQL
-                String url = "jdbc:postgresql://dpg-csf6uqpu0jms73fdsilg-a.oregon-postgres.render.com:5432/db_jmg_m4yg";
-                String user = "db_jmg_m4yg_user";
-                String password = "uPCFNINR5imA0Ilm4hZfobNOQJm2rgBV";
+                String url = "jdbc:postgresql://dpg-csfb3ue8ii6s739e581g-a.oregon-postgres.render.com:5432/db_jmg_tcnw";
+                String user = "db_jmg_user";
+                String password = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
                 conn = DriverManager.getConnection(url, user, password);
             } catch (Exception e) {
                 e.printStackTrace();

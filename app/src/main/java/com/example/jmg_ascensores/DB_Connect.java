@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class DB_Connect extends AsyncTask<Void, Void, Connection> {
     // Configura tus constantes de conexión
-    private static final String DB_URL = "jdbc:postgresql://dpg-csf6uqpu0jms73fdsilg-a.oregon-postgres.render.com:5432/db_jmg_m4yg";
-    private static final String USERNAME = "db_jmg_m4yg_user";
-    private static final String PASSWORD = "uPCFNINR5imA0Ilm4hZfobNOQJm2rgBV";
+    private static final String DB_URL = "jdbc:postgresql://dpg-csfb3ue8ii6s739e581g-a.oregon-postgres.render.com:5432/db_jmg_tcnw";
+    private static final String USERNAME = "db_jmg_user";
+    private static final String PASSWORD = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
 
     @Override
     protected Connection doInBackground(Void... voids) {

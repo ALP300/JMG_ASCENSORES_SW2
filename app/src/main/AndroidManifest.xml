@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
-
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -34,11 +35,10 @@
 
         <!-- Otras actividades de la aplicación -->
         <activity android:name=".Home_Main" android:exported="true" />
-        <activity android:name=".Home_Admin2" android:exported="true" />
         <activity android:name=".Home_Admin"></activity>
         <activity android:name=".Home_Cliente" android:exported="true"/>
         <activity android:name=".View_Registrar" android:exported="true"/>
-        <activity android:name=".View_TrabCliente" android:exported="true"/>
+        <activity android:name=".View_AsignarCliente" android:exported="true"/>
         <activity android:name=".View_HistorialMantenimiento" android:exported="true"/>
         <activity android:name=".View_ClienteNuevo" android:exported="true"/>
         <activity android:name=".View_RegTrab" android:exported="true"/>

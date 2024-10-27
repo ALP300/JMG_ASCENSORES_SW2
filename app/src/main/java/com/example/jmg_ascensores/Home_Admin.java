@@ -16,7 +16,6 @@ public class Home_Admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista); // Asegúrate de que este es el diseño correcto
-        ;
         agregarButton = findViewById(R.id.botonTrabajador); // Cambiado a botonTrabajador
         agregarButton2= findViewById(R.id.Trabajador);
         agregarButton3= findViewById(R.id.Mantenimiento);
@@ -35,7 +34,7 @@ public class Home_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón clicado");
-                Intent intent = new Intent(Home_Admin.this, View_TrabCliente.class);
+                Intent intent = new Intent(Home_Admin.this, View_AsignarCliente.class);
                 startActivity(intent);
             }
         });

@@ -142,9 +142,9 @@ public class DB_Tarea extends AppCompatActivity {
         @Override
         protected Connection doInBackground(Void... voids) {
             try {
-                String url = "jdbc:postgresql://dpg-csf6uqpu0jms73fdsilg-a.oregon-postgres.render.com:5432/db_jmg_m4yg";
-                String user = "db_jmg_m4yg_user";
-                String password = "uPCFNINR5imA0Ilm4hZfobNOQJm2rgBV";
+                String url = "jdbc:postgresql://dpg-csfb3ue8ii6s739e581g-a.oregon-postgres.render.com:5432/db_jmg_tcnw";
+                String user = "db_jmg_user";
+                String password = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
                 return DriverManager.getConnection(url, user, password);
             } catch (SQLException e) {
                 e.printStackTrace();
