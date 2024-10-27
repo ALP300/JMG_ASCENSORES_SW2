@@ -2,12 +2,12 @@ package com.example.jmg_ascensores;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
@@ -53,19 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (connection != null) {
-                    new VerifyAdminTask(connection, MainActivity.this) {
-                        @Override
-                        protected void onPostExecute(Boolean isAdmin) {
-                            if (isAdmin) {
-                                // Si es un admin, llevar a VistaAdministradorActivity
-                                Intent intent = new Intent(MainActivity.this, VistaAdmin.class);
-                                startActivity(intent);
-                                finish(); // Opcional: cierra MainActivity si no quieres volver a ella
-                            } else {
-                                Toast.makeText(MainActivity.this, "Credenciales incorrectas.", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }.execute(code, password);
+                    new VerifyAdminTask(connection, MainActivity.this).execute(code, password);
                 } else {
                     Toast.makeText(MainActivity.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();
                 }
@@ -87,4 +75,3 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed(); // Opcional, dependiendo de tu lógica
     }
 }
-

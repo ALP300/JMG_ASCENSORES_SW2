@@ -5,23 +5,7 @@
     android:id="@+id/vista"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VistaAdmin"
-    android:background="#0E2842">
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="40dp"
-        android:text="OPCIONES DE ADMINISTRADOR"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".VistaAdmin">
 
     <Button
         android:id="@+id/botonTrabajador"
@@ -29,9 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginTop="212dp"
-        android:backgroundTint="#213744"
         android:text="AÑADIR CLIENTES/TRABAJADORES"
-        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,9 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="19dp"
-        android:backgroundTint="#213744"
         android:text="HISTORIAL DE MANTENIMIENTO"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/botonTrabajador"
         app:layout_constraintTop_toBottomOf="@+id/botonTrabajador" />
 
@@ -52,22 +32,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="1dp"
-        android:backgroundTint="#213744"
+        android:layout_marginEnd="-20dp"
         android:text="SELECCIÓN TRABAJADOR Y CLIENTE"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/Mantenimiento"
-        app:layout_constraintTop_toBottomOf="@+id/Mantenimiento" />
-
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="40dp"
-        android:backgroundTint="#213744"
-        android:text="CERRAR SESIÓN"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/Mantenimiento"
         app:layout_constraintTop_toBottomOf="@+id/Mantenimiento" />
 </androidx.constraintlayout.widget.ConstraintLayout>

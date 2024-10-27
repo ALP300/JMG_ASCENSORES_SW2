@@ -33,8 +33,8 @@
         </activity>
 
         <!-- Otras actividades de la aplicación -->
-        <activity android:name=".OpcionesActivity" android:exported="true" />
         <activity android:name=".MainActivity" android:exported="true" />
+        <activity android:name=".LoginAdmin" android:exported="true" />
         <activity android:name=".AdminActivity" android:exported="true" />
         <activity android:name=".VistaAdmin"></activity>
         <activity android:name=".VistaCliente" android:exported="true"/>
@@ -45,10 +45,10 @@
         <activity android:name=".TrabajadorNuevo" android:exported="true"/>
         <activity android:name=".Ascensor" android:exported="true"/>
         <activity android:name=".Mantenimiento" android:exported="true"/>
-        <activity android:name=".MainActivityTrabajador" android:exported="true" />
-        <activity android:name=".TrabajadorActivity" android:exported="true" />
+        <activity android:name=".LoginTrab" android:exported="true" />
+        <activity android:name=".VistaTrab" android:exported="true" />
         <activity android:name=".RegistroTrabajadorActivity" android:exported="true" />
-        <activity android:name=".IniciarSesionCliente" android:exported="true" />
+        <activity android:name=".LoginCliente" android:exported="true" />
         <activity android:name=".Tareas_empresa" android:exported="true" />
         <activity android:name=".VistaProxMan" android:exported="true" />
         <activity android:name=".Ascensor_Cliente" android:exported="true" />
