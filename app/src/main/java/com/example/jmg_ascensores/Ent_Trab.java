@@ -5,10 +5,11 @@ import java.util.Date;
 public class Ent_Trab {
 
     private String codigo;
-    private String nombre_empresa;
-    private String password;
-    private String ubicacion;
-    private Date Fec;
+    private String nombre;
+    private String apellido;
+    private int edad;
+    private Date fecha_contrato;
+    private Date contrasena;
 
     public String getCodigo() {
         return codigo;
@@ -18,36 +19,44 @@ public class Ent_Trab {
         this.codigo = codigo;
     }
 
-    public String getNombre_empresa() {
-        return nombre_empresa;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_empresa(String nombre_empresa) {
-        this.nombre_empresa = nombre_empresa;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getUbicacion() {
-        return ubicacion;
+    public int getEdad() {
+        return edad;
     }
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public Date getFec() {
-        return Fec;
+    public Date getFecha_contrato() {
+        return fecha_contrato;
     }
 
-    public void setFec(Date fec) {
-        Fec = fec;
+    public void setFecha_contrato(Date fecha_contrato) {
+        this.fecha_contrato = fecha_contrato;
+    }
+
+    public Date getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(Date contrasena) {
+        this.contrasena = contrasena;
     }
 }
 

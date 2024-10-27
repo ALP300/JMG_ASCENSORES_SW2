@@ -28,7 +28,7 @@ public class DB_RegistrarCliente extends AsyncTask<String, Void, Boolean> {
         if (connection != null) {
             try {
                 // Preparamos la sentencia SQL para insertar los datos del cliente
-                String query = "INSERT INTO clientes (codigo, nombre_empresa, password, ubicacion) VALUES (?, ?, ?, ?)";
+                String query = "INSERT INTO clientes (codigo, nombre_empresa, contrasena, ubicacion) VALUES (?, ?, ?, ?)";
                 PreparedStatement stmt = connection.prepareStatement(query);
 
                 // Asignamos los valores a los parámetros

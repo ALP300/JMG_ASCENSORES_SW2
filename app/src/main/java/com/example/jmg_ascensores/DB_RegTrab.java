@@ -42,7 +42,7 @@ public class DB_RegTrab extends AsyncTask<String, Void, Boolean> {
                 Log.d("Database", "Insertando trabajador: " + codigo + ", " + nombre + ", " + apellido + ", " + edad + ", " + fechaContrato + ", " + password);
 
                 // Preparamos la sentencia SQL para insertar los datos
-                String query = "INSERT INTO registro_trabajadores (codigo, nombre, apellido, edad, fecha_contrato, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
+                String query = "INSERT INTO trabajadores (codigo, nombre, apellido, edad, fecha_contrato, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
                 PreparedStatement stmt = connection.prepareStatement(query);
 
                 // Asignamos los valores

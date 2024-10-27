@@ -30,12 +30,12 @@ public class DB_VerifyAdmin extends AsyncTask<String, Void, String> {
             try {
                 Statement statement = connection.createStatement();
                 // Verificar en la tabla de clientes
-                ResultSet resultSet = statement.executeQuery("SELECT *  FROM clientes WHERE codigo = '" + code + "' AND password = '" + contrasena + "'");
+                ResultSet resultSet = statement.executeQuery("SELECT *  FROM clientes WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
                 if (resultSet.next()) {
                     userType = "cliente";
                 } else {
                     // Verificar en la tabla de trabajadores
-                    resultSet = statement.executeQuery("SELECT *  FROM registro_trabajadores WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
+                    resultSet = statement.executeQuery("SELECT *  FROM trabajadores WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
                     if (resultSet.next()) {
                         userType = "trabajador";
                     } else {

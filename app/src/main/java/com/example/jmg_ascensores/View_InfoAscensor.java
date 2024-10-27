@@ -29,29 +29,8 @@ public class View_InfoAscensor extends AppCompatActivity {
         List<Ent_Ascensor> items = new ArrayList<>();
 
         // Iniciar la conexión a la base de datos
-        new DB_Connect() {
-            @Override
-            protected void onPostExecute(Connection conn) {
-                connection = conn; // Guardar la conexión para su uso posterior
-                if (connection != null) {
-                    try {
-                        // Ejecutar la consulta para obtener los ascensores del cliente
-                        List<Ent_Ascensor> ascens = new DB_AscCli(connection, View_InfoAscensor.this).execute(codCli).get();
-                        items.addAll(ascens); // Agregar todos los ascensores a la lista
 
-                        // Configurar el adaptador
-                        Adapter_ascensor adapter = new Adapter_ascensor(View_InfoAscensor.this, items);
-                        listView.setAdapter(adapter);
-                        Log.i(TAG, "Ascensores cargados: " + items.size());
-                    } catch (ExecutionException e) {
-                        Log.e(TAG, "Error en la ejecución: " + e.getMessage());
-                    } catch (InterruptedException e) {
-                        Log.e(TAG, "Error interrumpido: " + e.getMessage());
-                    }
-                } else {
-                    Log.e(TAG, "Conexión nula");
-                }
-            }
-        }.execute();
+
+
     }
 }

@@ -9,24 +9,24 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class Adapter_ascensor extends BaseAdapter {
+public class Adapter_trab extends BaseAdapter {
 
     private Context context;
-    private List<Ent_Ascensor> items;
+    private List<Ent_Trab> trab;
 
-    public Adapter_ascensor(Context context, List<Ent_Ascensor> items) {
+    public Adapter_trab(Context context, List<Ent_Trab> trab) {
         this.context = context;
-        this.items = items;
+        this.trab = trab;
     }
 
     @Override
     public int getCount() {
-        return items.size();
+        return trab.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return items.get(position);
+        return trab.get(position);
     }
 
     @Override
@@ -38,17 +38,16 @@ public class Adapter_ascensor extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_ascensor, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_trab, parent, false);
         }
 
-        TextView txtCod = convertView.findViewById(R.id.txtCod);
-        TextView txtMar = convertView.findViewById(R.id.txtMarc);
-        TextView txtMod = convertView.findViewById(R.id.txtMod);
-        txtCod.setText(items.get(position).getCodAsc()+"");
-        txtMar.setText(items.get(position).getMarca());
-        txtMod.setText(items.get(position).getModel());
+        TextView txtCod = convertView.findViewById(R.id.txtCodT);
+        TextView txtMar = convertView.findViewById(R.id.txtNom);
+        TextView txtMod = convertView.findViewById(R.id.txtApe);
+        txtCod.setText(trab.get(position).getCodigo());
+        txtMar.setText(trab.get(position).getNombre());
+        txtMod.setText(trab.get(position).getApellido());
 
         return convertView;
     }
 }
-
