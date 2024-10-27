@@ -38,20 +38,22 @@ public class VistaProxMan extends AppCompatActivity {
                 if (connection != null) {
                     try {
                         clientex = new ClienteDB(connection, VistaProxMan.this).execute(codCli).get();
-                         txtEmp = findViewById(R.id.txtEmp);
-                         txtCod = findViewById(R.id.txtCod);
-                         txtUbi = findViewById(R.id.txtUbic);
-                        txtFec = findViewById(R.id.txtFec);
-                        txtEmp.setText(clientex.getNombre_empresa());
-                        txtCod.setText(clientex.getCodigo());
-                        txtUbi.setText(clientex.getUbicacion());
-                        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
-                        Date fechaActual = calendar.getTime();
-                        long ddf = clientex.getFec().getTime()-fechaActual.getTime();
-                        // Convertir la diferencia a días
-                        double diasDifDecimal = (double) ddf / (1000 * 60 * 60 * 24);
-                        long diasDif = (long) Math.ceil(diasDifDecimal);
-                        txtFec.setText(diasDif+" "+clientex.getFec()+" "+fechaActual);
+                        if (clientex != null){
+                            txtEmp = findViewById(R.id.txtEmp);
+                            txtCod = findViewById(R.id.txtCod);
+                            txtUbi = findViewById(R.id.txtUbic);
+                            txtFec = findViewById(R.id.txtFec);
+                            txtEmp.setText(clientex.getNombre_empresa());
+                            txtCod.setText(clientex.getCodigo());
+                            txtUbi.setText(clientex.getUbicacion());
+                            Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+                            Date fechaActual = calendar.getTime();
+                            long ddf = clientex.getFec().getTime()-fechaActual.getTime();
+                            // Convertir la diferencia a días
+                            double diasDifDecimal = (double) ddf / (1000 * 60 * 60 * 24);
+                            long diasDif = (long) Math.ceil(diasDifDecimal);
+                            txtFec.setText(diasDif+" "+clientex.getFec()+" "+fechaActual);
+                        }
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
                     } catch (InterruptedException e) {

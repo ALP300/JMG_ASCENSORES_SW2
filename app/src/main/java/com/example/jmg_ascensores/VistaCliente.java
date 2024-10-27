@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class VistaCliente extends AppCompatActivity {
 
-    private Button btnManProx, btnInfo;
+    private Button btnManProx, btnInfo, btnCerrarSesion;
     private TextView textViewBienvenida; // Agrega el TextView para mostrar la bienvenida
     private String codCli;
 
@@ -32,7 +32,7 @@ public class VistaCliente extends AppCompatActivity {
 
         btnManProx = findViewById(R.id.btnManProx);
         btnInfo = findViewById(R.id.btnInfAsc);
-
+        btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
         btnManProx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,6 +50,18 @@ public class VistaCliente extends AppCompatActivity {
                 intent.putExtra("codCli", codCli);
                 Log.i("VistaCliente", "Código del cliente que se enviará: " + codCli);
                 startActivity(intent);
+            }
+        });
+
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Redirigir a la actividad de inicio de sesión
+                Intent intent = new Intent(VistaCliente.this,MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Limpiar pila de actividades
+                startActivity(intent);
+                finish();  // Cerrar la actividad actual
             }
         });
     }
