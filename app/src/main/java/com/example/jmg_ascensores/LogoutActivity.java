@@ -19,7 +19,7 @@ public class LogoutActivity extends AppCompatActivity {
                 // Aquí puedes agregar lógica para cerrar sesión si es necesario
 
                 // Redirige al layout de opciones
-                Intent intent = new Intent(LogoutActivity.this, OpcionesActivity.class); // Cambia OpcionesActivity por el nombre real de tu Activity
+                Intent intent = new Intent(LogoutActivity.this, MainActivity.class); // Cambia OpcionesActivity por el nombre real de tu Activity
                 startActivity(intent);
                 finish(); // Termina esta actividad
             }

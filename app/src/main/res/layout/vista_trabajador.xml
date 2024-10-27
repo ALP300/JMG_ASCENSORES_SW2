@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E2842"
-    tools:context=".MainActivityTrabajador">
+    tools:context=".LoginTrab">
 
     <!-- Logo de la empresa -->
 
@@ -92,14 +92,28 @@
         android:id="@+id/idempresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="1dp"
         android:layout_marginBottom="156dp"
-        android:text="Empresa Designada"
+        android:text="EMPRESA DESIGNADA"
+        android:textColor="#EBEBEB"
+        android:backgroundTint="#213744"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/menu_empresa"
         app:layout_constraintTop_toBottomOf="@+id/menu_empresa"
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-200dp"
+        android:layout_marginEnd="130dp"
+        android:backgroundTint="#213744"
+        android:text="CERRAR SESIÓN"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
