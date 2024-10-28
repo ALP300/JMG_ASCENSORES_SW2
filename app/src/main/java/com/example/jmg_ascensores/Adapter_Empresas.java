@@ -43,11 +43,14 @@ public class Adapter_Empresas extends BaseAdapter {
             convertView = inflater.inflate(R.layout.adapter_empresas, parent, false);
         }
         String Empresa = cliente.get(position).getNombre_empresa();
+        Empresa = "Empresa "+Empresa.substring(0, 1).toUpperCase() + Empresa.substring(1);
         Button btnEmp = convertView.findViewById(R.id.btnEmpresas);
-        btnEmp.setText("Empresa "+Empresa.substring(0, 1).toUpperCase() + Empresa.substring(1));
+        btnEmp.setText(Empresa);
+        String finalEmpresa = Empresa;
         btnEmp.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_AsignarCliente.class);
-            intent.putExtra("cod_id", cliente.get(position).getCodigo()+"");
+            Intent intent = new Intent(context, View_TrabajadorTarea.class);
+            intent.putExtra("empresa", finalEmpresa);
+            intent.putExtra("ubicacion", cliente.get(position).getUbicacion());
             context.startActivity(intent);
         });
 

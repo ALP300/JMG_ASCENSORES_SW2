@@ -39,7 +39,7 @@ public class View_ClienteNuevo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Abrimos una nueva actividad para seleccionar la ubicación en Google Maps
-                Intent intent = new Intent(View_ClienteNuevo.this, View_Maps.class);
+                Intent intent = new Intent(View_ClienteNuevo.this, API_Maps.class);
                 startActivityForResult(intent, MAP_REQUEST_CODE);
             }
         });

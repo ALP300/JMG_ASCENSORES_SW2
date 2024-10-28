@@ -1,16 +1,31 @@
 package com.example.jmg_ascensores;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class View_TrabajadorTarea extends AppCompatActivity {
-    private Button empresa1;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+public class View_TrabajadorTarea extends AppCompatActivity{
+    private Button btnConf;
+    private String empresa;
+    private String data;
+    private String ubicacion[] = new String[2];
+    private TextView txtTit;
+    private GoogleMap mMap;
+    private double latitud;
+    private double longitud;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -18,17 +33,20 @@ public class View_TrabajadorTarea extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vistas_tareas_trabajador);
 
-        empresa1 = findViewById(R.id.button7);
+        btnConf = findViewById(R.id.btnConf);
+        empresa = getIntent().getStringExtra("empresa");
+        data = getIntent().getStringExtra("ubicacion");
+        txtTit = findViewById(R.id.txtNomEm);
+        txtTit.setText(empresa);
 
-        empresa1.setOnClickListener(new View.OnClickListener() {
+        btnConf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Redirigir a la actividad que contiene el layout vistas_tareas_trabajador
-                Intent intent = new Intent(View_TrabajadorTarea.this, View_ConfirmacionTrab.class);
-                startActivity(intent);
+                // Al hacer clic en el botón ADMINISTRADOR, iniciar MainActivity
+
             }
         });
 
+}
 
-
-}}
+}

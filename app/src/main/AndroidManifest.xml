@@ -50,7 +50,7 @@
         <activity android:name=".View_TareasEmpresa" android:exported="true" />
         <activity android:name=".View_ProxManten" android:exported="true" />
         <activity android:name=".View_InfoAscensor" android:exported="true" />
-        <activity android:name=".View_Maps" android:exported="true" />
+        <activity android:name=".API_Maps" android:exported="true" />
         <activity android:name=".View_TrabajadorTarea" android:exported="true" />
         <activity android:name=".View_ConfirmacionTrab" android:exported="true" />
         <activity android:name=".DB_Tarea" android:exported="true" />

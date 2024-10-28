@@ -14,8 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class
-View_Maps extends FragmentActivity implements OnMapReadyCallback {
+public class API_Maps extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Marker marker;
@@ -48,7 +47,7 @@ View_Maps extends FragmentActivity implements OnMapReadyCallback {
                 setResult(RESULT_OK, resultIntent); // Enviar las coordenadas de vuelta a la actividad que inició el mapa
                 finish(); // Cierra la actividad y regresa
             } else {
-                Toast.makeText(View_Maps.this, "Por favor, selecciona una ubicación en el mapa.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(API_Maps.this, "Por favor, selecciona una ubicación en el mapa.", Toast.LENGTH_SHORT).show();
             }
         });
     }
