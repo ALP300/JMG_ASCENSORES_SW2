@@ -11,23 +11,23 @@ import java.util.ArrayList;
 
 public class Adapter_Ascensor extends RecyclerView.Adapter<Adapter_Ascensor.ViewHolder> {
 
-    private ArrayList<Ent_AscensorItem> ascensoresList;
+    private ArrayList<Ent_Ascensor> ascensoresList;
 
-    public Adapter_Ascensor(ArrayList<Ent_AscensorItem> ascensoresList) {
+    public Adapter_Ascensor(ArrayList<Ent_Ascensor> ascensoresList) {
         this.ascensoresList = ascensoresList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ascensor_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_ascensor, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Ent_AscensorItem ascensor = ascensoresList.get(position);
-        holder.marcaTextView.setText(ascensor.getMarca());
-        holder.modeloTextView.setText(ascensor.getModelo());
+        Ent_Ascensor ascensor = ascensoresList.get(position);
+        holder.txtMarc.setText(ascensor.getMarca());
+        holder.txtMod.setText(ascensor.getModel());
     }
 
     @Override
@@ -36,12 +36,12 @@ public class Adapter_Ascensor extends RecyclerView.Adapter<Adapter_Ascensor.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView marcaTextView, modeloTextView;
+         TextView txtMarc,txtMod;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            marcaTextView = itemView.findViewById(R.id.marcaTextView);
-            modeloTextView = itemView.findViewById(R.id.modeloTextView);
+            txtMarc = itemView.findViewById(R.id.txtMarc);
+            txtMod = itemView.findViewById(R.id.txtMod);
         }
     }
 }
