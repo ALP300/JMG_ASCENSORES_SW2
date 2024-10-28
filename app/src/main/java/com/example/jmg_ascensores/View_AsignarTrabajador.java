@@ -28,7 +28,7 @@ public class View_AsignarTrabajador extends AppCompatActivity {
                         // Ejecutar la consulta para obtener los ascensores del cliente
                         List<Ent_Trab> trabs = new DB_InfoTrab(connection, View_AsignarTrabajador.this).execute().get();// Agregar todos los ascensores a la lista
                         // Configurar el adaptador
-                        Adapter_Trab adapter = new Adapter_Trab(View_AsignarTrabajador.this, trabs);
+                        Adapter_trab adapter = new Adapter_trab(View_AsignarTrabajador.this, trabs);
                         listTrab.setAdapter(adapter);
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
