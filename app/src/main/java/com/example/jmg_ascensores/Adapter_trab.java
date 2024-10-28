@@ -7,16 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
-public class Adapter_trab extends BaseAdapter {
+public class Adapter_Trab extends BaseAdapter {
 
     private Context context;
     private List<Ent_Trab> trab;
 
-    public Adapter_trab(Context context, List<Ent_Trab> trab) {
+    public Adapter_Trab(Context context, List<Ent_Trab> trab) {
         this.context = context;
         this.trab = trab;
     }
