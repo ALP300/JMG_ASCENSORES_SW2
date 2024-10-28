@@ -82,7 +82,7 @@ public class View_RegTrab extends AppCompatActivity {
 
                 // Llamamos a la tarea para registrar el trabajador
                 if (connection != null) {
-                    new DB_RegTrab(connection, View_RegTrab.this)
+                    new DB_RegistrarTrab(connection, View_RegTrab.this)
                             .execute(codigo, nombre, apellido, edadStr, fechaContacto, password);
 
                     // Limpiar todos los campos

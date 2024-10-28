@@ -38,6 +38,7 @@
         <activity android:name=".Home_Admin"></activity>
         <activity android:name=".Home_Cliente" android:exported="true"/>
         <activity android:name=".View_Registrar" android:exported="true"/>
+        <activity android:name=".View_AsignarTrabajador" android:exported="true"/>
         <activity android:name=".View_AsignarCliente" android:exported="true"/>
         <activity android:name=".View_HistorialMantenimiento" android:exported="true"/>
         <activity android:name=".View_ClienteNuevo" android:exported="true"/>
@@ -55,3 +56,4 @@
         <activity android:name=".DB_Tarea" android:exported="true" />
     </application>
 </manifest>
+

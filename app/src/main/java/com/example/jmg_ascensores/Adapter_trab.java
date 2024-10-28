@@ -1,11 +1,13 @@
 package com.example.jmg_ascensores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -47,7 +49,11 @@ public class Adapter_trab extends BaseAdapter {
         txtCod.setText(trab.get(position).getCodigo());
         txtMar.setText(trab.get(position).getNombre());
         txtMod.setText(trab.get(position).getApellido());
-
+        convertView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, View_AsignarCliente.class);
+            intent.putExtra("trab_id", trab.get(position).getId()+"");
+            context.startActivity(intent);
+        });
 
         return convertView;
     }
