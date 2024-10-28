@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DB_InfoClients extends AsyncTask<String, Void, List<Ent_Cliente>> {
+public class DB_InfoClientsWhere extends AsyncTask<String, Void, List<Ent_Cliente>> {
     private Connection connection;
     private Context context;
 
-    public DB_InfoClients(Connection connection, Context context) {
+    public DB_InfoClientsWhere(Connection connection, Context context) {
         this.context = context;
         this.connection = connection;
     }
@@ -23,12 +23,13 @@ public class DB_InfoClients extends AsyncTask<String, Void, List<Ent_Cliente>> {
     @Override
     protected List<Ent_Cliente> doInBackground(String... params) {// El ID del clientex que deseas obtener
         List<Ent_Cliente>  clients = new ArrayList<>();
-
+        int code = Integer.parseInt(params[0]);
         try {
-            String query = "SELECT codigo, nombre_empresa FROM clientes WHERE id_trab IS NULL";
+            String query = "SELECT codigo, nombre_empresa FROM clientes WHERE id_trab = ?";
+            // Cambia a executeQuery para obtener resultados
             PreparedStatement statement = connection.prepareStatement(query);
-            ResultSet resultSet = statement.executeQuery(); // Cambia a executeQuery para obtener resultados
-
+            statement.setInt(1, code);
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 // Crear un nuevo objeto Ent_Trab con los datos obtenidos
                 Ent_Cliente client = new Ent_Cliente();

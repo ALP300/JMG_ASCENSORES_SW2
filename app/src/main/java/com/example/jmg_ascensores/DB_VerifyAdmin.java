@@ -39,6 +39,7 @@ public class DB_VerifyAdmin extends AsyncTask<String, Void, String[]> {
                     resultSet = statement.executeQuery("SELECT *  FROM trabajadores WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
                     if (resultSet.next()) {
                         dtCli[0] = "trabajador";
+                        dtCli[1] = String.valueOf(resultSet.getInt("id"));
                     } else {
                         // Verificar en la tabla de administradores
                         resultSet = statement.executeQuery("SELECT * FROM administrador WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
@@ -74,6 +75,7 @@ public class DB_VerifyAdmin extends AsyncTask<String, Void, String[]> {
                     break;
                 case "trabajador":
                     intent = new Intent(context, Home_Trab.class);
+                    intent.putExtra("codTrab", dtCli[1]);
                     break;
                 case "admin":
                     intent = new Intent(context, Home_Admin.class);

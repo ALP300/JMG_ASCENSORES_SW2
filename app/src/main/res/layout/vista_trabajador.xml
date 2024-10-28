@@ -89,7 +89,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/idempresa"
+        android:id="@+id/idEmpresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
