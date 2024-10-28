@@ -70,7 +70,7 @@ public class View_RegTrab2 extends AppCompatActivity {
 
                 // Llamamos a la tarea para registrar el trabajador
                 if (connection != null) {
-                    new DB_RegTrab(connection, View_RegTrab2.this)
+                    new DB_RegistrarTrab(connection, View_RegTrab2.this)
                             .execute(codigo, nombre, apellido, edad, fechaContacto, password);
                 } else {
                     Toast.makeText(View_RegTrab2.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();

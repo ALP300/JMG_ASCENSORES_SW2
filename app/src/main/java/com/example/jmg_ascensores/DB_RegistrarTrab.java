@@ -11,11 +11,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public class DB_RegTrab extends AsyncTask<String, Void, Boolean> {
+public class DB_RegistrarTrab extends AsyncTask<String, Void, Boolean> {
     private Connection connection;
     private Context context;
 
-    public DB_RegTrab(Connection connection, Context context) {
+    public DB_RegistrarTrab(Connection connection, Context context) {
         this.connection = connection;
         this.context = context;
     }

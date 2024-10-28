@@ -10,42 +10,27 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="ASIGNAR CLIENTES"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="12dp"
+        android:text="ASIGNAR TRABAJADOR"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/lstClientes"
+        app:layout_constraintBottom_toTopOf="@+id/lstTrabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:id="@+id/lstClientes"
+        android:id="@+id/lstTrabs"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="47dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="1dp"
         android:background="#F3EDED"
-        app:layout_constraintBottom_toTopOf="@+id/btnAñad"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnAñad"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="12dp"
-        android:backgroundTint="#547FA2"
-        android:text="AÑADIR"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lstClientes" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

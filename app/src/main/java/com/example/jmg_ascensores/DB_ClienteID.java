@@ -12,12 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-public class DB_Cliente extends AsyncTask<String, Void, Ent_Cliente> {
+public class DB_ClienteID extends AsyncTask<String, Void, Ent_Cliente> {
     private Connection connection;
     private Context context;
     private TextView txtNom;
 
-    public DB_Cliente(Connection connection, Context context) {
+    public DB_ClienteID(Connection connection, Context context) {
         this.context = context;
         this.connection = connection;
     }

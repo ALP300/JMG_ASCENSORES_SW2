@@ -34,7 +34,7 @@ public class Home_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón clicado");
-                Intent intent = new Intent(Home_Admin.this, View_AsignarCliente.class);
+                Intent intent = new Intent(Home_Admin.this, View_AsignarTrabajador.class);
                 startActivity(intent);
             }
         });

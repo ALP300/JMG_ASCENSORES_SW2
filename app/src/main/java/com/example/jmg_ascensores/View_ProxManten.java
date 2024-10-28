@@ -36,7 +36,7 @@ public class View_ProxManten extends AppCompatActivity {
                 connection = conn; // Guardar la conexión para su uso posterior
                 if (connection != null) {
                     try {
-                        clientex = new DB_Cliente(connection, View_ProxManten.this).execute(codCli).get();
+                        clientex = new DB_ClienteID(connection, View_ProxManten.this).execute(codCli).get();
                         if (clientex != null){
                             txtEmp = findViewById(R.id.txtEmp);
                             txtCod = findViewById(R.id.txtCod);

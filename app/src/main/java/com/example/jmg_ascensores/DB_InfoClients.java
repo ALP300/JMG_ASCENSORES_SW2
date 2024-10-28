@@ -2,44 +2,39 @@ package com.example.jmg_ascensores;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DB_InfTrab extends AsyncTask<String, Void, List<Ent_Trab>> {
+public class DB_InfoClients extends AsyncTask<String, Void, List<Ent_Cliente>> {
     private Connection connection;
     private Context context;
 
-    public DB_InfTrab(Connection connection, Context context) {
+    public DB_InfoClients(Connection connection, Context context) {
         this.context = context;
         this.connection = connection;
     }
 
     @Override
-    protected List<Ent_Trab> doInBackground(String... params) {// El ID del clientex que deseas obtener
-        List<Ent_Trab>  trabs = new ArrayList<>();
+    protected List<Ent_Cliente> doInBackground(String... params) {// El ID del clientex que deseas obtener
+        List<Ent_Cliente>  clients = new ArrayList<>();
 
         try {
-            String query = "SELECT codigo, nombre, apellido  FROM trabajadores";
+            String query = "SELECT codigo, nombre_empresa FROM clientes WHERE id_trab IS NULL";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery(); // Cambia a executeQuery para obtener resultados
 
             while (resultSet.next()) {
                 // Crear un nuevo objeto Ent_Trab con los datos obtenidos
-                Ent_Trab trabajador = new Ent_Trab();
-                trabajador.setCodigo(resultSet.getString("codigo"));
-                trabajador.setNombre(resultSet.getString("nombre"));
-                trabajador.setApellido(resultSet.getString("apellido"));
-                trabs.add(trabajador);
+                Ent_Cliente client = new Ent_Cliente();
+                client.setCodigo(resultSet.getString("codigo"));
+                client.setNombre_empresa(resultSet.getString("nombre_empresa"));
+                clients.add(client);
             }
             // Retorna la lista de trabajadores
         } catch (SQLException e) {
@@ -55,11 +50,11 @@ public class DB_InfTrab extends AsyncTask<String, Void, List<Ent_Trab>> {
             }
         }
 
-        return trabs;
+        return clients;
     }
 
     @Override
-    protected void onPostExecute(List<Ent_Trab> resultado) {
+    protected void onPostExecute(List<Ent_Cliente> resultado) {
         super.onPostExecute(resultado);
         if (resultado != null) {
             // Maneja el resultado (actualiza UI, etc.)

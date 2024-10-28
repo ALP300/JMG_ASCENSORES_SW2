@@ -1,8 +1,7 @@
 package com.example.jmg_ascensores;
 
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,8 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +17,18 @@ import java.util.concurrent.ExecutionException;
 
 public class View_AsignarCliente extends AppCompatActivity {
 
-    private ListView listTrab;
+    private ListView lstCli;
     private Connection connection;
+    private Integer codTrab;
+    private Button btnAñadir;
+    private DatabaseHelper dbHelper =new DatabaseHelper();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.asignar_cliente); // Asegúrate de que esto coincida con tu archivo de diseño
-        listTrab = findViewById(R.id.lstTrabs);
-
+        lstCli = findViewById(R.id.lstClientes);
+        btnAñadir= findViewById(R.id.btnAñad);
+        codTrab = Integer.parseInt(getIntent().getStringExtra("trab_id"));
         new DB_Connect() {
             @Override
             protected void onPostExecute(Connection conn) {
@@ -35,17 +36,38 @@ public class View_AsignarCliente extends AppCompatActivity {
                 if (connection != null) {
                     try {
                         // Ejecutar la consulta para obtener los ascensores del cliente
-                        List<Ent_Trab> trabs = new DB_InfTrab(connection, View_AsignarCliente.this).execute().get();// Agregar todos los ascensores a la lista
+                        List<Ent_Cliente> clients = new DB_InfoClients(connection, View_AsignarCliente.this).execute().get();// Agregar todos los ascensores a la lista
                         // Configurar el adaptador
-                        Adapter_trab adapter = new Adapter_trab(View_AsignarCliente.this, trabs);
-                        listTrab.setAdapter(adapter);
+                        Adapter_clientes adapter = new Adapter_clientes(View_AsignarCliente.this, clients);
+                        lstCli.setAdapter(adapter);
+                        connection.close();
+                        btnAñadir.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                new Thread(() -> {
+                                    List<String> listId = adapter.getClientId();
+                                    for (String x :listId) {
+                                        dbHelper.actualizarRegistro(codTrab, x);
+
+                                    }
+                                    Intent intent = new Intent(View_AsignarCliente.this, View_AsignarTrabajador.class);
+                                    startActivity(intent);
+                                }).start();
+                            }
+                        });
+
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
+
                 }
             }
         }.execute();
+
+
     }
 }
