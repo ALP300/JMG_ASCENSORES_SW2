@@ -9,6 +9,8 @@ public class Ent_Cliente {
     private String password;
     private String ubicacion;
     private Date Fec;
+    private double latitud; // Nueva propiedad
+    private double longitud; // Nueva propiedad
 
     public String getCodigo() {
         return codigo;
@@ -49,5 +51,22 @@ public class Ent_Cliente {
     public void setFec(Date fec) {
         Fec = fec;
     }
-}
 
+    // Nuevos métodos para latitud
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    // Nuevos métodos para longitud
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+}

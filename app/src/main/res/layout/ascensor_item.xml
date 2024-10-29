@@ -1,28 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="#000000"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
 
-<TextView
-android:id="@+id/marcaTextView"
-android:layout_width="wrap_content"
+<androidx.constraintlayout.widget.ConstraintLayout
+android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:text="Marca"
+android:padding="16dp">
+
+<!-- Imagen del ascensor -->
+<ImageView
+    android:id="@+id/imageAscensor"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:src="@drawable/v130_3929"
+android:contentDescription="Imagen del ascensor"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintBottom_toBottomOf="parent"
+android:layout_marginEnd="8dp" />
+
+<!-- Textos de marca -->
+<TextView
+    android:id="@+id/marcaTextView"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Marca"
 android:textSize="18sp"
-android:textColor="#000000"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent" />
+android:textColor="#FFFFFF"
+app:layout_constraintStart_toEndOf="@id/imageAscensor"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginStart="8dp" />
 
+<!-- Textos de modelo -->
 <TextView
-android:id="@+id/modeloTextView"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Modelo"
+    android:id="@+id/modeloTextView"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Modelo"
 android:textSize="16sp"
-android:textColor="#777777"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/marcaTextView" />
+android:textColor="#FFFFFF"
+app:layout_constraintStart_toEndOf="@id/imageAscensor"
+app:layout_constraintTop_toBottomOf="@id/marcaTextView"
+app:layout_constraintEnd_toEndOf="parent"
+android:layout_marginStart="8dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
