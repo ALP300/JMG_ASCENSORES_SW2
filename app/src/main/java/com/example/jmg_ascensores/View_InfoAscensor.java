@@ -23,42 +23,41 @@ public class View_InfoAscensor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_asc); // Asegúrate de que este es el layout correcto
+        setContentView(R.layout.info_asc);
 
-        // Probar con un valor fijo para codCli
         codCli = getIntent().getStringExtra("codCli");
-        Log.d("Database", "Código del cliente recibido: " + codCli); // Log para verificar el valor
+        Log.d("Database", "Código del cliente recibido: " + codCli);
 
-        RecyclerView listView = findViewById(R.id.lstInfAsc);
-        listView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView recyclerView = findViewById(R.id.lstInfAsc);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // Establecer conexión y cargar datos de ascensores
         new DB_Connect() {
             @Override
             protected void onPostExecute(Connection conn) {
-                connection = conn; // Guardar la conexión para su uso posterior
+                connection = conn;
                 if (connection != null) {
-                    try {
-                        // Ejecutar la consulta para obtener los ascensores del cliente
-                        ArrayList<Ent_Ascensor> items = new ArrayList<>();
-                        items = new DB_AscCli(connection, View_InfoAscensor.this).execute(codCli).get();
-                        // Configurar el adaptador
-                        Adapter_Ascensor adapter = new Adapter_Ascensor(items);
-                        listView.setAdapter(adapter);
-                        Log.d("Database", "LISTA: " + items);
-                        Log.i(TAG, "Ascensores cargados: " + items.size());
-                    } catch (ExecutionException e) {
-                        Log.e(TAG, "Error en la ejecución: " + e.getMessage());
-                    } catch (InterruptedException e) {
-                        Log.e(TAG, "Error interrumpido: " + e.getMessage());
-                    }
+                    cargarAscensores(connection, codCli, recyclerView);
                 } else {
                     Log.e(TAG, "Conexión nula");
                 }
             }
         }.execute();
+    }
 
-
-
-
+    private void cargarAscensores(Connection connection, String codCli, RecyclerView recyclerView) {
+        new DB_AscCli(connection, View_InfoAscensor.this) {
+            @Override
+            protected void onPostExecute(ArrayList<Ent_Ascensor> items) {
+                if (items != null) {
+                    Adapter_Ascensor adapter = new Adapter_Ascensor(items);
+                    recyclerView.setAdapter(adapter);
+                    Log.d("Database", "LISTA: " + items);
+                    Log.i(TAG, "Ascensores cargados: " + items.size());
+                } else {
+                    Log.e(TAG, "No se encontraron ascensores para el cliente.");
+                }
+            }
+        }.execute(codCli);
     }
 }
