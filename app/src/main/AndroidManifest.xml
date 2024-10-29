@@ -5,7 +5,8 @@
     <!-- Permisos necesarios -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
@@ -50,7 +51,7 @@
         <activity android:name=".View_TareasEmpresa" android:exported="true" />
         <activity android:name=".View_ProxManten" android:exported="true" />
         <activity android:name=".View_InfoAscensor" android:exported="true" />
-        <activity android:name=".View_Maps" android:exported="true" />
+        <activity android:name=".API_Maps" android:exported="true" />
         <activity android:name=".View_TrabajadorTarea" android:exported="true" />
         <activity android:name=".View_ConfirmacionTrab" android:exported="true" />
         <activity android:name=".DB_Tarea" android:exported="true" />

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,85 +5,139 @@
     android:layout_height="match_parent"
     android:background="#0E2842">
 
-    <TextView
-        android:id="@+id/titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Registro de Ascensores"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
+    <!-- Logo o Imagen -->
+
+    <!-- Título destacado -->
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="293dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="28dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="358dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="REGISTRO DE ASCENSORES"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <!-- Campo para Marca con Ícono -->
+
+    <ImageView
+        android:id="@+id/icon_marca"
+        android:layout_width="47dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/ascensor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo" />
 
     <EditText
         android:id="@+id/marca_input"
-        android:layout_width="302dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="96dp"
-        android:layout_marginBottom="214dp"
-        android:background="@android:color/white"
-        android:hint="Marca"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
+        android:hint="MARCA"
+        android:inputType="text"
         android:padding="12dp"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        android:textColorHint="#99000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toEndOf="@id/icon_marca"
+        app:layout_constraintTop_toTopOf="@id/icon_marca" />
+
+    <!-- Campo para Modelo con Ícono -->
+    <ImageView
+        android:id="@+id/icon_modelo"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/viajar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/marca_input" />
 
     <EditText
         android:id="@+id/modelo_input"
-        android:layout_width="302dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="48dp"
-        android:background="@android:color/white"
-        android:hint="Modelo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
+        android:hint="MODELO"
+        android:inputType="text"
         android:padding="12dp"
         android:textColor="#000000"
+        android:textColorHint="#99000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/marca_input" />
+        app:layout_constraintStart_toEndOf="@id/icon_modelo"
+        app:layout_constraintTop_toTopOf="@id/icon_modelo" />
 
-    <!-- RecyclerView para mostrar la lista de ascensores -->
+    <!-- Botón para guardar ascensor -->
     <Button
         android:id="@+id/guardar_button"
-        android:layout_width="298dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#213744"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#3B7597"
+        android:text="GUARDAR ASCENSOR"
+        android:textColor="#ffffff"
         android:padding="12dp"
-        android:text="Guardar Ascensor"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/modelo_input" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/modelo_input" />
 
+    <!-- RecyclerView para mostrar la lista de ascensores -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ascensores_list"
-        android:layout_width="376dp"
-        android:layout_height="259dp"
+        android:layout_width="371dp"
+        android:layout_height="201dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="17dp"
         android:background="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guardar_button"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="17dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guardar_button"
+        app:layout_constraintVertical_bias="0.038" />
 
     <Button
         android:id="@+id/registrar_ascensores"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="77dp"
-        android:backgroundTint="#213744"
-        android:text="Registrar Ascensores"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ascensores_list"
-        tools:layout_editor_absoluteX="113dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#357195"
+    android:padding="12dp"
+    android:text="Registrar Ascensores"
+    android:textColor="#FFFFFF"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/ascensores_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

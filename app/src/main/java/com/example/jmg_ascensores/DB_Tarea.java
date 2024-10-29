@@ -1,5 +1,6 @@
 package com.example.jmg_ascensores;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -132,6 +133,11 @@ public class DB_Tarea extends AppCompatActivity {
                 tareasList.clear();
                 adapter.notifyDataSetChanged();
                 Toast.makeText(DB_Tarea.this, "Todas las tareas han sido registradas.", Toast.LENGTH_SHORT).show();
+
+                // Iniciar la actividad Home_Admin
+                Intent intent = new Intent(DB_Tarea.this, Home_Admin.class);
+                startActivity(intent);
+                finish(); // Finaliza la actividad actual si es necesario
             } else {
                 Toast.makeText(DB_Tarea.this, "Error al registrar las tareas.", Toast.LENGTH_LONG).show();
             }

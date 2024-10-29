@@ -6,6 +6,14 @@ public class Ent_Ascensor {
     private String marca;
     private Integer codAsc;
 
+    public Ent_Ascensor() {
+
+    }
+    public Ent_Ascensor(String modelo, String marca) {
+        this.modelo = modelo;
+        this.marca = marca;
+    }
+
     // Getter para 'modelo'
     public String getModel() {
         return modelo; // Asegúrate de que 'modelo' esté correctamente declarado

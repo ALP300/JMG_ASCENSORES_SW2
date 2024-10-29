@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DB_VerifyAdmin extends AsyncTask<String, Void, String> {
+public class DB_VerifyAdmin extends AsyncTask<String, Void, String[]> {
     private Connection connection;
     private Context context; // Agregar contexto
 
@@ -21,10 +21,10 @@ public class DB_VerifyAdmin extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected String[] doInBackground(String... params) {
         String code = params[0];
         String contrasena = params[1];
-        String userType = null;
+        String dtCli[] = new String[2];
 
         if (connection != null) {
             try {
@@ -32,17 +32,19 @@ public class DB_VerifyAdmin extends AsyncTask<String, Void, String> {
                 // Verificar en la tabla de clientes
                 ResultSet resultSet = statement.executeQuery("SELECT *  FROM clientes WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
                 if (resultSet.next()) {
-                    userType = "cliente";
+                    dtCli[0] = "cliente";
+                    dtCli[1] = resultSet.getString("codigo");
                 } else {
                     // Verificar en la tabla de trabajadores
                     resultSet = statement.executeQuery("SELECT *  FROM trabajadores WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
                     if (resultSet.next()) {
-                        userType = "trabajador";
+                        dtCli[0] = "trabajador";
+                        dtCli[1] = String.valueOf(resultSet.getInt("id"));
                     } else {
                         // Verificar en la tabla de administradores
                         resultSet = statement.executeQuery("SELECT * FROM administrador WHERE codigo = '" + code + "' AND contrasena = '" + contrasena + "'");
                         if (resultSet.next()) {
-                            userType = "admin";
+                            dtCli[0] = "admin";
                         }
                     }
                 }
@@ -57,21 +59,23 @@ public class DB_VerifyAdmin extends AsyncTask<String, Void, String> {
         } else {
             Log.e("Database", "Conexión es null");
         }
-    return userType;
+    return dtCli;
     }
 
     @Override
-    protected void onPostExecute(String userType) {
-        if (userType != null) {
-            Log.i("Database", "Inicio de sesión exitoso como: " + userType);
+    protected void onPostExecute(String[] dtCli) {
+        if (dtCli != null) {
+            Log.i("Database", "Inicio de sesión exitoso como: " );
 
             Intent intent;
-            switch (userType) {
+            switch (dtCli[0]) {
                 case "cliente":
                     intent = new Intent(context, Home_Cliente.class);
+                    intent.putExtra("codCli", dtCli[1]);
                     break;
                 case "trabajador":
                     intent = new Intent(context, Home_Trab.class);
+                    intent.putExtra("codTrab", dtCli[1]);
                     break;
                 case "admin":
                     intent = new Intent(context, Home_Admin.class);

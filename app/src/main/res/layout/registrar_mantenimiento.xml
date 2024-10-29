@@ -1,31 +1,99 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="#0e2842"
+    tools:context=".View_Mantenimiento">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="293dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="53dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitulo"
+        android:layout_width="403dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="20dp"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="MANTENIMIENTO DEL CLIENTE"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <ImageView
+        android:id="@+id/icono_fecha_inicio"
+        android:layout_width="47dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/calendario"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitulo" />
 
     <EditText
         android:id="@+id/editTextFechaInicio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Fecha de inicio"
+        android:layout_width="307dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
         android:focusable="false"
-        android:background="@drawable/edittext_background"/>
+        android:hint="Fecha de inicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icono_fecha_inicio"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitulo" />
+
+    <ImageView
+        android:id="@+id/icono_fecha_fin"
+        android:layout_width="49dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/calendario2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextFechaInicio" />
 
     <EditText
         android:id="@+id/editTextFechaFin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Fecha de fin"
+        android:layout_width="306dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
         android:focusable="false"
-        android:background="@drawable/edittext_background"/>
-
+        android:hint="Fecha de fin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icono_fecha_fin"
+        app:layout_constraintTop_toBottomOf="@id/editTextFechaInicio" />
 
     <Button
         android:id="@+id/buttonRegistrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Registrar Mantenimiento" />
-</LinearLayout>
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#357195"
+        android:padding="12dp"
+        android:text="REGISTRAR MANTENIMIENTO"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTextFechaFin" />
 
+</androidx.constraintlayout.widget.ConstraintLayout>

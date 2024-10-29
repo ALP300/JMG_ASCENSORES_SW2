@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DB_AscCli extends AsyncTask<String, Void, List<Ent_Ascensor>> {
+public class DB_AscCli extends AsyncTask<String, Void, ArrayList<Ent_Ascensor>> {
     private static final String TAG = "DB_AscCli"; // Para los logs
     private Connection connection;
     private Context context;
@@ -23,9 +23,9 @@ public class DB_AscCli extends AsyncTask<String, Void, List<Ent_Ascensor>> {
     }
 
     @Override
-    protected List<Ent_Ascensor> doInBackground(String... params) {
+    protected ArrayList<Ent_Ascensor> doInBackground(String... params) {
         String idCliente = params[0]; // El ID del cliente que deseas obtener
-        List<Ent_Ascensor> ascensores = new ArrayList<>();
+        ArrayList<Ent_Ascensor> ascensores = new ArrayList<>();
         Log.i(TAG, "Iniciando la consulta para el cliente: " + idCliente);
 
         try {
@@ -40,9 +40,8 @@ public class DB_AscCli extends AsyncTask<String, Void, List<Ent_Ascensor>> {
                 Ent_Ascensor ascensor = new Ent_Ascensor();
                 ascensor.setMarca(resultSet.getString("marca"));
                 ascensor.setModelo(resultSet.getString("modelo"));
-                ascensor.setCodAsc(resultSet.getInt("codigo_ascensor"));
                 ascensores.add(ascensor);
-                Log.i(TAG, "Ascensor encontrado: " + ascensor.getMarca() + ", " + ascensor.getModel());
+                Log.d("Database", "Ascensor encontrado: " + ascensor.getMarca() + ", " + ascensor.getModel());
             }
 
             // Cierra recursos
@@ -58,7 +57,7 @@ public class DB_AscCli extends AsyncTask<String, Void, List<Ent_Ascensor>> {
     }
 
     @Override
-    protected void onPostExecute(List<Ent_Ascensor> resultado) {
+    protected void onPostExecute(ArrayList<Ent_Ascensor> resultado) {
         super.onPostExecute(resultado);
         if (resultado != null && !resultado.isEmpty()) {
             Log.i(TAG, "Ascensores recibidos en onPostExecute: " + resultado.size());

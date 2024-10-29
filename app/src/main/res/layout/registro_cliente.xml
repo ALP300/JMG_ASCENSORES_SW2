@@ -4,44 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vista"
     android:layout_width="match_parent"
-    android:background="#0E2842"
     android:layout_height="match_parent"
-    tools:context=".View_Registrar">
+    android:background="#0E2842"
+    tools:context=".Home_Admin">
 
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="84dp"
+        android:contentDescription="Logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <!-- Bienvenida -->
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/bienvenidaTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="40dp"
-        android:text="OPCIONES DE USUARIO"
+        android:layout_marginTop="16dp"
+        android:text="BIENVENIDO ADMINISTRADOR"
         android:textColor="#FFFFFF"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logoImageView" />
 
-    <Button
-        android:id="@+id/Trabajador"
+    <!-- Menú de Opciones -->
+    <TextView
+        android:id="@+id/menuOpcionesTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
-        android:layout_marginEnd="88dp"
-        android:backgroundTint="#213744"
-        android:text="REGISTRAR TRABAJADOR NUEVO"
+        android:layout_marginTop="8dp"
+        android:text="MENÚ DE OPCIONES"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/bienvenidaTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/Cliente"
-        android:layout_width="wrap_content"
+    <!-- Botón Registrar Trabajador Nuevo -->
+    <LinearLayout
+        android:id="@+id/TrabajadorLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="60dp"
-        android:backgroundTint="#213744"
-        android:text="CLIENTE NUEVO"
-        app:layout_constraintEnd_toEndOf="@+id/Trabajador"
-        app:layout_constraintTop_toBottomOf="@+id/Trabajador" />
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="#213744"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menuOpcionesTextView">
+
+        <ImageView
+            android:id="@+id/trabajadorIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/trabajador" /> <!-- Cambia "icon_trabajador" por tu drawable -->
+
+        <TextView
+            android:layout_width="223dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="REGISTRAR TRABAJADOR NUEVO"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Botón Cliente Nuevo -->
+    <LinearLayout
+        android:id="@+id/ClienteLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:background="#213744"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TrabajadorLayout"> <!-- Add this constraint -->
+
+        <ImageView
+            android:id="@+id/clienteIcon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/cliente" /> <!-- Cambia "icon_cliente" por tu drawable -->
+
+        <TextView
+            android:layout_width="223dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="CLIENTE NUEVO"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

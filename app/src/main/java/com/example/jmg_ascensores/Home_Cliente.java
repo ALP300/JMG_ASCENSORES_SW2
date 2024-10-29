@@ -21,7 +21,7 @@ public class Home_Cliente extends AppCompatActivity {
         setContentView(R.layout.vista_cliente); // Asegúrate de que este es el diseño correcto
 
         codCli = getIntent().getStringExtra("codCli");
-        Log.i("VistaCliente", "Código del cliente recibido: " + codCli);
+        Log.i("Database", "Código del cliente recibido: " + codCli);
         String nombreEmpresa = getIntent().getStringExtra("nombre_empresa"); // Recibe el nombre de la empresa
 
         // Configura el TextView para mostrar la bienvenida

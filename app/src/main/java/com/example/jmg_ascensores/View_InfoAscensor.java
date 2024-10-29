@@ -1,10 +1,14 @@
 package com.example.jmg_ascensores;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -19,18 +23,41 @@ public class View_InfoAscensor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_asc); // Asegúrate de que este es el layout correcto
+        setContentView(R.layout.info_asc);
 
-        // Probar con un valor fijo para codCli
-        codCli = "cliente91"; // Aquí puedes usar un valor de prueba fijo
-        Log.i(TAG, "Código del cliente recibido: " + codCli); // Log para verificar el valor
+        codCli = getIntent().getStringExtra("codCli");
+        Log.d("Database", "Código del cliente recibido: " + codCli);
 
-        ListView listView = findViewById(R.id.lstInfAsc);
-        List<Ent_Ascensor> items = new ArrayList<>();
+        RecyclerView recyclerView = findViewById(R.id.lstInfAsc);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Iniciar la conexión a la base de datos
+        // Establecer conexión y cargar datos de ascensores
+        new DB_Connect() {
+            @Override
+            protected void onPostExecute(Connection conn) {
+                connection = conn;
+                if (connection != null) {
+                    cargarAscensores(connection, codCli, recyclerView);
+                } else {
+                    Log.e(TAG, "Conexión nula");
+                }
+            }
+        }.execute();
+    }
 
-
-
+    private void cargarAscensores(Connection connection, String codCli, RecyclerView recyclerView) {
+        new DB_AscCli(connection, View_InfoAscensor.this) {
+            @Override
+            protected void onPostExecute(ArrayList<Ent_Ascensor> items) {
+                if (items != null) {
+                    Adapter_Ascensor adapter = new Adapter_Ascensor(items);
+                    recyclerView.setAdapter(adapter);
+                    Log.d("Database", "LISTA: " + items);
+                    Log.i(TAG, "Ascensores cargados: " + items.size());
+                } else {
+                    Log.e(TAG, "No se encontraron ascensores para el cliente.");
+                }
+            }
+        }.execute(codCli);
     }
 }

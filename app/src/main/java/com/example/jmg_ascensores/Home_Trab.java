@@ -9,24 +9,26 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Home_Trab extends AppCompatActivity {
-    private Button empresa1;
+    private Button btnEmpresasAsignadas;
     private Button btnCerrarSesion;
-
+    private String codTrab;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vista_trabajador);
 
-        empresa1 = findViewById(R.id.idempresa);
+        btnEmpresasAsignadas = findViewById(R.id.idEmpresa);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        codTrab = getIntent().getStringExtra("codTrab");
 
-
-        empresa1.setOnClickListener(new View.OnClickListener() {
+        btnEmpresasAsignadas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Al hacer clic en el botón ADMINISTRADOR, iniciar MainActivity
+
                 Intent intent = new Intent(Home_Trab.this, View_TareasEmpresa.class);
+                intent.putExtra("codTrab", codTrab);
                 startActivity(intent);
                 finish(); // Cerrar OpcionesActivity
             }

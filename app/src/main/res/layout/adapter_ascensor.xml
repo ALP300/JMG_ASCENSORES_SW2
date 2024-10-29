@@ -1,28 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    android:foregroundTint="#141414"
+    app:cardBackgroundColor="#000000"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/txtCod"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Código"
-        android:textSize="16sp" />
+        android:background="#223B56"
+        android:foregroundTint="#1B1B1B"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/txtMarc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Marca"
-        android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/txtMod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Modelo"
-        android:textSize="16sp" />
-</LinearLayout>
+        <ImageView
+            android:id="@+id/imageAscensor"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Imagen del ascensor"
+            android:src="@drawable/v130_3929"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/marcaTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Marca:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageAscensor"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/modeloTextView"
+            android:layout_width="293dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:text="Modelo:"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@id/imageAscensor"
+            app:layout_constraintTop_toBottomOf="@id/marcaTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

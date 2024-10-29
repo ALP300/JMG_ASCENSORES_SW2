@@ -24,7 +24,7 @@ public class DB_RegAscensor extends AppCompatActivity {
     private Button registrarAscensores;
     private RecyclerView recyclerView;
     private Adapter_Ascensor adapter;
-    private ArrayList<Ent_AscensorItem> ascensoresList;
+    private ArrayList<Ent_Ascensor> ascensoresList;
     private Connection connection; // La conexión a la base de datos
     private String clienteCodigo; // Almacenará el código del cliente
 
@@ -63,7 +63,7 @@ public class DB_RegAscensor extends AppCompatActivity {
                 // Aquí deberías realizar la conexión con la base de datos y registrar el ascensor
                 if (connection != null) {
                     // Registra el ascensor en la lista local
-                    ascensoresList.add(new Ent_AscensorItem(marca, modelo));
+                    ascensoresList.add(new Ent_Ascensor(marca, modelo));
 
                     // Actualiza el RecyclerView
                     adapter.notifyDataSetChanged();
@@ -122,9 +122,9 @@ public class DB_RegAscensor extends AppCompatActivity {
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 // Inserta cada ascensor de la lista
-                for (Ent_AscensorItem ascensor : ascensoresList) {
+                for (Ent_Ascensor ascensor : ascensoresList) {
                     statement.setString(1, ascensor.getMarca());
-                    statement.setString(2, ascensor.getModelo());
+                    statement.setString(2, ascensor.getModel());
                     statement.setString(3, clienteCodigo); // Usa el código del cliente recibido
                     statement.addBatch(); // Añade la operación al batch
                 }
