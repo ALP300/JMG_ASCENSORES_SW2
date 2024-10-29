@@ -1,95 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View_ClienteNuevo"
-    android:background="#0e2842">
+    android:background="#0e2842"
+    tools:context=".View_ClienteNuevo">
 
     <!-- Logo o Imagen -->
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="293dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="53dp"
         android:scaleType="centerInside"
         android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Título destacado -->
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="358dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="20dp"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="REGISTRO DEL CLIENTE"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo" />
+
+    <!-- Campo para Nombre de la Empresa con Ícono -->
+    <ImageView
+        android:id="@+id/icon_nombre_empresa"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/cliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView4" />
 
     <!-- Campo para Nombre de la Empresa -->
     <EditText
         android:id="@+id/nombre_empresa_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Nombre de la Empresa"
-        android:backgroundTint="#fff"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:padding="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
+        android:hint="NOMBRE DE LA EMPRESA"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        android:padding="12dp"
+        android:textColor="#000000"
+    android:textColorHint="#99000000"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toEndOf="@id/icon_nombre_empresa"
+    app:layout_constraintTop_toTopOf="@id/icon_nombre_empresa" />
 
-    <!-- Campo para Código de Cliente -->
+    <ImageView
+        android:id="@+id/icon_codigo_cliente"
+        android:layout_width="35dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/numerico"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nombre_empresa_input" />
+
     <EditText
         android:id="@+id/codigo_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Código"
-        android:backgroundTint="#fff"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:padding="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
+        android:hint="CÓDIGO"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombre_empresa_input" />
+        android:padding="12dp"
+        android:textColor="#000000"
+    android:textColorHint="#99000000"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/icon_codigo_cliente"
+    app:layout_constraintTop_toTopOf="@id/icon_codigo_cliente" />
 
-    <!-- Campo para Contraseña -->
+    <!-- Campo para Contraseña con Ícono -->
+    <ImageView
+        android:id="@+id/icon_password"
+        android:layout_width="37dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/contrasena"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/codigo_input" />
+
     <EditText
         android:id="@+id/password_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Contraseña"
-        android:backgroundTint="#fff"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:padding="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
+        android:hint="CONTRASEÑA"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/codigo_input" />
+        android:padding="12dp"
+        android:textColor="#000000"
+    android:textColorHint="#99000000"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/icon_password"
+    app:layout_constraintTop_toTopOf="@id/icon_password" />
 
-    <!-- Botón para abrir Google Maps y seleccionar ubicación -->
+    <!-- Botón para seleccionar ubicación -->
     <Button
         android:id="@+id/elegir_ubicacion_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Elegir Ubicación en Google Maps"
-        android:textColor="#fff"
-        android:backgroundTint="#213744"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#3B7597"
+        android:text="INGRESA LA UBICACIÓN DEL CLIENTE"
+        android:textColor="#ffffff"
+        android:padding="12dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/password_input" />
 
-    <!-- TextView para mostrar la ubicación seleccionada -->
     <TextView
         android:id="@+id/ubicacion_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="#FDFDFD"
+        android:foregroundTint="#0B0B0B"
         android:hint="Ubicación seleccionada"
-        android:textColor="#fff"
         android:padding="12dp"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/elegir_ubicacion_button" />
@@ -97,15 +153,17 @@
     <!-- Botón para registrar al cliente -->
     <Button
         android:id="@+id/registrar_cliente_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        android:text="Registrar Cliente"
-        android:textColor="#fff"
-        android:backgroundTint="#213744"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#357195"
         android:padding="12dp"
+        android:text="REGISTRAR CLIENTE"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ubicacion_textview" />
 

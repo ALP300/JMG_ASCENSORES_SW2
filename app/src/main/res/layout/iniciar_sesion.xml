@@ -10,20 +10,6 @@
 
     <!-- Logo (can be replaced with a TextView if not using an image) -->
 
-    <TextView
-        android:id="@+id/titulo2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="Bienvenido a JMG Ascensores"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/logo"
         android:layout_width="250dp"
@@ -67,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="32dp"
         android:text="INICIAR SESIÓN"
         android:textColor="#64B5F2"
         android:textColorHint="#53A2E0"
