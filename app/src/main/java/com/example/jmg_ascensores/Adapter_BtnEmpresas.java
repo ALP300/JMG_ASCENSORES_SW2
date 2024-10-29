@@ -7,16 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.List;
 
-public class Adapter_Empresas extends BaseAdapter {
+public class Adapter_BtnEmpresas extends BaseAdapter {
 
     private Context context;
     private List<Ent_Cliente> cliente;
 
-    public Adapter_Empresas(Context context, List<Ent_Cliente> cliente) {
+    public Adapter_BtnEmpresas(Context context, List<Ent_Cliente> cliente) {
         this.context = context;
         this.cliente = cliente;
     }
