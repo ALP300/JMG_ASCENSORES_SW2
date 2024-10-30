@@ -8,112 +8,104 @@
     tools:context=".LoginTrab">
 
     <!-- Logo de la empresa -->
-
-    <!-- Texto de Bienvenida -->
-
     <ImageView
         android:id="@+id/logo2"
         android:layout_width="250dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:layout_marginBottom="11dp"
         android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/text_menu_opciones"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Menú de Opciones -->
+    <!-- Texto de Bienvenida -->
     <TextView
         android:id="@+id/text_bienvenida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="216dp"
-        android:layout_marginBottom="83dp"
-        android:text="BIENVENIDO :"
+        android:layout_marginTop="16dp"
+        android:text="BIENVENIDO:"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/menu_empresa"
-        app:layout_constraintStart_toStartOf="@+id/logo2"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/logo2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Título del Menú de Opciones -->
     <TextView
         android:id="@+id/text_menu_opciones"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="16dp"
         android:text="MENÚ DE OPCIONES"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/menu_empresa"
-        app:layout_constraintEnd_toEndOf="@+id/logo2"
-        app:layout_constraintTop_toBottomOf="@+id/logo2" />
+        app:layout_constraintTop_toBottomOf="@id/text_bienvenida"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Botón de Empresa Designada -->
+    <!-- Botón de Empresa Designada con ícono -->
     <LinearLayout
         android:id="@+id/menu_empresa"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-
-        android:layout_marginBottom="260dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="322dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:background="#213744"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_bienvenida">
+        app:layout_constraintTop_toBottomOf="@id/text_menu_opciones">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/v130_3929" />
+            android:id="@+id/icon_empresa_designada"
+            android:layout_width="43dp"
+            android:layout_height="40dp"
+            android:src="@drawable/empresa" />
 
         <TextView
             android:id="@+id/text_empresa_designada"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
+            android:layout_marginStart="8dp"
             android:text="EMPRESA DESIGNADA"
-            android:backgroundTint="#213744"
             android:textColor="#FFFFFF"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
-    <Button
-        android:id="@+id/idEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="156dp"
-        android:text="EMPRESA DESIGNADA"
-        android:textColor="#EBEBEB"
-        android:backgroundTint="#213744"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/menu_empresa"
-        app:layout_constraintTop_toBottomOf="@+id/menu_empresa"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-200dp"
-        android:layout_marginEnd="130dp"
-        android:backgroundTint="#213744"
-        android:text="CERRAR SESIÓN"
-        android:textColor="#FFFFFF"
+    <!-- Botón de Cerrar Sesión con ícono -->
+    <LinearLayout
+        android:id="@+id/menu_cerrar_sesion"
+        android:layout_width="323dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="16dp"
+        android:background="#213744"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/menu_empresa">
 
+        <ImageView
+            android:id="@+id/icon_cerrar_sesion"
+            android:layout_width="44dp"
+            android:layout_height="39dp"
+            android:src="@drawable/salida" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_cerrar_sesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="CERRAR SESIÓN"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
+    </androidx.constraintlayout.widget.ConstraintLayout>

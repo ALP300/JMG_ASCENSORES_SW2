@@ -5,45 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0E2842"
+    android:foregroundTint="#A63636"
     tools:context=".View_TrabajadorTarea2">
 
-    <!-- Logo de la empresa -->
-
-    <!-- Texto principal -->
+    <!-- Contenedor principal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Logo de la empresa -->
+
+        <!-- Texto principal -->
 
         <ImageView
             android:id="@+id/logoImageView2"
-            android:layout_width="match_parent"
-            android:layout_height="144dp"
+            android:layout_width="269dp"
+            android:layout_height="133dp"
             android:layout_marginTop="20dp"
             android:contentDescription="Logo de la empresa"
+            android:scaleType="centerInside"
             android:src="@drawable/logo" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="LISTA DE EMPRESAS"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="EMPRESAS DESIGNADAS"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="34sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
+        <!-- ListView para empresas asignadas -->
         <ListView
             android:id="@+id/lstBtnEmp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="1dp"
-            android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
-            tools:ignore="MissingConstraints" />
-    </LinearLayout>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="#0E2842"
+            android:backgroundTint="#0E2842"
+            android:cacheColorHint="#EDEBEB"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:padding="8dp" />
 
-    <!-- Botones de Empresas -->
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
