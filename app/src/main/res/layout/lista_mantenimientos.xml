@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:text="EMPRESAS DESIGNADAS"
+            android:text="LISTA DE MANTENIMIENTOS"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="28sp"

@@ -3,6 +3,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!-- Campo de texto para ingresar la dirección -->
+    <EditText
+        android:id="@+id/direccion_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ingresa la dirección"
+        android:padding="16dp" />
+
+    <!-- Botón para buscar la ubicación -->
+    <Button
+        android:id="@+id/buscar_ubicacion_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#213744"
+        android:text="Buscar Ubicación" />
     <!-- Fragmento del mapa con altura ajustada -->
     <fragment
         android:id="@+id/map"
@@ -10,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="446dp"
         android:layout_weight="1" />
+
 
     <!-- Botón para guardar la ubicación seleccionada -->
     <Button

@@ -6,57 +6,121 @@
     android:layout_height="match_parent"
     android:background="#0E2842">
 
-    <Button
-        android:id="@+id/btnInfAsc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="228dp"
-        android:backgroundTint="#213744"
-        android:text="INFORMACIÓN DE ASCENSORES"
-        android:textColor="#FFFFFF"
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="Logo"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
+    <!-- Texto de bienvenida -->
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="16dp"
         android:text="BIENVENIDO CLIENTE"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logoImageView" />
 
-    <Button
-        android:id="@+id/btnManProx"
-        android:layout_width="wrap_content"
+    <!-- Botón Información de Ascensores -->
+    <LinearLayout
+        android:id="@+id/btnInfAsc"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="304dp"
-        android:backgroundTint="#213744"
-        android:text="MANTENIMIENTOS PROXIMOS"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-350dp"
-        android:layout_marginEnd="130dp"
-        android:backgroundTint="#213744"
-        android:text="CERRAR SESIÓN"
-        android:textColor="#FFFFFF"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="16dp"
+        android:background="#213744"
+        android:orientation="horizontal"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView9">
 
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ascensor" />
 
+        <TextView
+            android:layout_width="194dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="INFORMACIÓN DE ASCENSORES"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Botón Mantenimientos Próximos -->
+    <LinearLayout
+        android:id="@+id/btnManProx"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="#213744"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInfAsc">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/mantenimiento" />
+
+        <TextView
+            android:layout_width="192dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="MANTENIMIENTOS PRÓXIMOS"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Botón Cerrar Sesión -->
+    <LinearLayout
+        android:id="@+id/btnCerrarSesion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:background="#213744"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnManProx">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/salida" />
+
+        <TextView
+            android:layout_width="128dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="CERRAR SESIÓN"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

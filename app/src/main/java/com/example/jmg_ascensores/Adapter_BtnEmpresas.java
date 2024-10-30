@@ -41,12 +41,18 @@ public class Adapter_BtnEmpresas extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.adapter_empresas, parent, false);
         }
-        String Empresa = cliente.get(position).getNombre_empresa();
-        Empresa = "Empresa "+Empresa.substring(0, 1).toUpperCase() + Empresa.substring(1);
-        Button btnEmp = convertView.findViewById(R.id.btnEmpresas);
-        btnEmp.setText(Empresa);
-        String finalEmpresa = Empresa;
-        btnEmp.setOnClickListener(v -> {
+
+        // Obtener el nombre de la empresa y darle formato
+        String empresa = cliente.get(position).getNombre_empresa();
+        empresa = "Empresa " + empresa.substring(0, 1).toUpperCase() + empresa.substring(1);
+
+        // Configurar el TextView con el nombre de la empresa
+        TextView empresaTextView = convertView.findViewById(R.id.empresaTextView);
+        empresaTextView.setText(empresa);
+
+        // Configurar el click en toda la tarjeta para abrir la actividad
+        String finalEmpresa = empresa;
+        convertView.setOnClickListener(v -> {
             Intent intent = new Intent(context, View_TrabajadorTarea.class);
             intent.putExtra("empresa", finalEmpresa);
             intent.putExtra("ubicacion", cliente.get(position).getUbicacion());
