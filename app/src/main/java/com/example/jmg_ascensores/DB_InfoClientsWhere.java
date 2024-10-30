@@ -25,7 +25,7 @@ public class DB_InfoClientsWhere extends AsyncTask<String, Void, List<Ent_Client
         List<Ent_Cliente>  clients = new ArrayList<>();
         int code = Integer.parseInt(params[0]);
         try {
-            String query = "SELECT codigo, nombre_empresa FROM clientes WHERE id_trab = ?";
+            String query = "SELECT codigo, nombre_empresa, ubicacion FROM clientes WHERE id_trab = ?";
             // Cambia a executeQuery para obtener resultados
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, code);
@@ -35,6 +35,7 @@ public class DB_InfoClientsWhere extends AsyncTask<String, Void, List<Ent_Client
                 Ent_Cliente client = new Ent_Cliente();
                 client.setCodigo(resultSet.getString("codigo"));
                 client.setNombre_empresa(resultSet.getString("nombre_empresa"));
+                client.setUbicacion(resultSet.getString("ubicacion"));
                 clients.add(client);
             }
             // Retorna la lista de trabajadores

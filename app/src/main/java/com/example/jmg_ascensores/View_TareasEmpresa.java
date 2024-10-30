@@ -1,20 +1,13 @@
 package com.example.jmg_ascensores;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public class View_TareasEmpresa extends AppCompatActivity {
 
@@ -41,7 +34,7 @@ public class View_TareasEmpresa extends AppCompatActivity {
                         List<Ent_Cliente> cliens;
                         cliens = new DB_InfoClientsWhere(connection, View_TareasEmpresa.this).execute(codTrab).get();
                         // Configurar el adaptador
-                        Adapter_Empresas adapter = new Adapter_Empresas(View_TareasEmpresa.this,cliens);
+                        Adapter_BtnEmpresas adapter = new Adapter_BtnEmpresas(View_TareasEmpresa.this,cliens);
                         lstEmps.setAdapter(adapter);
                         Log.d("Database", "LISTA: ");
                     } catch (Exception e) {
