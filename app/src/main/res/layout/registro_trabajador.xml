@@ -8,6 +8,19 @@
     android:background="#0E2842"
     tools:context=".View_RegTrab2">
 
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="293dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="53dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Título -->
     <TextView
         android:id="@+id/titulo_registro"
         android:layout_width="wrap_content"
@@ -17,119 +30,185 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/nombre_input"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Campos de entrada con íconos -->
+    <ImageView
+        android:id="@+id/icon_nombre"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/trabajador"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/titulo_registro" />
 
     <EditText
         android:id="@+id/nombre_input"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="NOMBRE"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="12dp"
+        app:layout_constraintStart_toEndOf="@id/icon_nombre"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_nombre" />
+
+    <ImageView
+        android:id="@+id/icon_apellido"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/trabajador"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titulo_registro" />
+        app:layout_constraintTop_toBottomOf="@id/nombre_input" />
 
     <EditText
         android:id="@+id/apellido_input"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="APELLIDO"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="12dp"
+        app:layout_constraintStart_toEndOf="@id/icon_apellido"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_apellido" />
+
+    <ImageView
+        android:id="@+id/icon_edad"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/trabajador"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre_input" />
+        app:layout_constraintTop_toBottomOf="@id/apellido_input" />
 
     <EditText
         android:id="@+id/edad_input"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="EDAD"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="12dp"
+        app:layout_constraintStart_toEndOf="@id/icon_edad"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_edad" />
+
+    <ImageView
+        android:id="@+id/icon_fecha_contacto"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/calendario"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/apellido_input" />
+        app:layout_constraintTop_toBottomOf="@id/edad_input" />
 
     <EditText
         android:id="@+id/contacto_input"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="FECHA DE CONTACTO"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="12dp"
+        app:layout_constraintStart_toEndOf="@id/icon_fecha_contacto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_fecha_contacto" />
+
+    <ImageView
+        android:id="@+id/icon_codigo"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/numerico"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edad_input" />
+        app:layout_constraintTop_toBottomOf="@id/contacto_input" />
 
     <EditText
         android:id="@+id/code_input"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="CÓDIGO (DNI)"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:padding="12dp"
+        app:layout_constraintStart_toEndOf="@id/icon_codigo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/icon_codigo" />
+
+    <ImageView
+        android:id="@+id/icon_password"
+        android:layout_width="37dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/contrasena"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contacto_input" />
+        app:layout_constraintTop_toBottomOf="@id/code_input" />
 
     <EditText
         android:id="@+id/password_input"
-        android:layout_width="274dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:hint="CONTRASEÑA"
+        android:inputType="textPassword"
         android:textColor="#8DA8D1"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintStart_toEndOf="@id/icon_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/code_input" />
+        app:layout_constraintTop_toTopOf="@id/icon_password" />
 
+    <!-- Botón de registrar -->
     <Button
         android:id="@+id/registrar_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="464dp"
-        android:layout_marginEnd="144dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#213744"
         android:text="REGISTRAR"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_input" />
 
+    <!-- Botón de cerrar sesión -->
     <Button
         android:id="@+id/logout_button"
-        android:layout_width="72dp"
-        android:layout_height="54dp"
-
-        android:padding="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#213744"
         android:text="Cerrar Sesión"
         android:textColor="#FFFFFF"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="328dp"
-        tools:layout_editor_absoluteY="4dp" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/registrar_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
