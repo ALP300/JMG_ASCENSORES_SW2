@@ -29,6 +29,7 @@ public class View_TrabajadorTarea extends AppCompatActivity implements OnMapRead
     private Button btnConf;
     private String empresa;
     private String data;
+    private String codCli;
     private String ubicacion[] = new String[2];
     private TextView txtTit;
     private TextView txtDir;
@@ -49,7 +50,7 @@ public class View_TrabajadorTarea extends AppCompatActivity implements OnMapRead
         txtTit = findViewById(R.id.txtNomEm);
         empresa = getIntent().getStringExtra("empresa");
         data = getIntent().getStringExtra("ubicacion");
-
+        codCli = getIntent().getStringExtra("codCli");
 
         if (data != null) {
             txtTit.setText(empresa);
