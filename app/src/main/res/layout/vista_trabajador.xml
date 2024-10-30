@@ -8,31 +8,35 @@
     tools:context=".LoginTrab">
 
     <!-- Logo de la empresa -->
+
+    <!-- Texto de Bienvenida -->
+
+    <!-- Título del Menú de Opciones -->
+
     <ImageView
         android:id="@+id/logo2"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Texto de Bienvenida -->
     <TextView
         android:id="@+id/text_bienvenida"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="BIENVENIDO:"
+        android:layout_marginTop="8dp"
+        android:text="BIENVENIDO TRABAJADOR"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/logo2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo2" />
 
-    <!-- Título del Menú de Opciones -->
     <TextView
         android:id="@+id/text_menu_opciones"
         android:layout_width="wrap_content"
