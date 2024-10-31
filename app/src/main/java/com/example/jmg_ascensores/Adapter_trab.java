@@ -54,7 +54,7 @@ public class Adapter_trab extends BaseAdapter {
 
         // Evento al hacer clic en el elemento para abrir una nueva actividad
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_AsignarCliente.class);
+            Intent intent = new Intent(context, View_Adm_AsignarCliente.class);
             intent.putExtra("trab_id", trab.get(position).getId() + ""); // Pasar el ID como cadena
             context.startActivity(intent);
         });
