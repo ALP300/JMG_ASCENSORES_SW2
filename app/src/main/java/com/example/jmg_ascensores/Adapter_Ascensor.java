@@ -26,8 +26,8 @@ public class Adapter_Ascensor extends RecyclerView.Adapter<Adapter_Ascensor.View
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Ent_Ascensor ascensor = ascensoresList.get(position);
-        holder.txtMarc.setText("MODELO: "+ascensor.getMarca());
-        holder.txtMod.setText("MARCA: "+ascensor.getModel());
+        holder.txtMarc.setText(ascensor.getMarca());
+        holder.txtMod.setText(ascensor.getModel());
     }
 
     @Override
@@ -40,8 +40,8 @@ public class Adapter_Ascensor extends RecyclerView.Adapter<Adapter_Ascensor.View
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtMarc = itemView.findViewById(R.id.marcaTextView);
-            txtMod = itemView.findViewById(R.id.modeloTextView);
+            txtMarc = itemView.findViewById(R.id.textView5);
+            txtMod = itemView.findViewById(R.id.textView7);
         }
     }
 }

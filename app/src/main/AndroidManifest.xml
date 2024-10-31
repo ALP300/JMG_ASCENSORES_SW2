@@ -38,19 +38,19 @@
         <activity android:name=".Home_Main" android:exported="true" />
         <activity android:name=".Home_Admin"></activity>
         <activity android:name=".Home_Cliente" android:exported="true"/>
-        <activity android:name=".View_Registrar" android:exported="true"/>
-        <activity android:name=".View_AsignarTrabajador" android:exported="true"/>
-        <activity android:name=".View_AsignarCliente" android:exported="true"/>
-        <activity android:name=".View_HistorialMantenimiento" android:exported="true"/>
-        <activity android:name=".View_ClienteNuevo" android:exported="true"/>
-        <activity android:name=".View_RegTrab" android:exported="true"/>
+        <activity android:name=".View_Adm_Registrar" android:exported="true"/>
+        <activity android:name=".View_Adm_AsignarTrabajador" android:exported="true"/>
+        <activity android:name=".View_Adm_AsignarCliente" android:exported="true"/>
+        <activity android:name=".View_Adm_HistorialMantenimiento" android:exported="true"/>
+        <activity android:name=".View_Adm_ClienteNuevo" android:exported="true"/>
+        <activity android:name=".View_Adm_RegTrab" android:exported="true"/>
         <activity android:name=".DB_RegAscensor" android:exported="true"/>
         <activity android:name=".DB_Mantenimiento" android:exported="true"/>
         <activity android:name=".Home_Trab" android:exported="true" />
         <activity android:name=".View_RegTrab2" android:exported="true" />
         <activity android:name=".View_TareasEmpresa" android:exported="true" />
-        <activity android:name=".View_ProxManten" android:exported="true" />
-        <activity android:name=".View_InfoAscensor" android:exported="true" />
+        <activity android:name=".View_Cli_ProxManten" android:exported="true" />
+        <activity android:name=".View_Cli_InfoAscensor" android:exported="true" />
         <activity android:name=".API_Maps" android:exported="true" />
         <activity android:name=".View_TrabajadorTarea" android:exported="true" />
         <activity android:name=".View_Trab_ListaMant" android:exported="true" />

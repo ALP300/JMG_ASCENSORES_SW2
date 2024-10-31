@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#0e2842"
-    tools:context=".View_ClienteNuevo">
+    tools:context=".View_Adm_ClienteNuevo">
 
     <!-- Logo o Imagen -->
     <ImageView

@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout; // Importa LinearLayout
 import androidx.appcompat.app.AppCompatActivity;
 
-public class View_Registrar extends AppCompatActivity {
+public class View_Adm_Registrar extends AppCompatActivity {
 
     private LinearLayout clienteLayout; // Cambia a LinearLayout
     private LinearLayout trabajadorLayout; // Cambia a LinearLayout
@@ -25,7 +25,7 @@ public class View_Registrar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón CLIENTE clicado");
-                Intent intent = new Intent(View_Registrar.this, View_ClienteNuevo.class);
+                Intent intent = new Intent(View_Adm_Registrar.this, View_Adm_ClienteNuevo.class);
                 startActivity(intent);
             }
         });
@@ -35,7 +35,7 @@ public class View_Registrar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón TRABAJADOR clicado");
-                Intent intent = new Intent(View_Registrar.this, View_RegTrab.class);
+                Intent intent = new Intent(View_Adm_Registrar.this, View_Adm_RegTrab.class);
                 startActivity(intent);
             }
         });

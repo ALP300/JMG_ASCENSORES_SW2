@@ -1,10 +1,7 @@
 package com.example.jmg_ascensores;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,10 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-public class View_InfoAscensor extends AppCompatActivity {
+public class View_Cli_InfoAscensor extends AppCompatActivity {
     private String codCli; // Código del cliente
     private Connection connection; // La conexión a la base de datos
     private static final String TAG = "Ascensor_Cliente";
@@ -46,7 +41,7 @@ public class View_InfoAscensor extends AppCompatActivity {
     }
 
     private void cargarAscensores(Connection connection, String codCli, RecyclerView recyclerView) {
-        new DB_AscCli(connection, View_InfoAscensor.this) {
+        new DB_AscCli(connection, View_Cli_InfoAscensor.this) {
             @Override
             protected void onPostExecute(ArrayList<Ent_Ascensor> items) {
                 if (items != null) {
