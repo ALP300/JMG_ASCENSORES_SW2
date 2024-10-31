@@ -16,7 +16,7 @@ public class View_Adm_AsignarTrabajador extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.asignar_trabajador); // Asegúrate de que esto coincida con tu archivo de diseño
+        setContentView(R.layout.adm_asignar_trabajador); // Asegúrate de que esto coincida con tu archivo de diseño
         listTrab = findViewById(R.id.lstTrabs);
 
         new DB_Connect() {
@@ -28,7 +28,7 @@ public class View_Adm_AsignarTrabajador extends AppCompatActivity {
                         // Ejecutar la consulta para obtener los ascensores del cliente
                         List<Ent_Trab> trabs = new DB_InfoTrab(connection, View_Adm_AsignarTrabajador.this).execute().get();// Agregar todos los ascensores a la lista
                         // Configurar el adaptador
-                        Adapter_trab adapter = new Adapter_trab(View_Adm_AsignarTrabajador.this, trabs);
+                        Adapter_Trab adapter = new Adapter_Trab(View_Adm_AsignarTrabajador.this, trabs);
                         listTrab.setAdapter(adapter);
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);

@@ -38,7 +38,7 @@ public class View_Cli_ProxManten extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.prox_mant);
+        setContentView(R.layout.cli_prox_mant);
 
         // Inicializa los TextViews y el CardView
         txtEmp = findViewById(R.id.txtEmp);

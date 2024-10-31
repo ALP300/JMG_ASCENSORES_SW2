@@ -18,7 +18,7 @@ public class View_Cli_InfoAscensor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_asc);
+        setContentView(R.layout.cli_info_asc);
 
         codCli = getIntent().getStringExtra("codCli");
         Log.d("Database", "Código del cliente recibido: " + codCli);

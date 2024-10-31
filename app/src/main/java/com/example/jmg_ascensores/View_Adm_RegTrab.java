@@ -21,7 +21,7 @@ public class View_Adm_RegTrab extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro_trabajador); // Asegúrate de que coincida con el nombre del layout
+        setContentView(R.layout.adm_registro_trabajador); // Asegúrate de que coincida con el nombre del layout
         logoutButton = findViewById(R.id.logout_button);
         registrarButton = findViewById(R.id.registrar_button);
         nombreInput = findViewById(R.id.nombre_input);

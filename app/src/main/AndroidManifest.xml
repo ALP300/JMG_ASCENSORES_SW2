@@ -48,11 +48,11 @@
         <activity android:name=".DB_Mantenimiento" android:exported="true"/>
         <activity android:name=".Home_Trab" android:exported="true" />
         <activity android:name=".View_RegTrab2" android:exported="true" />
-        <activity android:name=".View_TareasEmpresa" android:exported="true" />
+        <activity android:name=".View_Trab_TareasEmpresa" android:exported="true" />
         <activity android:name=".View_Cli_ProxManten" android:exported="true" />
         <activity android:name=".View_Cli_InfoAscensor" android:exported="true" />
         <activity android:name=".API_Maps" android:exported="true" />
-        <activity android:name=".View_TrabajadorTarea" android:exported="true" />
+        <activity android:name=".View_Trab_Empresas" android:exported="true" />
         <activity android:name=".View_Trab_ListaMant" android:exported="true" />
         <activity android:name=".View_ConfirmacionTrab" android:exported="true" />
         <activity android:name=".DB_Tarea" android:exported="true" />

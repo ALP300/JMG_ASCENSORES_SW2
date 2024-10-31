@@ -23,7 +23,7 @@ public class View_Adm_AsignarCliente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.asignar_cliente); // Asegúrate de que esto coincida con tu archivo de diseño
+        setContentView(R.layout.adm_asignar_cliente); // Asegúrate de que esto coincida con tu archivo de diseño
         lstCli = findViewById(R.id.lstClientes);
         btnAñadir= findViewById(R.id.btnAñadir);
         codTrab = Integer.parseInt(getIntent().getStringExtra("trab_id"));
@@ -36,7 +36,7 @@ public class View_Adm_AsignarCliente extends AppCompatActivity {
                         // Ejecutar la consulta para obtener los ascensores del cliente
                         List<Ent_Cliente> clients = new DB_InfoClientsNull(connection, View_Adm_AsignarCliente.this).execute().get();// Agregar todos los ascensores a la lista
                         // Configurar el adaptador
-                        Adapter_clientes adapter = new Adapter_clientes(View_Adm_AsignarCliente.this, clients);
+                        Adapter_Clientes adapter = new Adapter_Clientes(View_Adm_AsignarCliente.this, clients);
                         lstCli.setAdapter(adapter);
                         connection.close();
                         btnAñadir.setOnClickListener(new View.OnClickListener() {

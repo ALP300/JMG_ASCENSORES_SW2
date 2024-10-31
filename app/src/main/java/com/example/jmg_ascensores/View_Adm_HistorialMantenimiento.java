@@ -16,7 +16,7 @@ public class View_Adm_HistorialMantenimiento extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.historial_mantenimiento); // Asegúrate de que esto coincida con tu archivo de diseño
+        setContentView(R.layout.adm_historial_mantenimiento); // Asegúrate de que esto coincida con tu archivo de diseño
         lista = findViewById(R.id.lstHist);
          // Reemplaza con la ID real de tu botón
 

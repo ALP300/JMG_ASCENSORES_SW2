@@ -18,15 +18,13 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class View_TrabajadorTarea extends AppCompatActivity implements OnMapReadyCallback{
+public class View_Trab_Empresas extends AppCompatActivity implements OnMapReadyCallback{
     private Button btnConf;
     private String empresa;
     private String data;
@@ -44,7 +42,7 @@ public class View_TrabajadorTarea extends AppCompatActivity implements OnMapRead
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vistas_tareas_trabajador);
+        setContentView(R.layout.trab_detalle_manten);
 
         btnConf = findViewById(R.id.btnConf);
         txtDir = findViewById(R.id.txtDir);
@@ -78,7 +76,7 @@ public class View_TrabajadorTarea extends AppCompatActivity implements OnMapRead
                 btnConf.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(View_TrabajadorTarea.this, View_Trab_ListaMant.class);
+                        Intent intent = new Intent(View_Trab_Empresas.this, View_Trab_ListaMant.class);
                         intent.putExtra("codCli", codCli);
                         startActivity(intent);
                     }
@@ -89,7 +87,7 @@ public class View_TrabajadorTarea extends AppCompatActivity implements OnMapRead
             }
         } else {
             // Manejar el caso donde 'ubicacion' es null
-            Toast.makeText(View_TrabajadorTarea.this, "No hay ubicacion", Toast.LENGTH_LONG).show();
+            Toast.makeText(View_Trab_Empresas.this, "No hay ubicacion", Toast.LENGTH_LONG).show();
 
         }
 

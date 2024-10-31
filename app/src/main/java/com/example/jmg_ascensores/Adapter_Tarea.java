@@ -51,8 +51,8 @@ public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewH
         public TareaViewHolder(@NonNull View itemView) {
             super(itemView);
             // Initialize the TextViews from the layout
-            nombreTextView = itemView.findViewById(R.id.marcaTextView); // Cambia el ID aquí
-            descripcionTextView = itemView.findViewById(R.id.modeloTextView); // Cambia el ID aquí
+            nombreTextView = itemView.findViewById(R.id.marcAscAda); // Cambia el ID aquí
+            descripcionTextView = itemView.findViewById(R.id.modAscAda); // Cambia el ID aquí
         }
     }
 }

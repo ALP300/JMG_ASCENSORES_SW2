@@ -29,7 +29,7 @@ public class DB_Mantenimiento extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registrar_mantenimiento);
+        setContentView(R.layout.adm_registrar_mantenimiento);
 
         // Inicializar componentes de la UI
         editTextFechaInicio = findViewById(R.id.editTextFechaInicio);

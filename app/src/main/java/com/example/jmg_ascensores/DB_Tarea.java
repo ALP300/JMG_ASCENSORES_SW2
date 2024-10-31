@@ -43,7 +43,7 @@ public class DB_Tarea extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.actividad_tarea);
+        setContentView(R.layout.adm_registrar_tarea);
 
         nombreTareaInput = findViewById(R.id.nombre_tarea_input);
         descripcionTareaInput = findViewById(R.id.descripcion_tarea_input);

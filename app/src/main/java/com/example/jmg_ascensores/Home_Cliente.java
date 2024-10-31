@@ -19,7 +19,7 @@ public class Home_Cliente extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vista_cliente); // Asegúrate de que el layout corresponde a esta actividad
+        setContentView(R.layout.cli_menu); // Asegúrate de que el layout corresponde a esta actividad
 
         // Obtén el código del cliente y el nombre de la empresa desde el Intent
         codCli = getIntent().getStringExtra("codCli");

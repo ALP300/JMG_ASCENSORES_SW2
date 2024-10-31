@@ -58,7 +58,7 @@ public class Adapter_BtnAscensores extends BaseAdapter {
         // Configurar el click en toda la tarjeta para abrir la actividad
 
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_TrabajadorTarea.class);
+            Intent intent = new Intent(context, View_Trab_Empresas.class);
             intent.putExtra("ascensorr", Marc +", "+ Mod);
             intent.putExtra("codAsc", ascensor.get(position).getCodAsc());
             context.startActivity(intent);

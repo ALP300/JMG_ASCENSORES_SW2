@@ -31,7 +31,7 @@ public class DB_RegAscensor extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ascensor); // Asegúrate de que este sea el layout correcto
+        setContentView(R.layout.adm_ascensor); // Asegúrate de que este sea el layout correcto
 
         // Enlazamos los campos del layout
         marcaInput = findViewById(R.id.marca_input);

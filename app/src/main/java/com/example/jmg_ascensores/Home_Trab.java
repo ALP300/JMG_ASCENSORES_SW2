@@ -17,7 +17,7 @@ public class Home_Trab extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vista_trabajador);
+        setContentView(R.layout.trab_menu);
 
         btnEmpresasAsignadas = findViewById(R.id.menu_empresa);
         btnCerrarSesion = findViewById(R.id.menu_cerrar_sesion); // Corregir ID
@@ -28,7 +28,7 @@ public class Home_Trab extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Iniciar View_TareasEmpresa al hacer clic en "Empresas Asignadas"
-                Intent intent = new Intent(Home_Trab.this, View_TareasEmpresa.class);
+                Intent intent = new Intent(Home_Trab.this, View_Trab_TareasEmpresa.class);
                 intent.putExtra("codTrab", codTrab);
                 startActivity(intent);
                 finish(); // Cerrar Home_Trab
