@@ -6,29 +6,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
 
-public class Adapter_BtnEmpresas extends BaseAdapter {
+public class Adapter_BtnAscensores extends BaseAdapter {
 
     private Context context;
-    private List<Ent_Cliente> cliente;
+    private List<Ent_Ascensor> ascensor;
 
-    public Adapter_BtnEmpresas(Context context, List<Ent_Cliente> cliente) {
+
+    public Adapter_BtnAscensores(Context context, List<Ent_Ascensor> entA) {
         this.context = context;
-        this.cliente = cliente;
+        this.ascensor = entA;
     }
+
 
     @Override
     public int getCount() {
-        return cliente.size();
+        return ascensor.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cliente.get(position);
+        return ascensor.get(position);
     }
 
     @Override
@@ -40,24 +41,26 @@ public class Adapter_BtnEmpresas extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.adapter_empresas, parent, false);
+            convertView = inflater.inflate(R.layout.adapter_ascensor, parent, false);
         }
 
-        // Obtener el nombre de la empresa y darle formato
-        String empresa = cliente.get(position).getNombre_empresa();
-        empresa = "Empresa " + empresa.substring(0, 1).toUpperCase() + empresa.substring(1);
+        // Obtener el nombre de la ascensorr y darle formato
+        String Marc = ascensor.get(position).getMarca();
+        String Mod = ascensor.get(position).getModel();
 
-        // Configurar el TextView con el nombre de la empresa
-        TextView empresaTextView = convertView.findViewById(R.id.empresaTextView);
-        empresaTextView.setText(empresa);
+
+        // Configurar el TextView con el nombre de la ascensorr
+        TextView txt5 = convertView.findViewById(R.id.textView5);
+        TextView txt7 = convertView.findViewById(R.id.textView7);
+        txt5.setText(Marc);
+        txt7.setText(Mod);
 
         // Configurar el click en toda la tarjeta para abrir la actividad
-        String finalEmpresa = empresa;
+
         convertView.setOnClickListener(v -> {
             Intent intent = new Intent(context, View_TrabajadorTarea.class);
-            intent.putExtra("empresa", finalEmpresa);
-            intent.putExtra("ubicacion", cliente.get(position).getUbicacion());
-            intent.putExtra("codCli", cliente.get(position).getCodigo());
+            intent.putExtra("ascensorr", Marc +", "+ Mod);
+            intent.putExtra("codAsc", ascensor.get(position).getCodAsc());
             context.startActivity(intent);
         });
 

@@ -9,20 +9,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.util.List;
 
-public class View_ListaMantenimiento extends AppCompatActivity {
+public class View_Trab_ListaMant extends AppCompatActivity {
 
     private Connection connection; // La conexión a la base de datos
-    private ListView lstEmps;
-    private String codTrab;
+    private ListView lstAsc;
+    private String codCli;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tareas_designadas);
+        setContentView(R.layout.trab_lista_manten);
 
         // Obtener referencia al botón
-        codTrab = getIntent().getStringExtra("codTrab");
+        codCli = getIntent().getStringExtra("codCli");
+        Log.d("Database", "cod: "+codCli);
         // Establecer el OnClickListener
-         lstEmps = findViewById(R.id.lstBtnEmp);
+         lstAsc = findViewById(R.id.lstBtnAsc);
 
         new DB_Connect() {
             @Override
@@ -31,12 +32,12 @@ public class View_ListaMantenimiento extends AppCompatActivity {
                 if (connection != null) {
                     try {
                         // Ejecutar la consulta para obtener los ascensores del cliente
-                        List<Ent_Cliente> cliens;
-                        cliens = new DB_InfoClientsWhere(connection, View_ListaMantenimiento.this).execute(codTrab).get();
+                        List<Ent_Ascensor> asc;
+                        asc = new DB_AscCli(connection, View_Trab_ListaMant.this).execute(codCli).get();
                         // Configurar el adaptador
-                        Adapter_BtnEmpresas adapter = new Adapter_BtnEmpresas(View_ListaMantenimiento.this,cliens);
-                        lstEmps.setAdapter(adapter);
-                        Log.d("Database", "LISTA: ");
+                        Adapter_BtnAscensores adapter = new Adapter_BtnAscensores(View_Trab_ListaMant.this,asc);
+                        lstAsc.setAdapter(adapter);
+
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

@@ -1,6 +1,7 @@
 package com.example.jmg_ascensores;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -77,8 +78,9 @@ public class View_TrabajadorTarea extends AppCompatActivity implements OnMapRead
                 btnConf.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Al hacer clic en el botón ADMINISTRADOR, iniciar MainActivity
-
+                        Intent intent = new Intent(View_TrabajadorTarea.this, View_Trab_ListaMant.class);
+                        intent.putExtra("codCli", codCli);
+                        startActivity(intent);
                     }
                 });
             } else {
