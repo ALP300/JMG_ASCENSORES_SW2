@@ -7,7 +7,6 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-    <!-- Tarjeta para cada mantenimiento -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,121 +20,125 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-            <!-- Imagen representativa de la empresa o tarea -->
-            <!-- Cambia esto a tu imagen deseada -->
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-            <!-- Labels de "COD_MANTENIMIENTO", "COD_CLIENTE", "FECHA_INICIO", "FECHA_FIN" -->
-
             <ImageView
                 android:id="@+id/imageMantenimiento"
                 android:layout_width="63dp"
-                android:layout_height="75dp"
+                android:layout_height="69dp"
                 android:contentDescription="Imagen de mantenimiento"
                 android:src="@drawable/mantenimiento"
-                tools:layout_editor_absoluteX="0dp"
-                tools:layout_editor_absoluteY="50dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-            <TextView
-                android:id="@+id/textView10"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="COD_MANTENIMIENTO:"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:ignore="MissingConstraints">
 
-            <TextView
-                android:id="@+id/txtCM"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text=""
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/textView10" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="COD_CLIENTE:"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/txtCM" />
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="COD_MANTENIMIENTO:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtCC"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text=""
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/textView11" />
+                    <TextView
+                        android:id="@+id/txtCM"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="FECHA_INICIO:"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/txtCC" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/txtCM">
 
-            <TextView
-                android:id="@+id/txtFI"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text=""
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/textView17" />
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="COD_CLIENTE:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:text="FECHA_FIN:"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/txtFI" />
+                    <TextView
+                        android:id="@+id/txtCC"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/txtFF"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/imageMantenimiento"
-                app:layout_constraintTop_toBottomOf="@id/textView18" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/txtCC">
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FECHA_INICIO:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtFI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/txtFI">
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FECHA_FIN:"
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtFF"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        android:textColor="#FFFFFF"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
