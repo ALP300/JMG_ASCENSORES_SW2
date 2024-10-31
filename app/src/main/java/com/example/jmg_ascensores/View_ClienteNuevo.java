@@ -53,6 +53,21 @@ public class View_ClienteNuevo extends AppCompatActivity {
                 String codigo = codigoInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
 
+                // Validación de solo letras y números en código
+                if (!codigo.matches("[a-zA-Z0-9]+")) {
+                    Toast.makeText(View_ClienteNuevo.this, "El código solo puede contener letras y números.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Validación de la contraseña: debe tener al menos 6 caracteres, un símbolo, una letra minúscula y una letra mayúscula
+                if (password.length() < 6 ||
+                        !password.matches(".*[!@#$%^&*(),.?\":{}|<>].*") ||
+                        !password.matches(".*[a-z].*") ||
+                        !password.matches(".*[A-Z].*")) {
+                    Toast.makeText(View_ClienteNuevo.this, "La contraseña debe tener al menos 6 caracteres, contener al menos un símbolo, y tener al menos una letra minúscula y una mayúscula.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Validamos que todos los campos estén completos
                 if (nombreEmpresa.isEmpty() || codigo.isEmpty() || password.isEmpty() || ubicacionSeleccionada == null) {
                     Toast.makeText(View_ClienteNuevo.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
@@ -80,7 +95,6 @@ public class View_ClienteNuevo extends AppCompatActivity {
                     Toast.makeText(View_ClienteNuevo.this, "Error: No se puede conectar a la base de datos.", Toast.LENGTH_SHORT).show();
                 }
             }
-
         });
 
         // Conexión a la base de datos
@@ -105,5 +119,4 @@ public class View_ClienteNuevo extends AppCompatActivity {
             ubicacionTextView.setText("Ubicación: " + ubicacionSeleccionada);
         }
     }
-
 }
