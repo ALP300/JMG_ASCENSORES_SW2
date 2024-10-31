@@ -40,6 +40,7 @@ public class DB_AscCli extends AsyncTask<String, Void, ArrayList<Ent_Ascensor>> 
                 Ent_Ascensor ascensor = new Ent_Ascensor();
                 ascensor.setMarca(resultSet.getString("marca"));
                 ascensor.setModelo(resultSet.getString("modelo"));
+                ascensor.setCodAsc(resultSet.getInt("codigo_ascensor"));
                 ascensores.add(ascensor);
                 Log.d("Database", "Ascensor encontrado: " + ascensor.getMarca() + ", " + ascensor.getModel());
             }
