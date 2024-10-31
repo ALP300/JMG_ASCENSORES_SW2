@@ -42,15 +42,20 @@ public class Adapter_trab extends BaseAdapter {
             convertView = inflater.inflate(R.layout.adapter_trab, parent, false);
         }
 
+        // Asigna los TextView de acuerdo con los IDs en el nuevo diseño XML
         TextView txtCod = convertView.findViewById(R.id.txtCodT);
-        TextView txtMar = convertView.findViewById(R.id.txtNom);
-        TextView txtMod = convertView.findViewById(R.id.txtApe);
+        TextView txtNom = convertView.findViewById(R.id.txtNom);
+        TextView txtApe = convertView.findViewById(R.id.txtApe);
+
+        // Configuración del texto de cada TextView
         txtCod.setText(trab.get(position).getCodigo());
-        txtMar.setText(trab.get(position).getNombre());
-        txtMod.setText(trab.get(position).getApellido());
+        txtNom.setText(trab.get(position).getNombre());
+        txtApe.setText(trab.get(position).getApellido());
+
+        // Evento al hacer clic en el elemento para abrir una nueva actividad
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_Adm_AsignarCliente.class);
-            intent.putExtra("trab_id", trab.get(position).getId()+"");
+            Intent intent = new Intent(context, View_AsignarCliente.class);
+            intent.putExtra("trab_id", trab.get(position).getId() + ""); // Pasar el ID como cadena
             context.startActivity(intent);
         });
 

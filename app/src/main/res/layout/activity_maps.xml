@@ -16,7 +16,7 @@
         android:id="@+id/buscar_ubicacion_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#213744"
+        android:backgroundTint="#397AA0"
         android:text="Buscar Ubicación" />
     <!-- Fragmento del mapa con altura ajustada -->
     <fragment
