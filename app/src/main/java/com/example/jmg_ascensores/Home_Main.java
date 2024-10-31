@@ -52,7 +52,7 @@ public class Home_Main extends AppCompatActivity {
                 }
 
                 // Validar que solo se ingresen letras y números
-                if (!code.matches("[a-zA-Z0-9]+") || !password.matches("[a-zA-Z0-9]+")) {
+                if (!code.matches("[a-zA-Z0-9]+")) {
                     Toast.makeText(Home_Main.this, "Solo se permiten letras y números.", Toast.LENGTH_SHORT).show();
                     return;
                 }
