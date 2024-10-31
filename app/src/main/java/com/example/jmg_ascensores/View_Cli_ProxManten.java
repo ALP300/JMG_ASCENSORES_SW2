@@ -21,7 +21,7 @@ import java.util.concurrent.ExecutionException;
 import androidx.cardview.widget.CardView;
 import android.graphics.Color;
 
-public class View_ProxManten extends AppCompatActivity {
+public class View_Cli_ProxManten extends AppCompatActivity {
 
     private ListView listProxMant;
     private Connection connection;
@@ -65,7 +65,7 @@ public class View_ProxManten extends AppCompatActivity {
                 connection = conn;
                 if (connection != null) {
                     try {
-                        clientex = new DB_ClienteID(connection, View_ProxManten.this).execute(codCli).get();
+                        clientex = new DB_ClienteID(connection, View_Cli_ProxManten.this).execute(codCli).get();
                         Log.d("View_ProxManten", "Clientex: " + clientex);
                         if (clientex != null) {
                             txtEmp.setText("Nombre de la empresa: " + clientex.getNombre_empresa());

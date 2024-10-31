@@ -29,7 +29,7 @@ public class Home_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón Añadir Trabajador/Cliente clicado");
-                Intent intent = new Intent(Home_Admin.this, View_Registrar.class);
+                Intent intent = new Intent(Home_Admin.this, View_Adm_Registrar.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +38,7 @@ public class Home_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón Asignar Trabajador clicado");
-                Intent intent = new Intent(Home_Admin.this, View_AsignarTrabajador.class);
+                Intent intent = new Intent(Home_Admin.this, View_Adm_AsignarTrabajador.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +47,7 @@ public class Home_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón Historial de Mantenimientos clicado");
-                Intent intent = new Intent(Home_Admin.this, View_HistorialMantenimiento.class);
+                Intent intent = new Intent(Home_Admin.this, View_Adm_HistorialMantenimiento.class);
                 startActivity(intent);
             }
         });

@@ -49,7 +49,7 @@ public class Adapter_trab extends BaseAdapter {
         txtMar.setText(trab.get(position).getNombre());
         txtMod.setText(trab.get(position).getApellido());
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_AsignarCliente.class);
+            Intent intent = new Intent(context, View_Adm_AsignarCliente.class);
             intent.putExtra("trab_id", trab.get(position).getId()+"");
             context.startActivity(intent);
         });

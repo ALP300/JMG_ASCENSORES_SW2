@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class View_AsignarCliente extends AppCompatActivity {
+public class View_Adm_AsignarCliente extends AppCompatActivity {
 
     private ListView lstCli;
     private Connection connection;
@@ -34,9 +34,9 @@ public class View_AsignarCliente extends AppCompatActivity {
                 if (connection != null) {
                     try {
                         // Ejecutar la consulta para obtener los ascensores del cliente
-                        List<Ent_Cliente> clients = new DB_InfoClientsNull(connection, View_AsignarCliente.this).execute().get();// Agregar todos los ascensores a la lista
+                        List<Ent_Cliente> clients = new DB_InfoClientsNull(connection, View_Adm_AsignarCliente.this).execute().get();// Agregar todos los ascensores a la lista
                         // Configurar el adaptador
-                        Adapter_clientes adapter = new Adapter_clientes(View_AsignarCliente.this, clients);
+                        Adapter_clientes adapter = new Adapter_clientes(View_Adm_AsignarCliente.this, clients);
                         lstCli.setAdapter(adapter);
                         connection.close();
                         btnAñadir.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +48,7 @@ public class View_AsignarCliente extends AppCompatActivity {
                                         dbHelper.actualizarRegistro(codTrab, x);
 
                                     }
-                                    Intent intent = new Intent(View_AsignarCliente.this, View_AsignarTrabajador.class);
+                                    Intent intent = new Intent(View_Adm_AsignarCliente.this, View_Adm_AsignarTrabajador.class);
                                     startActivity(intent);
                                 }).start();
                             }

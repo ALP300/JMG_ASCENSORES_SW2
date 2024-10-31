@@ -1,30 +1,23 @@
 package com.example.jmg_ascensores;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class View_HistorialMantenimiento extends AppCompatActivity {
-    private ListView lista;
-    private Connection connection;
+public class View_Adm_AsignarTrabajador extends AppCompatActivity {
 
+    private ListView listTrab;
+    private Connection connection;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.historial_mantenimiento); // Asegúrate de que esto coincida con tu archivo de diseño
-        lista = findViewById(R.id.lstHist);
-         // Reemplaza con la ID real de tu botón
+        setContentView(R.layout.asignar_trabajador); // Asegúrate de que esto coincida con tu archivo de diseño
+        listTrab = findViewById(R.id.lstTrabs);
 
         new DB_Connect() {
             @Override
@@ -33,11 +26,10 @@ public class View_HistorialMantenimiento extends AppCompatActivity {
                 if (connection != null) {
                     try {
                         // Ejecutar la consulta para obtener los ascensores del cliente
-                        List<Ent_Mantenimiento> listMant = new DB_InfoHistorial(connection, View_HistorialMantenimiento.this).execute().get();// Agregar todos los ascensores a la lista
+                        List<Ent_Trab> trabs = new DB_InfoTrab(connection, View_Adm_AsignarTrabajador.this).execute().get();// Agregar todos los ascensores a la lista
                         // Configurar el adaptador
-                        Adapter_Historial adapter = new Adapter_Historial(View_HistorialMantenimiento.this, listMant);
-                        lista.setAdapter(adapter);
-
+                        Adapter_trab adapter = new Adapter_trab(View_Adm_AsignarTrabajador.this, trabs);
+                        listTrab.setAdapter(adapter);
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
                     } catch (InterruptedException e) {

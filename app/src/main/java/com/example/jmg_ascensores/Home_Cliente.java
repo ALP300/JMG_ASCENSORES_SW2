@@ -43,7 +43,7 @@ public class Home_Cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("VistaAdmin", "Botón de Mantenimientos Próximos clicado");
-                Intent intent = new Intent(Home_Cliente.this, View_ProxManten.class);
+                Intent intent = new Intent(Home_Cliente.this, View_Cli_ProxManten.class);
                 intent.putExtra("codCli", codCli); // Envía el código del cliente
                 startActivity(intent);
             }
@@ -53,7 +53,7 @@ public class Home_Cliente extends AppCompatActivity {
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home_Cliente.this, View_InfoAscensor.class);
+                Intent intent = new Intent(Home_Cliente.this, View_Cli_InfoAscensor.class);
                 intent.putExtra("codCli", codCli); // Envía el código del cliente
                 Log.i("VistaCliente", "Código del cliente que se enviará: " + codCli);
                 startActivity(intent);

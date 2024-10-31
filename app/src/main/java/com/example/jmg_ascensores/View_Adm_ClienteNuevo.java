@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Connection;
 
-public class View_ClienteNuevo extends AppCompatActivity {
+public class View_Adm_ClienteNuevo extends AppCompatActivity {
 
     private static final int MAP_REQUEST_CODE = 1;
     private EditText nombreEmpresaInput, codigoInput, passwordInput;
@@ -39,7 +39,7 @@ public class View_ClienteNuevo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Abrimos una nueva actividad para seleccionar la ubicación en Google Maps
-                Intent intent = new Intent(View_ClienteNuevo.this, API_Maps.class);
+                Intent intent = new Intent(View_Adm_ClienteNuevo.this, API_Maps.class);
                 startActivityForResult(intent, MAP_REQUEST_CODE);
             }
         });
@@ -55,29 +55,29 @@ public class View_ClienteNuevo extends AppCompatActivity {
 
                 // Validamos que todos los campos estén completos
                 if (nombreEmpresa.isEmpty() || codigo.isEmpty() || password.isEmpty() || ubicacionSeleccionada == null) {
-                    Toast.makeText(View_ClienteNuevo.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(View_Adm_ClienteNuevo.this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // Aquí deberías realizar la conexión con la base de datos y registrar el cliente
                 if (connection != null) {
-                    new DB_RegistrarCliente(connection, View_ClienteNuevo.this) {
+                    new DB_RegistrarCliente(connection, View_Adm_ClienteNuevo.this) {
                         @Override
                         protected void onPostExecute(Boolean result) {
                             super.onPostExecute(result);
                             if (result) {
                                 // Si el registro fue exitoso, navegar a la actividad Mantenimiento y pasar el código del cliente
-                                Intent intent = new Intent(View_ClienteNuevo.this, DB_RegAscensor.class);
+                                Intent intent = new Intent(View_Adm_ClienteNuevo.this, DB_RegAscensor.class);
                                 intent.putExtra("codigo_cliente", codigo); // Pasar el código del cliente a la actividad de mantenimiento
                                 startActivity(intent);
                                 finish();
                             } else {
-                                Toast.makeText(View_ClienteNuevo.this, "Error al registrar cliente.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(View_Adm_ClienteNuevo.this, "Error al registrar cliente.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }.execute(codigo, nombreEmpresa, password, ubicacionSeleccionada);
                 } else {
-                    Toast.makeText(View_ClienteNuevo.this, "Error: No se puede conectar a la base de datos.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(View_Adm_ClienteNuevo.this, "Error: No se puede conectar a la base de datos.", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -89,7 +89,7 @@ public class View_ClienteNuevo extends AppCompatActivity {
             protected void onPostExecute(Connection conn) {
                 connection = conn;
                 if (connection == null) {
-                    Toast.makeText(View_ClienteNuevo.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(View_Adm_ClienteNuevo.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
                 }
             }
         }.execute();

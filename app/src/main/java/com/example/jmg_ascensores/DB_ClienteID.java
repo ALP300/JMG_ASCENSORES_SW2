@@ -72,8 +72,8 @@ public class DB_ClienteID extends AsyncTask<String, Void, Ent_Cliente> {
         super.onPostExecute(resultado);
         if (resultado != null) {
             // Actualiza la UI o maneja el resultado aquí
-            if (context instanceof View_ProxManten) {
-                ((View_ProxManten) context).mostrarCliente(resultado);
+            if (context instanceof View_Cli_ProxManten) {
+                ((View_Cli_ProxManten) context).mostrarCliente(resultado);
             }
         } else {
             Toast.makeText(context, "Datos no encontrados", Toast.LENGTH_SHORT).show();
