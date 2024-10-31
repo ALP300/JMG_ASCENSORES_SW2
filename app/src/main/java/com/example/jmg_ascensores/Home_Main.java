@@ -51,10 +51,27 @@ public class Home_Main extends AppCompatActivity {
                     return;
                 }
 
+                // Validar que solo se ingresen letras y números
+                if (!code.matches("[a-zA-Z0-9]+") || !password.matches("[a-zA-Z0-9]+")) {
+                    Toast.makeText(Home_Main.this, "Solo se permiten letras y números.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Deshabilitar el botón mientras se verifica
+                loginButton.setEnabled(false);
+
                 if (connection != null) {
-                    new DB_VerifyAdmin(connection, Home_Main.this).execute(code, password);
+                    new DB_VerifyAdmin(connection, Home_Main.this) {
+                        @Override
+                        protected void onPostExecute(String[] dtCli) {
+                            super.onPostExecute(dtCli);
+                            // Habilitar el botón de nuevo después de la consulta
+                            loginButton.setEnabled(true);
+                        }
+                    }.execute(code, password);
                 } else {
                     Toast.makeText(Home_Main.this, "Conexión a la base de datos no disponible.", Toast.LENGTH_SHORT).show();
+                    loginButton.setEnabled(true);  // Rehabilitar en caso de falla de conexión
                 }
             }
         });
