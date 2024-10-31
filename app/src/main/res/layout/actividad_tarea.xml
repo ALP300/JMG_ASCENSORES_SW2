@@ -6,125 +6,143 @@
     android:layout_height="match_parent"
     android:background="#0E2842">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="408dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="562dp"
-        android:src="@drawable/logo"
-        app:layout_constraintBottom_toTopOf="@+id/registrar_tareas"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="1dp" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/titulo_registrar_tareas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Registrar Tareas"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logo" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="408dp"
+                android:layout_height="112dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/logo"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/titulo_registrar_tareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
+                android:text="Registrar Tareas"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/icono_nombre_tarea"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/tarea1" />
+
+                <EditText
+                    android:id="@+id/nombre_tarea_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="Nombre de la tarea"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/icono_descripcion_tarea"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/tarea2" />
+
+                <EditText
+                    android:id="@+id/descripcion_tarea_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/edittext_background"
+                    android:hint="Descripción de la tarea"
+                    android:minHeight="48dp"
+                    android:padding="12dp"
+                    android:textColor="#000000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spnAsc"
+                    android:layout_width="370dp"
+                    android:layout_height="30dp"
+                    android:background="#FFFFFF"
+                    android:gravity="fill_horizontal"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/guardar_tarea_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#396F8E"
+                android:padding="12dp"
+                android:text="Guardar Tarea"
+                android:textColor="#000000" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tareas_list"
+                android:layout_width="374dp"
+                android:layout_height="246dp"
+                android:layout_margin="16dp"
+                android:background="#FFFFFF" />
+
+            <Button
+                android:id="@+id/registrar_tareas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="#376A89"
+                android:padding="12dp"
+                android:text="Registrar Tareas"
+                android:textColor="#000000" />
+        </LinearLayout>
+    </ScrollView>
 
     <!-- Icono para el nombre de la tarea -->
-    <ImageView
-        android:id="@+id/icono_nombre_tarea"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/tarea1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titulo_registrar_tareas" />
 
     <!-- Campo para el nombre de la tarea -->
-    <EditText
-        android:id="@+id/nombre_tarea_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Nombre de la tarea"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/icono_nombre_tarea"
-        app:layout_constraintTop_toTopOf="@id/icono_nombre_tarea" />
 
     <!-- Icono para la descripción de la tarea -->
-    <ImageView
-        android:id="@+id/icono_descripcion_tarea"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/tarea2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nombre_tarea_input" />
 
     <!-- Campo para la descripción de la tarea -->
-    <EditText
-        android:id="@+id/descripcion_tarea_input"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/edittext_background"
-        android:hint="Descripción de la tarea"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/icono_descripcion_tarea"
-        app:layout_constraintTop_toTopOf="@id/icono_descripcion_tarea" />
 
     <!-- Botón para guardar la tarea -->
-    <Button
-        android:id="@+id/guardar_tarea_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#396F8E"
-        android:padding="12dp"
-        android:text="Guardar Tarea"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/descripcion_tarea_input" />
 
     <!-- RecyclerView para mostrar la lista de tareas -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tareas_list"
-        android:layout_width="374dp"
-        android:layout_height="246dp"
-        android:layout_margin="16dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guardar_tarea_button"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/registrar_tareas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="#376A89"
-        android:padding="12dp"
-        android:text="Registrar Tareas"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tareas_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

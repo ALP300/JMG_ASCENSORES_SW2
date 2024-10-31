@@ -24,7 +24,7 @@ public class DB_Mantenimiento extends AppCompatActivity {
     private EditText editTextFechaFin;
     private Button buttonRegistrar;
     private Connection conexion;
-    private String codigoCliente;
+    private static String codigoCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +163,7 @@ public class DB_Mantenimiento extends AppCompatActivity {
                 // Intent para iniciar la actividad Tarea y pasar el código de mantenimiento
                 Intent intent = new Intent(actividad, DB_Tarea.class);
                 intent.putExtra("codigo_mantenimiento", codigoMantenimiento); // Pasar el código de mantenimiento
+                intent.putExtra("codCli", codigoCliente);
                 actividad.startActivity(intent);
                 actividad.finish(); // Opcionalmente, finalizar la actividad actual
             } else {
