@@ -16,9 +16,9 @@
         android:layout_marginTop="53dp"
         android:scaleType="centerInside"
         android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Título -->
     <TextView
@@ -30,9 +30,9 @@
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <!-- Campos de entrada con íconos -->
     <ImageView
@@ -51,13 +51,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
+        android:foregroundTint="#D59595"
         android:hint="NOMBRE"
-        android:textColor="#8DA8D1"
+        android:padding="12dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="12dp"
-        app:layout_constraintStart_toEndOf="@id/icon_nombre"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_nombre"
         app:layout_constraintTop_toTopOf="@id/icon_nombre" />
 
     <ImageView
@@ -76,13 +78,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
         android:hint="APELLIDO"
-        android:textColor="#8DA8D1"
+        android:padding="12dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="12dp"
-        app:layout_constraintStart_toEndOf="@id/icon_apellido"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_apellido"
         app:layout_constraintTop_toTopOf="@id/icon_apellido" />
 
     <ImageView
@@ -101,13 +104,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
         android:hint="EDAD"
-        android:textColor="#8DA8D1"
+        android:padding="12dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="12dp"
-        app:layout_constraintStart_toEndOf="@id/icon_edad"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_edad"
         app:layout_constraintTop_toTopOf="@id/icon_edad" />
 
     <ImageView
@@ -126,13 +130,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
         android:hint="FECHA DE CONTACTO"
-        android:textColor="#8DA8D1"
+        android:padding="12dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="12dp"
-        app:layout_constraintStart_toEndOf="@id/icon_fecha_contacto"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_fecha_contacto"
         app:layout_constraintTop_toTopOf="@id/icon_fecha_contacto" />
 
     <ImageView
@@ -151,13 +156,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
         android:hint="CÓDIGO (DNI)"
-        android:textColor="#8DA8D1"
+        android:padding="12dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="12dp"
-        app:layout_constraintStart_toEndOf="@id/icon_codigo"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_codigo"
         app:layout_constraintTop_toTopOf="@id/icon_codigo" />
 
     <ImageView
@@ -176,23 +182,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
+        android:background="#FFFFFF"
         android:hint="CONTRASEÑA"
         android:inputType="textPassword"
-        android:textColor="#8DA8D1"
+        android:padding="12dp"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:padding="12dp"
-        app:layout_constraintStart_toEndOf="@id/icon_password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/icon_password"
         app:layout_constraintTop_toTopOf="@id/icon_password" />
 
     <!-- Botón de registrar -->
     <Button
         android:id="@+id/registrar_button"
-        android:layout_width="0dp"
+        android:layout_width="317dp"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#213744"
+        android:backgroundTint="#2A6C94"
         android:text="REGISTRAR"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -205,7 +212,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#213744"
+        android:layout_marginEnd="136dp"
+        android:backgroundTint="#2A6C94"
         android:text="Cerrar Sesión"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
