@@ -25,7 +25,7 @@ public class View_AsignarCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.asignar_cliente); // Asegúrate de que esto coincida con tu archivo de diseño
         lstCli = findViewById(R.id.lstClientes);
-        btnAñadir= findViewById(R.id.btnAñad);
+        btnAñadir= findViewById(R.id.btnAñadir);
         codTrab = Integer.parseInt(getIntent().getStringExtra("trab_id"));
         new DB_Connect() {
             @Override

@@ -6,32 +6,57 @@
     android:layout_height="match_parent"
     android:background="#0E2842">
 
+    <!-- Logo en la parte superior -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="216dp"
+        android:layout_height="109dp"
+        android:src="@drawable/logo"
+    android:contentDescription="Logo de la aplicación"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginTop="16dp" /> <!-- Margen superior para el logo -->
+
     <TextView
         android:id="@+id/txtTit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="21dp"
         android:text="HISTORIAL DE MANTENIMIENTOS"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/lstHist"
+        app:layout_constraintBottom_toTopOf="@id/cardViewHist"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" /> <!-- Ajustar para que esté debajo del logo -->
 
-    <ListView
-        android:id="@+id/lstHist"
+    <!-- CardView para el historial de mantenimientos -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewHist"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:background="#FFFFFF"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="#1A3A5A"
+        app:cardCornerRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTit" />
+        app:layout_constraintTop_toBottomOf="@+id/txtTit">
+
+        <ListView
+            android:id="@+id/lstHist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="1dp"
+            android:background="#0E2842" /> <!-- Color de fondo adaptado -->
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
