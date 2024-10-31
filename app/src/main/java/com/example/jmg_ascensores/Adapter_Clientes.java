@@ -1,7 +1,6 @@
 package com.example.jmg_ascensores;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +9,15 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class Adapter_clientes extends BaseAdapter {
+public class Adapter_Clientes extends BaseAdapter {
 
     private Context context;
     private List<Ent_Cliente> cliente;
     private List<String> listID = new ArrayList<>();
 
-    public Adapter_clientes(Context context, List<Ent_Cliente> cliente) {
+    public Adapter_Clientes(Context context, List<Ent_Cliente> cliente) {
         this.context = context;
         this.cliente = cliente;
     }

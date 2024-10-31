@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
@@ -54,7 +53,7 @@ public class Adapter_BtnEmpresas extends BaseAdapter {
         // Configurar el click en toda la tarjeta para abrir la actividad
         String finalEmpresa = empresa;
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_TrabajadorTarea.class);
+            Intent intent = new Intent(context, View_Trab_Empresas.class);
             intent.putExtra("empresa", finalEmpresa);
             intent.putExtra("ubicacion", cliente.get(position).getUbicacion());
             intent.putExtra("codCli", cliente.get(position).getCodigo());

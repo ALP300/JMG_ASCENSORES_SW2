@@ -9,7 +9,7 @@ public class Splash extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.splash);
 
         // Tiempo que se mostrará el splash screen
         int SPLASH_DISPLAY_LENGTH = 3000; // 3 segundos

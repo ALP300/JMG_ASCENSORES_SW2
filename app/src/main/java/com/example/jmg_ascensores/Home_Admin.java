@@ -16,7 +16,7 @@ public class Home_Admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vista); // Asegúrate de que este es el diseño correcto
+        setContentView(R.layout.adm_menu); // Asegúrate de que este es el diseño correcto
 
         // Vinculamos las vistas con sus respectivos id
         botonTrabajador = findViewById(R.id.botonTrabajador);

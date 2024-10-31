@@ -15,7 +15,7 @@ public class View_Adm_Registrar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.registro_cliente); // Asegúrate de que esto coincida con tu archivo de diseño
+        setContentView(R.layout.adm_registro_cliente); // Asegúrate de que esto coincida con tu archivo de diseño
 
         clienteLayout = findViewById(R.id.ClienteLayout); // ID del LinearLayout para CLIENTE NUEVO
         trabajadorLayout = findViewById(R.id.TrabajadorLayout); // ID del LinearLayout para REGISTRAR TRABAJADOR NUEVO
