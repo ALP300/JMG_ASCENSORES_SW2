@@ -31,7 +31,7 @@ public class DB_Tarea extends AppCompatActivity {
     private Button guardarTareaButton, registrarTareas;
     private Spinner spnAsc;
     private RecyclerView recyclerView;
-    private Adapter_Tarea adapter;
+    private Adapter_Tareas adapter;
     private ArrayList<Ent_TareaItem> tareasList;
     private ArrayList<Ent_Ascensor> listImp;
     private List<String> listAsc;
@@ -54,7 +54,7 @@ public class DB_Tarea extends AppCompatActivity {
         // Obtener el código de mantenimiento del intent
         codigoMantenimiento = getIntent().getIntExtra("codigo_mantenimiento", -1);
         tareasList = new ArrayList<>();
-        adapter = new Adapter_Tarea(tareasList);
+        adapter = new Adapter_Tareas(tareasList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         codCli = getIntent().getStringExtra("codCli");
@@ -75,7 +75,7 @@ public class DB_Tarea extends AppCompatActivity {
                     Toast.makeText(DB_Tarea.this, "Error al conectar con la base de datos.", Toast.LENGTH_LONG).show();
                 }
                 try {
-                    listImp= new DB_AscCli(connection, DB_Tarea.this).execute(codCli).get();
+                    listImp= new DB_InfoAscenWhere(connection, DB_Tarea.this).execute(codCli).get();
                     HashMap<String, Integer> ascensorMap = new HashMap<>();
                     listAsc = new ArrayList<>();
                     for (Ent_Ascensor ascens : listImp) {

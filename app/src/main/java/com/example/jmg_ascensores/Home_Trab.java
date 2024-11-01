@@ -28,7 +28,7 @@ public class Home_Trab extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Iniciar View_TareasEmpresa al hacer clic en "Empresas Asignadas"
-                Intent intent = new Intent(Home_Trab.this, View_Trab_TareasEmpresa.class);
+                Intent intent = new Intent(Home_Trab.this, View_Trab_Empresas.class);
                 intent.putExtra("codTrab", codTrab);
                 startActivity(intent);
                 finish(); // Cerrar Home_Trab

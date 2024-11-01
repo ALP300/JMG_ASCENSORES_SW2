@@ -41,7 +41,7 @@ public class View_Cli_InfoAscensor extends AppCompatActivity {
     }
 
     private void cargarAscensores(Connection connection, String codCli, RecyclerView recyclerView) {
-        new DB_AscCli(connection, View_Cli_InfoAscensor.this) {
+        new DB_InfoAscenWhere(connection, View_Cli_InfoAscensor.this) {
             @Override
             protected void onPostExecute(ArrayList<Ent_Ascensor> items) {
                 if (items != null) {

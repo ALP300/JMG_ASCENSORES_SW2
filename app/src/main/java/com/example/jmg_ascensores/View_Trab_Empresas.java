@@ -1,157 +1,50 @@
 package com.example.jmg_ascensores;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-
-import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
-import java.util.Locale;
 
-public class View_Trab_Empresas extends AppCompatActivity implements OnMapReadyCallback{
-    private Button btnConf;
-    private String empresa;
-    private String data;
-    private String codCli;
-    private String ubicacion[] = new String[2];
-    private TextView txtTit;
-    private TextView txtDir;
-    private double latitud;
-    private double longitud;
-    private MapView mapView;
-    private GoogleMap googleMap;
-    private static final String MAPVIEW_BUNDLE_KEY = "MapViewBundleKey";
-    private Bundle mapViewBundle;
-    @SuppressLint("MissingInflatedId")
+public class View_Trab_Empresas extends AppCompatActivity {
+
+    private Connection connection; // La conexión a la base de datos
+    private ListView lstEmps;
+    private String codTrab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.trab_detalle_manten);
+        setContentView(R.layout.trab_empresas_designadas);
 
-        btnConf = findViewById(R.id.btnConf);
-        txtDir = findViewById(R.id.txtDir);
-        txtTit = findViewById(R.id.txtNomEm);
-        empresa = getIntent().getStringExtra("empresa");
-        data = getIntent().getStringExtra("ubicacion");
-        codCli = getIntent().getStringExtra("codCli");
+        // Obtener referencia al botón
+        codTrab = getIntent().getStringExtra("codTrab");
+        // Establecer el OnClickListener
+         lstEmps = findViewById(R.id.lstBtnEmp);
 
-        if (data != null) {
-            txtTit.setText(empresa);
-            mapView = findViewById(R.id.mapView);
-            ubicacion = data.split(",");
-
-            if (ubicacion.length == 2) {
-                String latitudStr = ubicacion[0]; // Primer dato (latitud)
-                String longitudStr = ubicacion[1]; // Segundo dato (longitud)
-
-                // Convertir a double si es necesario
-                latitud = Double.parseDouble(latitudStr);
-                longitud = Double.parseDouble(longitudStr);
-                //Log.d("Database", "→"+latitud+longitud);
-                // Ahora puedes usar latitud y longitud
-                obtenerDireccion(latitud,longitud);
-
-                if (savedInstanceState != null) {
-                    mapViewBundle = savedInstanceState.getBundle(MAPVIEW_BUNDLE_KEY);
-                }
-
-                mapView.onCreate(mapViewBundle);
-                mapView.getMapAsync(this);
-                btnConf.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(View_Trab_Empresas.this, View_Trab_ListaMant.class);
-                        intent.putExtra("codCli", codCli);
-                        startActivity(intent);
+        new DB_Connect() {
+            @Override
+            protected void onPostExecute(Connection conn) {
+                connection = conn; // Guardar la conexión para su uso posterior
+                if (connection != null) {
+                    try {
+                        // Ejecutar la consulta para obtener los ascensores del cliente
+                        List<Ent_Cliente> cliens;
+                        cliens = new DB_InfoDetalleClientWhere(connection, View_Trab_Empresas.this).execute(codTrab).get();
+                        // Configurar el adaptador
+                        Adapter_BtnEmpresas adapter = new Adapter_BtnEmpresas(View_Trab_Empresas.this,cliens);
+                        lstEmps.setAdapter(adapter);
+                        Log.d("Database", "LISTA: ");
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
                     }
-                });
-            } else {
-                // Manejar el caso donde no hay 2 partes
-                Log.e("Database", "La ubicación no contiene dos datos separados por una coma.");
+                } else {
+                    Log.d("Database", "Conexión nula");
+                }
             }
-        } else {
-            // Manejar el caso donde 'ubicacion' es null
-            Toast.makeText(View_Trab_Empresas.this, "No hay ubicacion", Toast.LENGTH_LONG).show();
-
-        }
-
-
-}
-    private void obtenerDireccion(double latitud, double longitud) {
-
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        try {
-            List<Address> addresses = geocoder.getFromLocation(latitud, longitud, 1);
-            if (addresses != null && !addresses.isEmpty()) {
-                Address address = addresses.get(0);
-                String direccion = address.getAddressLine(0); // Dirección completa
-                txtDir.setText("Ubicación: " + direccion);
-            } else {
-                txtDir.setText("Ubicación: Dirección no disponible");
-            }
-        } catch (IOException e) {
-            txtDir.setText("Ubicación: Error al obtener la dirección");
-        }
-    }
-
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        googleMap = googleMap;
-
-        // Establece una ubicación inicial
-        LatLng initialLocation = new LatLng(latitud, longitud); // Cambia a la ubicación deseada
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(initialLocation, 16));
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mapView.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        mapView.onPause();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
-    }
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Bundle mapViewBundle = outState.getBundle(MAPVIEW_BUNDLE_KEY);
-        if (mapViewBundle == null) {
-            mapViewBundle = new Bundle();
-            outState.putBundle(MAPVIEW_BUNDLE_KEY, mapViewBundle);
-        }
-        mapView.onSaveInstanceState(mapViewBundle);
+        }.execute();
     }
 }
+

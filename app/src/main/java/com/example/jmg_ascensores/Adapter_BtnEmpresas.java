@@ -53,7 +53,7 @@ public class Adapter_BtnEmpresas extends BaseAdapter {
         // Configurar el click en toda la tarjeta para abrir la actividad
         String finalEmpresa = empresa;
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_Trab_Empresas.class);
+            Intent intent = new Intent(context, View_Trab_DetalleEmp.class);
             intent.putExtra("empresa", finalEmpresa);
             intent.putExtra("ubicacion", cliente.get(position).getUbicacion());
             intent.putExtra("codCli", cliente.get(position).getCodigo());

@@ -2,6 +2,7 @@ package com.example.jmg_ascensores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,7 +48,7 @@ public class Adapter_BtnAscensores extends BaseAdapter {
         // Obtener el nombre de la ascensorr y darle formato
         String Marc = ascensor.get(position).getMarca();
         String Mod = ascensor.get(position).getModel();
-
+        Integer codAsc = ascensor.get(position).getCodAsc();
 
         // Configurar el TextView con el nombre de la ascensorr
         TextView txt5 = convertView.findViewById(R.id.textView5);
@@ -58,9 +59,8 @@ public class Adapter_BtnAscensores extends BaseAdapter {
         // Configurar el click en toda la tarjeta para abrir la actividad
 
         convertView.setOnClickListener(v -> {
-            Intent intent = new Intent(context, View_Trab_Empresas.class);
-            intent.putExtra("ascensorr", Marc +", "+ Mod);
-            intent.putExtra("codAsc", ascensor.get(position).getCodAsc());
+            Intent intent = new Intent(context, View_Trab_ListaTareas.class);
+            intent.putExtra("codAsc",codAsc+"" );
             context.startActivity(intent);
         });
 

@@ -2,6 +2,7 @@ package com.example.jmg_ascensores;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.sql.Connection;
@@ -9,60 +10,60 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class DB_InfoAscenWhere extends AsyncTask<String, Void, List<Ent_Cliente>> {
+public class DB_InfoAscenWhere extends AsyncTask<String, Void, ArrayList<Ent_Ascensor>> {
+    private static final String TAG = "DB_AscCli"; // Para los logs
     private Connection connection;
     private Context context;
 
     public DB_InfoAscenWhere(Connection connection, Context context) {
-        this.context = context;
         this.connection = connection;
+        this.context = context;
     }
 
     @Override
-    protected List<Ent_Cliente> doInBackground(String... params) {// El ID del clientex que deseas obtener
-        List<Ent_Cliente>  clients = new ArrayList<>();
-        int code = Integer.parseInt(params[0]);
+    protected ArrayList<Ent_Ascensor> doInBackground(String... params) {
+        String idCliente = params[0]; // El ID del cliente que deseas obtener
+        ArrayList<Ent_Ascensor> ascensores = new ArrayList<>();
+        Log.i(TAG, "Iniciando la consulta para el cliente: " + idCliente);
+
         try {
-            String query = "SELECT codigo, nombre_empresa, ubicacion FROM clientes WHERE id_trab = ?";
-            // Cambia a executeQuery para obtener resultados
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, code);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                // Crear un nuevo objeto Ent_Trab con los datos obtenidos
-                Ent_Cliente client = new Ent_Cliente();
-                client.setCodigo(resultSet.getString("codigo"));
-                client.setNombre_empresa(resultSet.getString("nombre_empresa"));
-                client.setUbicacion(resultSet.getString("ubicacion"));
-                clients.add(client);
-            }
-            // Retorna la lista de trabajadores
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null; // Retorna null en caso de error
-        } finally {
-            try {
-                if (connection != null && !connection.isClosed()) {
-                    connection.close(); // Cierra la conexión si es necesario
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+            // Realiza la consulta
+            String query = "SELECT marca, modelo, codigo_ascensor FROM ascensores WHERE codigo_cliente = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, idCliente);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-        return clients;
+            // Procesa el resultado
+            while (resultSet.next()) {
+                Ent_Ascensor ascensor = new Ent_Ascensor();
+                ascensor.setMarca(resultSet.getString("marca"));
+                ascensor.setModelo(resultSet.getString("modelo"));
+                ascensor.setCodAsc(resultSet.getInt("codigo_ascensor"));
+                ascensores.add(ascensor);
+                Log.d("Database", "Ascensor encontrado: " + ascensor.getCodAsc());
+            }
+
+            // Cierra recursos
+            resultSet.close();
+            preparedStatement.close();
+            Log.i(TAG, "Consulta finalizada, total de ascensores encontrados: " + ascensores.size());
+
+        } catch (SQLException e) {
+            Log.e(TAG, "Error en la consulta: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return ascensores; // Retornar la lista de ascensores
     }
 
     @Override
-    protected void onPostExecute(List<Ent_Cliente> resultado) {
+    protected void onPostExecute(ArrayList<Ent_Ascensor> resultado) {
         super.onPostExecute(resultado);
-        if (resultado != null) {
-            // Maneja el resultado (actualiza UI, etc.)
+        if (resultado != null && !resultado.isEmpty()) {
+            Log.i(TAG, "Ascensores recibidos en onPostExecute: " + resultado.size());
         } else {
-            Toast.makeText(context, "Datos no encontrados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Ascensores no encontrados", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "No se encontraron ascensores.");
         }
     }
-
 }

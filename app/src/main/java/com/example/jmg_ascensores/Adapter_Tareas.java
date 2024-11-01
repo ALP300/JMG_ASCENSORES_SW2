@@ -1,26 +1,19 @@
 package com.example.jmg_ascensores;
 
-import android.graphics.Color;
-import android.util.Log;
+import android.graphics.Color; // Import Color class
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
-import java.util.List;
 
-public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewHolder> {
-    private List<Ent_TareaItem> tareasList;
-    private List<Integer> listk = new ArrayList<>();
-    private List<Integer> listPos = new ArrayList<>();
-    private Integer selectedId;
+public class Adapter_Tareas extends RecyclerView.Adapter<Adapter_Tareas.TareaViewHolder> {
+    private ArrayList<Ent_TareaItem> tareasList;
+
     // Constructor to initialize the list of tareas
-    public Adapter_Tarea(List<Ent_TareaItem> tareasList) {
+    public Adapter_Tareas(ArrayList<Ent_TareaItem> tareasList) {
         this.tareasList = tareasList != null ? tareasList : new ArrayList<>(); // Evita NullPointerException
     }
 
@@ -28,7 +21,7 @@ public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewH
     @Override
     public TareaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflate the layout for each item in the RecyclerView
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_tarea, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_tareas, parent, false);
         return new TareaViewHolder(view);
     }
 
@@ -39,18 +32,11 @@ public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewH
 
         // Set the task name and description to the respective TextViews
         holder.nombreTextView.setText(tarea.getNombre());
+        holder.descripcionTextView.setText(tarea.getDescripcion());
 
         // Set text color to black
         holder.nombreTextView.setTextColor(Color.BLACK);
-
-
-        holder.cbTar.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                listk.add(tarea.getCodTar());
-            } else {
-                listk.remove(tarea.getCodTar()); // Asegúrate de eliminar el objeto correctamente
-            }
-        });
+        holder.descripcionTextView.setTextColor(Color.BLACK);
     }
 
     @Override
@@ -60,18 +46,13 @@ public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewH
     }
 
     public static class TareaViewHolder extends RecyclerView.ViewHolder {
-        TextView nombreTextView;
-        private static CheckBox cbTar;
+        TextView nombreTextView, descripcionTextView;
+
         public TareaViewHolder(@NonNull View itemView) {
             super(itemView);
             // Initialize the TextViews from the layout
-            nombreTextView = itemView.findViewById(R.id.txtTar); // Cambia el ID aquí
-            cbTar = itemView.findViewById(R.id.cbTar);
-
+            nombreTextView = itemView.findViewById(R.id.marcAscAda); // Cambia el ID aquí
+            descripcionTextView = itemView.findViewById(R.id.modAscAda); // Cambia el ID aquí
         }
     }
-    public List<Integer> getListk(){
-        return listk;
-    }
-
 }
