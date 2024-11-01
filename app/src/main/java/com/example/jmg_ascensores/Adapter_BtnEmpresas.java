@@ -14,10 +14,11 @@ public class Adapter_BtnEmpresas extends BaseAdapter {
 
     private Context context;
     private List<Ent_Cliente> cliente;
-
-    public Adapter_BtnEmpresas(Context context, List<Ent_Cliente> cliente) {
+    private String codTrab;
+    public Adapter_BtnEmpresas(Context context, List<Ent_Cliente> cliente, String codTrab) {
         this.context = context;
         this.cliente = cliente;
+        this.codTrab = codTrab;
     }
 
     @Override
@@ -55,6 +56,8 @@ public class Adapter_BtnEmpresas extends BaseAdapter {
         convertView.setOnClickListener(v -> {
             Intent intent = new Intent(context, View_Trab_DetalleEmp.class);
             intent.putExtra("empresa", finalEmpresa);
+            intent.putExtra("codMant", cliente.get(position).getCodMant()+"");
+            intent.putExtra("codTrab", codTrab);
             intent.putExtra("ubicacion", cliente.get(position).getUbicacion());
             intent.putExtra("codCli", cliente.get(position).getCodigo());
             context.startActivity(intent);

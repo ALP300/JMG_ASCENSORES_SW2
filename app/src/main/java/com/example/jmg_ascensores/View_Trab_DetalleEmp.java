@@ -26,9 +26,7 @@ import java.util.Locale;
 
 public class View_Trab_DetalleEmp extends AppCompatActivity implements OnMapReadyCallback{
     private Button btnConf;
-    private String empresa;
-    private String data;
-    private String codCli;
+    private String empresa,data,codCli,codMant,codTrab;
     private String ubicacion[] = new String[2];
     private TextView txtTit;
     private TextView txtDir;
@@ -50,6 +48,8 @@ public class View_Trab_DetalleEmp extends AppCompatActivity implements OnMapRead
         empresa = getIntent().getStringExtra("empresa");
         data = getIntent().getStringExtra("ubicacion");
         codCli = getIntent().getStringExtra("codCli");
+        codMant= getIntent().getStringExtra("codMant");
+        codTrab= getIntent().getStringExtra("codTrab");
 
         if (data != null) {
             txtTit.setText(empresa);
@@ -78,6 +78,8 @@ public class View_Trab_DetalleEmp extends AppCompatActivity implements OnMapRead
                     public void onClick(View v) {
                         Intent intent = new Intent(View_Trab_DetalleEmp.this, View_Trab_ListaAscen.class);
                         intent.putExtra("codCli", codCli);
+                        intent.putExtra("codMant", codMant);
+                        intent.putExtra("codTrab", codTrab);
                         startActivity(intent);
                     }
                 });

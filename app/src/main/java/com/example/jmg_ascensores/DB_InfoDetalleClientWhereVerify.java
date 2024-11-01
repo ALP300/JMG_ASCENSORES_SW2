@@ -9,41 +9,32 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class DB_InfoTareasWhere extends AsyncTask<String, Void, ArrayList<Ent_TareaItem>> {
+public class DB_InfoDetalleClientWhereVerify extends AsyncTask<String, Void, Boolean> {
     private Connection connection;
     private Context context;
     private static final String URL = "jdbc:postgresql://dpg-csfb3ue8ii6s739e581g-a.oregon-postgres.render.com:5432/db_jmg_tcnw";
     private static final String USER = "db_jmg_user";
     private static final String PASSWORD = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
-
-    public DB_InfoTareasWhere( Context context) {
+    private Boolean v=false;
+    public DB_InfoDetalleClientWhereVerify(Context context) {
         this.context = context;
 
     }
 
     @Override
-    protected ArrayList<Ent_TareaItem> doInBackground(String... params) {// El ID del clientex que deseas obtener
-        ArrayList<Ent_TareaItem>  listTareas = new ArrayList<>();
-        Integer code = Integer.parseInt(params[0]);
+    protected Boolean doInBackground(String... params) {// El ID del clientex que deseas obtener
+        int code = Integer.parseInt(params[0]);
         try {
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            String query = "SELECT descripcion, nombre, codigo_tarea, codigo_mantenimiento FROM tareas WHERE cod_ascensor = ? AND estado = ?";
+            String query = "SELECT * FROM tareas WHERE estado = ? AND codigo_mantenimiento = ?";
             // Cambia a executeQuery para obtener resultados
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, code);
-            statement.setString(2, "falta");
+            statement.setString(1, "falta");
+            statement.setInt(2, code);
             ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                // Crear un nuevo objeto Ent_Trab con los datos obtenidos
-                Ent_TareaItem tarea = new Ent_TareaItem();
-                tarea.setNombre(resultSet.getString("nombre"));
-                tarea.setDescripcion(resultSet.getString("descripcion"));
-                tarea.setCodTar(resultSet.getInt("codigo_tarea"));
-                tarea.setCodMan(resultSet.getInt("codigo_mantenimiento"));
-                listTareas.add(tarea);
+            if (resultSet.next()) {
+                v=true;
             }
             // Retorna la lista de trabajadores
         } catch (SQLException e) {
@@ -59,11 +50,11 @@ public class DB_InfoTareasWhere extends AsyncTask<String, Void, ArrayList<Ent_Ta
             }
         }
 
-        return listTareas;
+        return v;
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Ent_TareaItem> resultado) {
+    protected void onPostExecute(Boolean resultado) {
         super.onPostExecute(resultado);
         if (resultado != null) {
             // Maneja el resultado (actualiza UI, etc.)

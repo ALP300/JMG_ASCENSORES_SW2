@@ -5,24 +5,24 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DB_Tarea_Terminar {
+public class DB_Mantenimiento_Update {
 
     private static final String URL = "jdbc:postgresql://dpg-csfb3ue8ii6s739e581g-a.oregon-postgres.render.com:5432/db_jmg_tcnw";
     private static final String USER = "db_jmg_user";
     private static final String PASSWORD = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
 
-    public void actualizarManten(Integer id) {
+    public void actualizarManten(String id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-
+        Integer id2= Integer.parseInt(id);
         try {
             // Establecer la conexión
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             // Crear la consulta SQL
-            String sql = "UPDATE tareas SET estado = ? WHERE codigo_tarea = ?";
+            String sql = "UPDATE mantenimiento SET estado = ? WHERE codigo_mantenimiento = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "Terminado");
-            preparedStatement.setInt(2, id);
+            preparedStatement.setString(1, "terminado");
+            preparedStatement.setInt(2, id2);
 
             // Ejecutar la actualización
             preparedStatement.executeUpdate();
@@ -38,5 +38,6 @@ public class DB_Tarea_Terminar {
                 e.printStackTrace();
             }
         }
+
     }
 }

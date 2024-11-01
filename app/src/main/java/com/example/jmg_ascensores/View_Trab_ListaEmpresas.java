@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.sql.Connection;
 import java.util.List;
 
-public class View_Trab_Empresas extends AppCompatActivity {
+public class View_Trab_ListaEmpresas extends AppCompatActivity {
 
     private Connection connection; // La conexión a la base de datos
     private ListView lstEmps;
@@ -23,28 +23,17 @@ public class View_Trab_Empresas extends AppCompatActivity {
         codTrab = getIntent().getStringExtra("codTrab");
         // Establecer el OnClickListener
          lstEmps = findViewById(R.id.lstBtnEmp);
-
-        new DB_Connect() {
-            @Override
-            protected void onPostExecute(Connection conn) {
-                connection = conn; // Guardar la conexión para su uso posterior
-                if (connection != null) {
                     try {
                         // Ejecutar la consulta para obtener los ascensores del cliente
                         List<Ent_Cliente> cliens;
-                        cliens = new DB_InfoDetalleClientWhere(connection, View_Trab_Empresas.this).execute(codTrab).get();
+                        cliens = new DB_InfoDetalleClientWhere( View_Trab_ListaEmpresas.this).execute(codTrab).get();
                         // Configurar el adaptador
-                        Adapter_BtnEmpresas adapter = new Adapter_BtnEmpresas(View_Trab_Empresas.this,cliens);
+                        Adapter_BtnEmpresas adapter = new Adapter_BtnEmpresas(View_Trab_ListaEmpresas.this,cliens,codTrab);
                         lstEmps.setAdapter(adapter);
                         Log.d("Database", "LISTA: ");
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                } else {
-                    Log.d("Database", "Conexión nula");
-                }
-            }
-        }.execute();
     }
 }
 

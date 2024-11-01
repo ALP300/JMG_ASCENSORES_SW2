@@ -15,11 +15,13 @@ public class Adapter_BtnAscensores extends BaseAdapter {
 
     private Context context;
     private List<Ent_Ascensor> ascensor;
+    private String codMant,codTrab;
 
-
-    public Adapter_BtnAscensores(Context context, List<Ent_Ascensor> entA) {
+    public Adapter_BtnAscensores(Context context, List<Ent_Ascensor> entA, String codMant, String codTrab) {
         this.context = context;
         this.ascensor = entA;
+        this.codMant = codMant;
+        this.codTrab = codTrab;
     }
 
 
@@ -61,6 +63,8 @@ public class Adapter_BtnAscensores extends BaseAdapter {
         convertView.setOnClickListener(v -> {
             Intent intent = new Intent(context, View_Trab_ListaTareas.class);
             intent.putExtra("codAsc",codAsc+"" );
+            intent.putExtra("codMant",codMant);
+            intent.putExtra("codTrab",codTrab);
             context.startActivity(intent);
         });
 

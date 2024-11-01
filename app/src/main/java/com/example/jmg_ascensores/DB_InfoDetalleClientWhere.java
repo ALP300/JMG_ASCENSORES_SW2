@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,10 +15,13 @@ import java.util.List;
 public class DB_InfoDetalleClientWhere extends AsyncTask<String, Void, List<Ent_Cliente>> {
     private Connection connection;
     private Context context;
+    private static final String URL = "jdbc:postgresql://dpg-csfb3ue8ii6s739e581g-a.oregon-postgres.render.com:5432/db_jmg_tcnw";
+    private static final String USER = "db_jmg_user";
+    private static final String PASSWORD = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
 
-    public DB_InfoDetalleClientWhere(Connection connection, Context context) {
+    public DB_InfoDetalleClientWhere( Context context) {
         this.context = context;
-        this.connection = connection;
+
     }
 
     @Override
@@ -25,10 +29,11 @@ public class DB_InfoDetalleClientWhere extends AsyncTask<String, Void, List<Ent_
         List<Ent_Cliente>  clients = new ArrayList<>();
         int code = Integer.parseInt(params[0]);
         try {
-            String query = "SELECT codigo, nombre_empresa, ubicacion FROM clientes  JOIN mantenimiento ON clientes.codigo = mantenimiento.codigo_cliente WHERE mantenimiento.estado = ? AND id_trab = ?";
+            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            String query = "SELECT codigo, nombre_empresa, ubicacion,id_trab, codigo_mantenimiento FROM clientes  JOIN mantenimiento ON clientes.codigo = mantenimiento.codigo_cliente WHERE mantenimiento.estado = ? AND id_trab = ?";
             // Cambia a executeQuery para obtener resultados
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, "En proceso");
+            statement.setString(1, "pendiente");
             statement.setInt(2, code);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -37,6 +42,8 @@ public class DB_InfoDetalleClientWhere extends AsyncTask<String, Void, List<Ent_
                 client.setCodigo(resultSet.getString("codigo"));
                 client.setNombre_empresa(resultSet.getString("nombre_empresa"));
                 client.setUbicacion(resultSet.getString("ubicacion"));
+                client.setCodTrab(resultSet.getInt("id_trab"));
+                client.setCodMant(resultSet.getInt("codigo_mantenimiento"));
                 clients.add(client);
             }
             // Retorna la lista de trabajadores

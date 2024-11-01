@@ -87,7 +87,6 @@ public class DB_RegAscensor extends AppCompatActivity {
                     Intent intent = new Intent(DB_RegAscensor.this, DB_Mantenimiento.class);
                     intent.putExtra("codigo_cliente", clienteCodigo);
                     startActivity(intent);
-
                     // Ejecuta la tarea para registrar los ascensores en la base de datos
                     new RegisterAscensoresTask().execute();
                 } else {
@@ -118,7 +117,7 @@ public class DB_RegAscensor extends AppCompatActivity {
                 connection.setAutoCommit(false);
 
                 // Prepara la consulta de inserción
-                String query = "INSERT INTO ascensores (marca, modelo, codigo_cliente) VALUES (?, ?, ?)";
+                String query = "INSERT INTO ascensores (marca, modelo, codigo_cliente,estado) VALUES (?, ?, ?, ?)";
                 PreparedStatement statement = connection.prepareStatement(query);
 
                 // Inserta cada ascensor de la lista
@@ -126,6 +125,7 @@ public class DB_RegAscensor extends AppCompatActivity {
                     statement.setString(1, ascensor.getMarca());
                     statement.setString(2, ascensor.getModel());
                     statement.setString(3, clienteCodigo); // Usa el código del cliente recibido
+                    statement.setString(4, "pendiente");
                     statement.addBatch(); // Añade la operación al batch
                 }
 

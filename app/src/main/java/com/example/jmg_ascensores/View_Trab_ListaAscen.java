@@ -13,7 +13,7 @@ public class View_Trab_ListaAscen extends AppCompatActivity {
 
     private Connection connection; // La conexión a la base de datos
     private ListView lstAsc;
-    private String codCli;
+    private String codCli,codMant,codTrab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,8 @@ public class View_Trab_ListaAscen extends AppCompatActivity {
 
         // Obtener referencia al botón
         codCli = getIntent().getStringExtra("codCli");
+        codMant = getIntent().getStringExtra("codMant");
+        codTrab= getIntent().getStringExtra("codTrab");
         Log.d("Database", "cod: "+codCli);
         // Establecer el OnClickListener
          lstAsc = findViewById(R.id.lstBtnAsc);
@@ -35,7 +37,7 @@ public class View_Trab_ListaAscen extends AppCompatActivity {
                         List<Ent_Ascensor> asc;
                         asc = new DB_InfoAscenWhere(connection, View_Trab_ListaAscen.this).execute(codCli).get();
                         // Configurar el adaptador
-                        Adapter_BtnAscensores adapter = new Adapter_BtnAscensores(View_Trab_ListaAscen.this,asc);
+                        Adapter_BtnAscensores adapter = new Adapter_BtnAscensores(View_Trab_ListaAscen.this,asc,codMant, codTrab);
                         lstAsc.setAdapter(adapter);
 
                     } catch (Exception e) {

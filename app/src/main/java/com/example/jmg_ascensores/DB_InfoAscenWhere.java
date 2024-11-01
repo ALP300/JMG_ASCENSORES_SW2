@@ -29,9 +29,10 @@ public class DB_InfoAscenWhere extends AsyncTask<String, Void, ArrayList<Ent_Asc
 
         try {
             // Realiza la consulta
-            String query = "SELECT marca, modelo, codigo_ascensor FROM ascensores WHERE codigo_cliente = ?";
+            String query = "SELECT marca, modelo, codigo_ascensor FROM ascensores WHERE codigo_cliente = ? AND estado = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, idCliente);
+            preparedStatement.setString(2, "pendiente");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             // Procesa el resultado

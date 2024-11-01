@@ -6,6 +6,7 @@ public class Ent_Cliente {
 
     private String codigo;
     private String nombre_empresa;
+    private Integer codTrab, codMant;
     private String password;
     private String ubicacion;
     private Date Fec;
@@ -14,6 +15,14 @@ public class Ent_Cliente {
 
     public String getCodigo() {
         return codigo;
+    }
+
+    public Integer getCodMant() {
+        return codMant;
+    }
+
+    public void setCodMant(Integer codMant) {
+        this.codMant = codMant;
     }
 
     public void setCodigo(String codigo) {
@@ -59,6 +68,14 @@ public class Ent_Cliente {
 
     public void setLatitud(double latitud) {
         this.latitud = latitud;
+    }
+
+    public Integer getCodTrab() {
+        return codTrab;
+    }
+
+    public void setCodTrab(Integer codTrab) {
+        this.codTrab = codTrab;
     }
 
     // Nuevos métodos para longitud

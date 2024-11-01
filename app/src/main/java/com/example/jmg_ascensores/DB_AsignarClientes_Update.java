@@ -6,17 +6,13 @@ import android.widget.Toast;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class DB_AsignarClientes extends AsyncTask<String, Void, Boolean> {
+public class DB_AsignarClientes_Update extends AsyncTask<String, Void, Boolean> {
     private Connection connection;
     private Context context;
 
-    public DB_AsignarClientes(Connection connection, Context context) {
+    public DB_AsignarClientes_Update(Connection connection, Context context) {
         this.context = context;
         this.connection = connection;
     }

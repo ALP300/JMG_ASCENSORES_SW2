@@ -56,7 +56,7 @@
             android:layout_marginTop="15dp"
             android:backgroundTint="@android:color/holo_blue_dark"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Lista de Mantenimientos"
+            android:text="Lista de Ascensores"
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="16sp"
