@@ -46,7 +46,6 @@ public class View_Adm_AsignarCliente extends AppCompatActivity {
                                     List<String> listId = adapter.getClientId();
                                     for (String x :listId) {
                                         dbHelper.actualizarRegistro(codTrab, x);
-
                                     }
                                     Intent intent = new Intent(View_Adm_AsignarCliente.this, View_Adm_AsignarTrabajador.class);
                                     startActivity(intent);

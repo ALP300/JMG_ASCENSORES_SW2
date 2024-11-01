@@ -59,6 +59,9 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
                                         db_terminar.actualizarManten(x);
                                     }
 
+                                    Intent intent = new Intent(View_Trab_ListaTareas.this, View_Trab_ListaTareas.class);
+                                    intent.putExtra("codAsc",codAscen);
+                                    startActivity(intent);
                                 }).start();
                             }
                         });
