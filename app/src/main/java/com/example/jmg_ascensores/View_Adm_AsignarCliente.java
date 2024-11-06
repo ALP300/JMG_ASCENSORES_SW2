@@ -44,14 +44,19 @@ public class View_Adm_AsignarCliente extends AppCompatActivity {
                             public void onClick(View v) {
                                 new Thread(() -> {
                                     List<String> listId = adapter.getClientId();
-                                    for (String x :listId) {
+                                    for (String x : listId) {
                                         dbHelper.actualizarRegistro(codTrab, x);
                                     }
-                                    Intent intent = new Intent(View_Adm_AsignarCliente.this, View_Adm_AsignarTrabajador.class);
+
+                                    // Cambiar el intent para ir a Home_Admin
+                                    Intent intent = new Intent(View_Adm_AsignarCliente.this, Home_Admin.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK); // Opcional: limpiar la pila de actividades
                                     startActivity(intent);
+                                    finish(); // Finalizar la actividad actual para evitar regresar con el botón de retroceso
                                 }).start();
                             }
                         });
+
 
                     } catch (ExecutionException e) {
                         throw new RuntimeException(e);
