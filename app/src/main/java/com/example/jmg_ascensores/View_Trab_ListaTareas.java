@@ -3,7 +3,9 @@ package com.example.jmg_ascensores;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +24,8 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
     private DB_Ascensor_Update dbAsc = new DB_Ascensor_Update();
     private Integer num;
     private DB_Mantenimiento_Update maup = new DB_Mantenimiento_Update();
+    private ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,8 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
         lstCli = findViewById(R.id.lstTareasTrab);
         lstCli.setLayoutManager(new LinearLayoutManager(this));
         btnTerminar = findViewById(R.id.btnTerminar);
+        progressBar = findViewById(R.id.progressBar);  // Asegúrate de que el ID coincida con el que has usado en tu XML
+
     }
 
     private void loadCodAscen() {
@@ -65,6 +71,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
     }
 
     private void handleTerminarClick(Adapter_Tarea adapter) {
+        runOnUiThread(() -> progressBar.setVisibility(View.VISIBLE));
         new Thread(() -> {
             try {
                 List<Integer> listId = adapter.getListk();
@@ -82,11 +89,16 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
                 }
             } catch (ExecutionException | InterruptedException e) {
                 Log.e("Database", "Error al terminar tareas", e);
+            } finally {
+                // Oculta el ProgressBar después de completar la tarea
+                runOnUiThread(() -> progressBar.setVisibility(View.GONE));
             }
         }).start();
     }
 
     private void handlePostUpdate() {
+        runOnUiThread(() -> progressBar.setVisibility(View.VISIBLE));
+
         new Thread(() -> {
             try {
                 Boolean v = new DB_InfoDetalleClientWhereVerify(this).execute(codMant).get();
@@ -103,15 +115,20 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
                 }
             } catch (ExecutionException | InterruptedException e) {
                 Log.e("Database", "Error en la verificación de detalles", e);
+            }finally {
+                // Oculta el ProgressBar después de completar la tarea
+                runOnUiThread(() -> progressBar.setVisibility(View.GONE));
             }
         }).start();
     }
 
     private void restartActivity() {
+        runOnUiThread(() -> progressBar.setVisibility(View.VISIBLE));
         runOnUiThread(() -> {
             Intent intent = new Intent(this, View_Trab_ListaTareas.class);
             intent.putExtra("codAsc", codAscen);
             startActivity(intent);
         });
+        runOnUiThread(() -> progressBar.setVisibility(View.GONE));
     }
 }
