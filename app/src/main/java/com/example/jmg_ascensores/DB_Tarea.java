@@ -161,7 +161,7 @@ public class DB_Tarea extends AppCompatActivity {
                     statement.setInt(1, codigoMantenimiento);
                     statement.setString(2, tarea.getNombre());
                     statement.setString(3, tarea.getDescripcion());
-                    statement.setString(4, "pendiente"); // Estado por defecto
+                    statement.setString(4, "falta"); // Estado por defecto
                     statement.setInt(5, tarea.getCod_Asc());
                     statement.addBatch();
                 }
