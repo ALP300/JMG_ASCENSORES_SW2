@@ -64,7 +64,9 @@ public class View_Adm_ClienteNuevo extends AppCompatActivity {
                         !password.matches(".*[!@#$%^&*(),.?\":{}|<>].*") ||
                         !password.matches(".*[a-z].*") ||
                         !password.matches(".*[A-Z].*")) {
-                    Toast.makeText(View_Adm_ClienteNuevo.this, "La contraseña debe tener al menos 6 caracteres, contener al menos un símbolo, y tener al menos una letra minúscula y una mayúscula.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(View_Adm_ClienteNuevo.this,
+                            "La contraseña debe tener al menos 6 caracteres, contener al menos un símbolo, y tener al menos una letra minúscula y una mayúscula.",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
