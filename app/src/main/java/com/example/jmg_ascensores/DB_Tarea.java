@@ -31,7 +31,7 @@ public class DB_Tarea extends AppCompatActivity {
     private Button guardarTareaButton, registrarTareas;
     private Spinner spnAsc;
     private RecyclerView recyclerView;
-    private Adapter_Tareas adapter;
+    private Adapter_Tareas adapter2;
     private ArrayList<Ent_TareaItem> tareasList;
     private ArrayList<Ent_Ascensor> listImp;
     private List<String> listAsc;
@@ -54,9 +54,9 @@ public class DB_Tarea extends AppCompatActivity {
         // Obtener el código de mantenimiento del intent
         codigoMantenimiento = getIntent().getIntExtra("codigo_mantenimiento", -1);
         tareasList = new ArrayList<>();
-        adapter = new Adapter_Tareas(tareasList);
+        adapter2 = new Adapter_Tareas(tareasList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter2);
         codCli = getIntent().getStringExtra("codCli");
         Log.d("Database", "Connection: " + codCli);
 
@@ -113,11 +113,10 @@ public class DB_Tarea extends AppCompatActivity {
 
                         // Añadir tarea a la lista localmente
                         tareasList.add(new Ent_TareaItem(nombre, descripcion, codAsc));
-                        adapter.notifyDataSetChanged();
 
                         nombreTareaInput.setText("");
                         descripcionTareaInput.setText("");
-
+                        adapter2.notifyDataSetChanged();
                         Toast.makeText(DB_Tarea.this, "Tarea registrada localmente.", Toast.LENGTH_SHORT).show();
                     });
 
@@ -184,8 +183,7 @@ public class DB_Tarea extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                tareasList.clear();
-                adapter.notifyDataSetChanged();
+
                 Toast.makeText(DB_Tarea.this, "Todas las tareas han sido registradas.", Toast.LENGTH_SHORT).show();
 
                 // Iniciar la actividad Home_Admin
