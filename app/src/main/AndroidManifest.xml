@@ -51,6 +51,7 @@
         <activity android:name=".View_Trab_ListaTareas" android:exported="true" />
         <activity android:name=".View_Trab_DetalleEmp" android:exported="true" />
         <activity android:name=".View_Trab_ListaAscen" android:exported="true" />
+        <activity android:name=".View_Trab_TareasDetalle" android:exported="true" />
         <activity android:name=".View_Cli_ProxManten" android:exported="true" />
         <activity android:name=".View_Cli_InfoAscensor" android:exported="true" />
         <activity android:name=".View_Cli_ConfMant" android:exported="true" />

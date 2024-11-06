@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 public class View_Trab_ListaTareas extends AppCompatActivity {
 
     private RecyclerView lstCli;
-    private String codAscen, codMant, codTrab;
+    private String codAscen, codMant, codTrab,codCli;
     private Button btnTerminar;
     private DB_Tarea_Update dbTerminar = new DB_Tarea_Update();
     private DB_Ascensor_Update dbAsc = new DB_Ascensor_Update();
@@ -54,6 +54,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
         codAscen = getIntent().getStringExtra("codAsc");
         codMant = getIntent().getStringExtra("codMant");
         codTrab = getIntent().getStringExtra("codTrab");
+        codCli = getIntent().getStringExtra("codCli");
         num = Integer.parseInt(codAscen);
         Log.d("Database", "codAsc: " + codAscen);
     }
@@ -78,7 +79,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
     }
 
     private void setupAdapter(ArrayList<Ent_TareaItem> listTar) {
-        Adapter_Tarea adapter = new Adapter_Tarea(listTar);
+        Adapter_Tarea adapter = new Adapter_Tarea(View_Trab_ListaTareas.this,listTar);
         lstCli.setAdapter(adapter);
         btnTerminar.setOnClickListener(v -> handleTerminarClick(adapter));
     }
@@ -103,6 +104,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
                     handlePostUpdate();
                 } else {
                     restartActivity();
+                    showProgressBar(false);
                 }
             } catch (ExecutionException | InterruptedException e) {
                 Log.e("Database", "Error al terminar tareas", e);
@@ -126,6 +128,15 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
                     runOnUiThread(() -> {
                         Intent intent = new Intent(this, View_Trab_ListaEmpresas.class);
                         Log.d("Database", "codTrab: " + codTrab);
+                        intent.putExtra("codTrab", codTrab);
+                        startActivity(intent);
+                    });
+                } else {
+                    runOnUiThread(() -> {
+                        Intent intent = new Intent(this, View_Trab_ListaAscen.class);
+                        Log.d("Database", "codTrab: " + codTrab);
+                        intent.putExtra("codCli", codCli);
+                        intent.putExtra("codMant", codMant);
                         intent.putExtra("codTrab", codTrab);
                         startActivity(intent);
                     });

@@ -1,5 +1,7 @@
 package com.example.jmg_ascensores;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,8 +21,10 @@ public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewH
     private List<Integer> listk = new ArrayList<>();
     private List<Integer> listPos = new ArrayList<>();
     private Integer selectedId;
+    private Context context;
     // Constructor to initialize the list of tareas
-    public Adapter_Tarea(List<Ent_TareaItem> tareasList) {
+    public Adapter_Tarea(Context context, List<Ent_TareaItem> tareasList) {
+        this.context = context;
         this.tareasList = tareasList != null ? tareasList : new ArrayList<>(); // Evita NullPointerException
     }
 
@@ -50,6 +54,12 @@ public class Adapter_Tarea extends RecyclerView.Adapter<Adapter_Tarea.TareaViewH
             } else {
                 listk.remove(tarea.getCodTar()); // Asegúrate de eliminar el objeto correctamente
             }
+        });
+        holder.itemView.setOnClickListener(v -> {
+            // Crear un Intent y pasar el ID
+            Intent intent = new Intent(context, View_Trab_TareasDetalle.class);
+            intent.putExtra("desc", tarea.getDescripcion());  // Pasar el ID como cadena
+            context.startActivity(intent);
         });
     }
 

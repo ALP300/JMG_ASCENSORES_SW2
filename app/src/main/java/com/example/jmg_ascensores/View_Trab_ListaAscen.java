@@ -37,7 +37,7 @@ public class View_Trab_ListaAscen extends AppCompatActivity {
                         List<Ent_Ascensor> asc;
                         asc = new DB_InfoAscenWhere(connection, View_Trab_ListaAscen.this).execute(codCli).get();
                         // Configurar el adaptador
-                        Adapter_BtnAscensores adapter = new Adapter_BtnAscensores(View_Trab_ListaAscen.this,asc,codMant, codTrab);
+                        Adapter_BtnAscensores adapter = new Adapter_BtnAscensores(View_Trab_ListaAscen.this,asc,codMant, codTrab,codCli);
                         lstAsc.setAdapter(adapter);
 
                     } catch (Exception e) {

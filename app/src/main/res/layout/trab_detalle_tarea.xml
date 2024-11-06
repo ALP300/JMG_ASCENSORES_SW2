@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0E2842"> <!-- Aquí puedes definir el fondo como color o imagen -->
+
+    <!-- Imagen del logo -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="Logo de la empresa"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DESCRIPCIÓN DE LA TAREA "
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:translationY="70dp" />
+
+        <TextView
+            android:id="@+id/txtDetTar"
+            android:layout_width="match_parent"
+            android:layout_height="244dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:gravity="center_horizontal"
+            android:paddingTop="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:translationY="90dp" />
+
+    </LinearLayout>
+
+    <!-- Título principal -->
+
+    <!-- Texto de ubicación y tareas -->
+
+    <!-- Botón de confirmación de mantenimiento -->
+
+    <!-- Mapa de Google Maps -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
