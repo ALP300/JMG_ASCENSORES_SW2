@@ -5,8 +5,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.view.View;
+import android.content.Intent;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +36,7 @@ public class View_Cli_ProxManten extends AppCompatActivity {
     private TextView txtUbi;
     private TextView txtFec;
     private CardView cardFecha; // Agrega la referencia al CardView
+    private Button btnVerTareas;
 
     private static final String TAG = "View_ProxManten"; // Etiqueta para los logs
 
@@ -45,7 +50,7 @@ public class View_Cli_ProxManten extends AppCompatActivity {
         txtCod = findViewById(R.id.txtCod);
         txtUbi = findViewById(R.id.txtUbic);
         txtFec = findViewById(R.id.txtFec);
-        cardFecha = findViewById(R.id.cardFecha); // Inicializa el CardView
+        cardFecha = findViewById(R.id.cardFecha);// Inicializa el CardView
 
         // Verificación y solicitud de permiso de ubicación
         if (checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -54,7 +59,9 @@ public class View_Cli_ProxManten extends AppCompatActivity {
             // Permiso concedido
             setupData();
         }
+
     }
+
 
     private void setupData() {
         codCli = getIntent().getStringExtra("codCli");
