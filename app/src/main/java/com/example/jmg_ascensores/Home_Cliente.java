@@ -1,6 +1,7 @@
 package com.example.jmg_ascensores;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ public class Home_Cliente extends AppCompatActivity {
     private LinearLayout btnCerrarSesion; // Cambiar a LinearLayout
     private TextView textViewBienvenida; // TextView para mostrar la bienvenida personalizada
     private String codCli;
+    private LinearLayout btnLlamar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,17 @@ public class Home_Cliente extends AppCompatActivity {
         btnInfo = findViewById(R.id.btnInfAsc);
         btnConf = findViewById(R.id.btnConfMant);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+        btnLlamar = findViewById(R.id.btnLlamar);
 
+
+        btnLlamar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:+51976783049"));
+                startActivity(intent);
+            }
+        });
         // Configuración del LinearLayout para ver mantenimientos próximos
         btnManProx.setOnClickListener(new View.OnClickListener() {
             @Override
