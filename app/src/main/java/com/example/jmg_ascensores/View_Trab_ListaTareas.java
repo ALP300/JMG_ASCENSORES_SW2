@@ -69,7 +69,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
             try {
                 List<Integer> listId = adapter.getListk();
                 for (Integer x : listId) {
-                    dbTerminar.actualizarManten(x);
+                    dbTerminar.actualizarTarea(x);
                 }
 
                 // Reconsulta las tareas
@@ -93,7 +93,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
                 //Log.d("Database", v+"");
                 if (!v) {
                     //Log.d("Database", "FALSOOO");
-                    maup.actualizarManten(codMant);
+                    maup.actualizarManten(codMant,"confirmar");
                     runOnUiThread(() -> {
                         Intent intent = new Intent(this, View_Trab_ListaEmpresas.class);
                         Log.d("Database", "codTrab: "+codTrab);

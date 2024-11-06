@@ -53,6 +53,7 @@
         <activity android:name=".View_Trab_ListaAscen" android:exported="true" />
         <activity android:name=".View_Cli_ProxManten" android:exported="true" />
         <activity android:name=".View_Cli_InfoAscensor" android:exported="true" />
+        <activity android:name=".View_Cli_ConfMant" android:exported="true" />
         <activity android:name=".API_Maps" android:exported="true" />
         <activity android:name=".DB_Tarea" android:exported="true" />
     </application>

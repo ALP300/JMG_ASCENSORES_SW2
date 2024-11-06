@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Home_Cliente extends AppCompatActivity {
 
     private LinearLayout btnManProx; // Cambiar a LinearLayout
-    private LinearLayout btnInfo;     // Cambiar a LinearLayout
+    private LinearLayout btnInfo, btnConf;     // Cambiar a LinearLayout
     private LinearLayout btnCerrarSesion; // Cambiar a LinearLayout
     private TextView textViewBienvenida; // TextView para mostrar la bienvenida personalizada
     private String codCli;
@@ -36,6 +36,7 @@ public class Home_Cliente extends AppCompatActivity {
         // Inicialización de los LinearLayouts
         btnManProx = findViewById(R.id.btnManProx);
         btnInfo = findViewById(R.id.btnInfAsc);
+        btnConf = findViewById(R.id.btnConfMant);
         btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
 
         // Configuración del LinearLayout para ver mantenimientos próximos
@@ -54,6 +55,15 @@ public class Home_Cliente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Home_Cliente.this, View_Cli_InfoAscensor.class);
+                intent.putExtra("codCli", codCli); // Envía el código del cliente
+                Log.i("VistaCliente", "Código del cliente que se enviará: " + codCli);
+                startActivity(intent);
+            }
+        });
+        btnConf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Home_Cliente.this, View_Cli_ConfMant.class);
                 intent.putExtra("codCli", codCli); // Envía el código del cliente
                 Log.i("VistaCliente", "Código del cliente que se enviará: " + codCli);
                 startActivity(intent);

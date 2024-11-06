@@ -68,7 +68,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         android:background="#213744"
         android:orientation="horizontal"
@@ -94,11 +94,40 @@
 
     <!-- Botón Cerrar Sesión -->
     <LinearLayout
+        android:id="@+id/btnConfMant"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:background="#213744"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnInfAsc">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_slideshow" />
+
+        <TextView
+            android:layout_width="192dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:text="CONFIRMAR MANTENIMIENTO"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/btnCerrarSesion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="16dp"
         android:background="#213744"
         android:orientation="horizontal"
@@ -106,7 +135,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnManProx">
+        app:layout_constraintTop_toBottomOf="@id/btnConfMant">
 
         <ImageView
             android:layout_width="48dp"

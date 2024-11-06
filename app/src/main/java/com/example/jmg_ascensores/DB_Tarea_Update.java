@@ -11,7 +11,7 @@ public class DB_Tarea_Update {
     private static final String USER = "db_jmg_user";
     private static final String PASSWORD = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
 
-    public void actualizarManten(Integer id) {
+    public void actualizarTarea(Integer id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 

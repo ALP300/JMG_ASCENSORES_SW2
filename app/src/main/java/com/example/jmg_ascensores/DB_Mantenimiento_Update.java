@@ -11,17 +11,18 @@ public class DB_Mantenimiento_Update {
     private static final String USER = "db_jmg_user";
     private static final String PASSWORD = "zALyb2rS9hQ49tB5ijVpYgiMvJajoiL1";
 
-    public void actualizarManten(String id) {
+    public void actualizarManten(String id, String stad) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         Integer id2= Integer.parseInt(id);
+
         try {
             // Establecer la conexión
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             // Crear la consulta SQL
             String sql = "UPDATE mantenimiento SET estado = ? WHERE codigo_mantenimiento = ?";
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, "terminado");
+            preparedStatement.setString(1, stad);
             preparedStatement.setInt(2, id2);
 
             // Ejecutar la actualización
