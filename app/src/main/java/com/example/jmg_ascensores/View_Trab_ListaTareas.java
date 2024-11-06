@@ -13,18 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class View_Trab_ListaTareas extends AppCompatActivity {
 
     private RecyclerView lstCli;
-    private String codAscen, codMant,codTrab;
+    private String codAscen, codMant, codTrab;
     private Button btnTerminar;
     private DB_Tarea_Update dbTerminar = new DB_Tarea_Update();
     private DB_Ascensor_Update dbAsc = new DB_Ascensor_Update();
     private Integer num;
     private DB_Mantenimiento_Update maup = new DB_Mantenimiento_Update();
     private ProgressBar progressBar;
+
+    private ExecutorService executorService;
+    private CountDownLatch countDownLatch;  // Para sincronizar los hilos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
 
         initViews();
         loadCodAscen();
+        executorService = Executors.newCachedThreadPool();  // Usamos un ExecutorService para manejar los hilos
         loadTareas();
     }
 
@@ -40,8 +47,7 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
         lstCli = findViewById(R.id.lstTareasTrab);
         lstCli.setLayoutManager(new LinearLayoutManager(this));
         btnTerminar = findViewById(R.id.btnTerminar);
-        progressBar = findViewById(R.id.progressBar);  // Asegúrate de que el ID coincida con el que has usado en tu XML
-
+        progressBar = findViewById(R.id.progressBar);
     }
 
     private void loadCodAscen() {
@@ -53,15 +59,22 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
     }
 
     private void loadTareas() {
-        new Thread(() -> {
+   // Muestra el ProgressBar mientras cargamos las tareas
+
+        // Inicializamos el CountDownLatch, con el número de tareas a esperar
+        countDownLatch = new CountDownLatch(1);
+
+        executorService.submit(() -> {
             try {
                 ArrayList<Ent_TareaItem> listTar = new DB_InfoTareasWhere(this).execute(codAscen).get();
                 Log.d("Database", "lst: " + listTar);
                 runOnUiThread(() -> setupAdapter(listTar));
             } catch (ExecutionException | InterruptedException e) {
                 Log.e("Database", "Error al cargar tareas", e);
+            } finally {
+                countDownLatch.countDown();  // Disminuimos el contador cuando la tarea finalice
             }
-        }).start();
+        });
     }
 
     private void setupAdapter(ArrayList<Ent_TareaItem> listTar) {
@@ -71,8 +84,12 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
     }
 
     private void handleTerminarClick(Adapter_Tarea adapter) {
-        runOnUiThread(() -> progressBar.setVisibility(View.VISIBLE));
-        new Thread(() -> {
+  // Muestra el ProgressBar al hacer click
+
+        showProgressBar(true); // Incrementamos el contador porque vamos a iniciar otra tarea
+        countDownLatch = new CountDownLatch(1);
+
+        executorService.submit(() -> {
             try {
                 List<Integer> listId = adapter.getListk();
                 for (Integer x : listId) {
@@ -90,45 +107,71 @@ public class View_Trab_ListaTareas extends AppCompatActivity {
             } catch (ExecutionException | InterruptedException e) {
                 Log.e("Database", "Error al terminar tareas", e);
             } finally {
-                // Oculta el ProgressBar después de completar la tarea
-                runOnUiThread(() -> progressBar.setVisibility(View.GONE));
+                countDownLatch.countDown();  // Disminuimos el contador cuando la tarea finalice
             }
-        }).start();
+        });
     }
 
     private void handlePostUpdate() {
-        runOnUiThread(() -> progressBar.setVisibility(View.VISIBLE));
+        showProgressBar(true);  // Muestra el ProgressBar al realizar la actualización
 
-        new Thread(() -> {
+        // Incrementamos el contador porque vamos a iniciar otra tarea
+        countDownLatch = new CountDownLatch(1);
+
+        executorService.submit(() -> {
             try {
                 Boolean v = new DB_InfoDetalleClientWhereVerify(this).execute(codMant).get();
-                //Log.d("Database", v+"");
                 if (!v) {
-                    //Log.d("Database", "FALSOOO");
-                    maup.actualizarManten(codMant,"confirmar");
+                    maup.actualizarManten(codMant, "confirmar");
                     runOnUiThread(() -> {
                         Intent intent = new Intent(this, View_Trab_ListaEmpresas.class);
-                        Log.d("Database", "codTrab: "+codTrab);
+                        Log.d("Database", "codTrab: " + codTrab);
                         intent.putExtra("codTrab", codTrab);
                         startActivity(intent);
                     });
                 }
             } catch (ExecutionException | InterruptedException e) {
                 Log.e("Database", "Error en la verificación de detalles", e);
-            }finally {
-                // Oculta el ProgressBar después de completar la tarea
-                runOnUiThread(() -> progressBar.setVisibility(View.GONE));
+            } finally {
+                countDownLatch.countDown();  // Disminuimos el contador cuando la tarea finalice
             }
-        }).start();
+        });
     }
 
     private void restartActivity() {
-        runOnUiThread(() -> progressBar.setVisibility(View.VISIBLE));
-        runOnUiThread(() -> {
-            Intent intent = new Intent(this, View_Trab_ListaTareas.class);
-            intent.putExtra("codAsc", codAscen);
-            startActivity(intent);
+        showProgressBar(true);  // Muestra el ProgressBar mientras reiniciamos la actividad
+
+        executorService.submit(() -> {
+            try {
+                Intent intent = new Intent(this, View_Trab_ListaTareas.class);
+                intent.putExtra("codAsc", codAscen);
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.e("Database", "Error al reiniciar la actividad", e);
+            } finally {
+                countDownLatch.countDown();  // Disminuimos el contador cuando la tarea finalice
+            }
         });
-        runOnUiThread(() -> progressBar.setVisibility(View.GONE));
     }
-}
+
+    private void showProgressBar(final boolean visible) {
+        runOnUiThread(() -> progressBar.setVisibility(visible ? View.VISIBLE : View.GONE));
+    }
+
+    // Espera hasta que todos los hilos hayan terminado
+    private void waitForTasksToFinish() {
+        try {
+            countDownLatch.await();  // Espera hasta que el contador llegue a cero
+            showProgressBar(false);  // Oculta el ProgressBar cuando todos los hilos hayan terminado
+        } catch (InterruptedException e) {
+            Log.e("Database", "Error al esperar por los hilos", e);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Cierra el ExecutorService cuando la actividad se destruye
+        executorService.shutdown();
+    }
+    }
